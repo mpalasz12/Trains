@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bd2</groupId>
-	<artifactId>bd2project</artifactId>
+	<artifactId>TransportManager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bd2project</name>
+	<name>TransportManager</name>
 	<description>Zadanie projektowe BD2</description>
 	<properties>
 		<java.version>21</java.version>
