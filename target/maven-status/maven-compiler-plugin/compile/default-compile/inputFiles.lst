@@ -1,1 +1,10 @@
-/home/doaads/studia/bd2/bd2-z21/src/main/java/com/bd2/TransportManager/TransportManagerApplication.java
+/home/doaads/studia/bd2-z21/src/main/java/dbservice/models/Cart.java
+/home/doaads/studia/bd2-z21/src/main/java/com/bd2/TransportManager/TransportManagerApplication.java
+/home/doaads/studia/bd2-z21/src/main/java/dbservice/DAOs/CityDAO.java
+/home/doaads/studia/bd2-z21/src/main/java/dbservice/DatabaseController.java
+/home/doaads/studia/bd2-z21/src/main/java/dbservice/DAOs/TrainDAO.java
+/home/doaads/studia/bd2-z21/src/main/java/dbservice/DAOs/PassengerDAO.java
+/home/doaads/studia/bd2-z21/src/main/java/dbservice/models/Train.java
+/home/doaads/studia/bd2-z21/src/main/java/dbservice/models/Passenger.java
+/home/doaads/studia/bd2-z21/src/main/java/dbservice/DAOs/CartDAO.java
+/home/doaads/studia/bd2-z21/src/main/java/dbservice/models/City.java

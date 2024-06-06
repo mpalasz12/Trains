@@ -1,5 +1,8 @@
 package dbservice.models;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Train {
 	private int trainID;
 
