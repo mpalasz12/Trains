@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="trains-current_linestop" directorySegmentName="seg_0" id="F9E88B26-E8E5-F04B-24A0-24533A6ED747">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>EC8902F3-4925-2FE3-F0B6-EBB7309C27B5</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<sourcePk>A8D06B45-C906-50C8-8E44-AE78CC06F064</sourcePk>
+<targetPk>06A0E171-D0AF-637D-61C0-969F5E45E95A</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>BC6DCCA7-307A-8DDF-63CE-1FCFB24846BA</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>BCFE5548-2F47-FB02-0DF1-46DD160300C0</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8CEB7039-0152-0B33-270E-9A31B9A325A6" name="Travelers">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>D0A16F66-4237-A0FE-CBC9-F4FA6F81313A</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="traveler_id" id="88D8DECA-F21D-C961-C862-AB73CE65290E">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>0D8BF685-76CF-E478-8720-A069F8B045EC</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="first_name" id="E561614B-25B7-0088-4A0A-1DD3665A8415">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>5130DE2D-2DAD-27E4-8679-D2023CBB601E</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="last_name" id="174BA1FA-1961-0343-A7BE-B21A724710AE">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>27E6EFA3-E26A-E6CE-C0EA-4886D134E7EF</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="mail_address" id="DEA9EC94-3927-7C23-9A1A-59722DEB8DB8">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>234B1459-CCC0-38B6-0E81-90159B3FE22C</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A414EF74-6809-492A-DBCC-4AB16A2AEE94" name="Travelers PK">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>4F189E75-4F9B-10DA-BDEE-2633F107BC91</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>88D8DECA-F21D-C961-C862-AB73CE65290E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

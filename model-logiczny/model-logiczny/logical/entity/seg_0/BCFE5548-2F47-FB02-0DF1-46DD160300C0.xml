@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BCFE5548-2F47-FB02-0DF1-46DD160300C0" name="Trains">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>810E78B2-2196-7CEE-8B06-F781C2877016</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="train_id" id="C105EA14-47EF-B536-2C63-808ED7E5FEF4">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>ECADD40D-A435-6771-A5C5-AAA0C7A56F1E</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="wagon_id" id="08FFF1A6-5D77-4775-07B5-4F53770327B2">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>75BDA3B1-3830-C741-382A-F9F80E14A56B</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="locomotive_id" id="12BE93C0-3767-11BE-666F-E87EB74C23AF">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<generatorID>DB0F5232-DADA-BE6C-ED8E-004C96555020</generatorID>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>42E3E703-F764-44E1-2B8A-3D366B1B2223</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<referedAttribute>196632EA-1E25-ED5B-B311-E1838CCCC493</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="line_id" id="60E49834-A1A9-6FE5-5AFD-F7DF9E5E4B54">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<generatorID>9D849D90-BFEE-1B5A-A542-71C3F504E3FA</generatorID>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>E023835A-FD6A-AA8B-451B-C618193172D2</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<referedAttribute>32AF5C08-BB61-B51D-DAA9-EF368FF10A54</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="curr_linestop" id="FB72B055-B4E6-DCF3-95C3-341BF0BC76B5">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<generatorID>F9E88B26-E8E5-F04B-24A0-24533A6ED747</generatorID>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>0CF02507-C48A-9A00-4480-1E0132982AA1</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>F18515F2-6AEB-D379-B2A2-0D2D164424B8</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="06A0E171-D0AF-637D-61C0-969F5E45E95A" name="Train PK">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>2BF1F047-E17D-C6CD-3784-F82FE11FFA34</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>C105EA14-47EF-B536-2C63-808ED7E5FEF4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

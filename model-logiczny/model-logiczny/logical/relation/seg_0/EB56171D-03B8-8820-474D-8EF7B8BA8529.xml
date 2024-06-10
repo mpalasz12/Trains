@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="lane-first_stop" directorySegmentName="seg_0" id="EB56171D-03B8-8820-474D-8EF7B8BA8529">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>7B2B679A-1501-A5C6-AD15-0854FCEB032F</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<sourcePk>A8D06B45-C906-50C8-8E44-AE78CC06F064</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>BC6DCCA7-307A-8DDF-63CE-1FCFB24846BA</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>BB69D438-A652-11B3-31A8-809CA5AA6416</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
