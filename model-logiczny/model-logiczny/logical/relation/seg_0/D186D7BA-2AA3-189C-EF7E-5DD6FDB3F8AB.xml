@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="linestop-at" directorySegmentName="seg_0" id="D186D7BA-2AA3-189C-EF7E-5DD6FDB3F8AB">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>5ECADBF5-46B3-65B8-9E95-D0F605ED0BDC</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<sourcePk>0EDD7212-E796-5755-4B54-252BD00A054D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>86170892-AFAE-DF5F-7A90-48F49A0ED940</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>BC6DCCA7-307A-8DDF-63CE-1FCFB24846BA</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="86170892-AFAE-DF5F-7A90-48F49A0ED940" name="Stations">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>4A13F18F-75F7-73AC-B311-1B92CEB8BF43</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="station_id" id="88CF2F8F-DE22-F02C-9BFC-75A5C3062125">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>9938F197-6D6F-03AA-6742-BD781C360643</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="0F31DEB7-F089-36D9-1758-CC84B44E1393">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>09D4CEB5-1AD0-7D24-A4F1-D715609BC125</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="city_id" id="EF5F6859-A5AB-6C0F-44F1-6D762B093885">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<generatorID>CACB1632-0B4A-957D-18F4-16CF78856C93</generatorID>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>02A5874E-27A1-42EB-9A0B-1D889FA0163D</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<referedAttribute>67E22DE1-02BC-ABD3-D8F9-B95A5DC28527</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="0EDD7212-E796-5755-4B54-252BD00A054D" name="Stations PK">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-10 19:55:00 UTC</createdTime>
+<ownerDesignName>model-logiczny</ownerDesignName>
+<importedID>BFB72383-11BB-2631-7121-01635A17A604</importedID>
+<engineerTo>
+<item key="CD448A8E-B3B7-CCBE-31E5-68143454427A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>88CF2F8F-DE22-F02C-9BFC-75A5C3062125</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
