@@ -10,16 +10,29 @@ import dbservice.models.*;
 public class DatabaseController {
 	// DAOs objects go here
 	private final TrainDAO trainDAO;
-	private final PassengerDAO passengerDAO;
+	private final TravelerDAO travelerDAO;
 	private final CityDAO cityDAO;
+	private final StationDAO stationDAO;
+	private final LinestopDAO linestopDAO;
+	private final LineDAO lineDAO;
 
 	@Autowired
-	public DatabaseController(TrainDAO trainDAO, PassengerDAO passengerDAO, CityDAO cityDAO) { // add new DAOs as
+	public DatabaseController(
+			TrainDAO trainDAO,
+			TravelerDAO travelerDAO,
+			CityDAO cityDAO,
+			StationDAO stationDAO,
+			LinestopDAO linestopDAO,
+			LineDAO lineDAO
+	) { // add new DAOs as
 																								// arguments
 		// initialize new DAOs
 		this.trainDAO = trainDAO;
-		this.passengerDAO = passengerDAO;
+		this.travelerDAO = travelerDAO;
 		this.cityDAO = cityDAO;
+		this.stationDAO = stationDAO;
+		this.linestopDAO = linestopDAO;
+		this.lineDAO = lineDAO;
 	}
 
 	/*
@@ -31,19 +44,19 @@ public class DatabaseController {
 	}
 
 	/*
-	 * -------------------------------- PASSENGER ----------------------------------
+	 * -------------------------------- TRAVELER -----------------------------------
 	 */
 
-	public void addPassenger(Passenger passenger) {
-		passengerDAO.addPassenger(passenger);
+	public void addTraveler(Traveler traveler) {
+		travelerDAO.addTraveler(traveler);
 	}
 
-	public void deletePassenger(int id) {
-		passengerDAO.deletePassenger(id);
+	public void deleteTraveler(int id) {
+		travelerDAO.deleteTraveler(id);
 	}
 
-	public void changeMail(String newMail, String id) {
-		passengerDAO.changeMail(newMail, id);
+	public void changeMail(String newMail, int id) {
+		travelerDAO.changeMail(newMail, id);
 	}
 
 	/*
@@ -54,4 +67,27 @@ public class DatabaseController {
 		cityDAO.addCity(city);
 	}
 
+	/*
+	 * ---------------------------------STATION ------------------------------------
+	 */
+
+	public void addStation(Station station) {
+		stationDAO.addStation(station);
+	}
+
+	/*
+	 * --------------------------------LINESTOP ------------------------------------
+	 */
+
+	public int addLinestopUpdateID(Linestop linestop) {
+		return linestopDAO.addLinestopGetID(linestop);
+	}
+
+	/*
+	 * --------------------------------LINESTOP ------------------------------------
+	 */
+
+	public int addLineUpdateID(Line line) {
+		return lineDAO.addLineGetID(line);
+	}
 }

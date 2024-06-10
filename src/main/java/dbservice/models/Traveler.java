@@ -3,14 +3,14 @@ package dbservice.models;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Passenger {
+public class Traveler {
 	private String firstName;
 	private String lastName;
 	private String mailAddress;
 
 
-	public Passenger() {}
-	public Passenger(String firstName, String lastName, String mail) {
+	public Traveler() {}
+	public Traveler(String firstName, String lastName, String mail) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.mailAddress = mail;
