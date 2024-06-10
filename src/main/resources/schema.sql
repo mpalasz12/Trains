@@ -8,7 +8,7 @@ CREATE TABLE Stations (
 	name			VARCHAR(50)		NOT NULL UNIQUE,
 	city_id			INT				NOT NULL,
 
-	FOREIGN KEY (city_id) REFERENCES City(city_id)
+	FOREIGN KEY (city_id) REFERENCES Cities(city_id)
 );
 
 CREATE TABLE Travelers (
@@ -24,8 +24,8 @@ CREATE TABLE Linestops (
 	distance_next	INT,
 	station_id		INT				NOT NULL,
 
-	FOREIGN KEY (station_id) REFERENCES Station(station_id),
-	FOREIGN KEY (linestop_id) REFERENCES Linestop(linestop_id)
+	FOREIGN KEY (station_id) REFERENCES Stations(station_id),
+	FOREIGN KEY (linestop_id) REFERENCES Linestops(linestop_id)
 );
 
 CREATE TABLE Lines (
@@ -33,7 +33,7 @@ CREATE TABLE Lines (
 	name			VARCHAR(50)		NOT NULL UNIQUE,
 	first_stop_id	INT				NOT NULL,
 
-	FOREIGN KEY (first_stop_id) REFERENCES Linestop(linestop_id)
+	FOREIGN KEY (first_stop_id) REFERENCES Linestops(linestop_id)
 );
 
 CREATE TABLE Locomotives (
@@ -48,9 +48,9 @@ CREATE TABLE Trains (
 	locomotive_id	INT				NOT NULL,
 	curr_linestop	INT,
 
-	FOREIGN KEY (line_id) REFERENCES Line(line_id),
-	FOREIGN KEY (curr_linestop) REFERENCES Linestop(linestop_id),
-	FOREIGN KEY (locomotive_id) REFERENCES Locomotive(locomotive_id)
+	FOREIGN KEY (line_id) REFERENCES Lines(line_id),
+	FOREIGN KEY (curr_linestop) REFERENCES Linestops(linestop_id),
+	FOREIGN KEY (locomotive_id) REFERENCES Locomotives(locomotive_id)
 );
 
 CREATE TABLE Tickets (
@@ -63,10 +63,10 @@ CREATE TABLE Tickets (
 	seat_num		INT,
 	is_expired		BOOLEAN			DEFAULT TRUE,
 
-	FOREIGN KEY (traveler_id) REFERENCES Traveler(traveler_id),
-	FOREIGN KEY (train_id) REFERENCES Train(train_id),
-	FOREIGN KEY (first_stop) REFERENCES Station(station_id),
-	FOREIGN KEY (last_stop) REFERENCES Station(station_id)
+	FOREIGN KEY (traveler_id) REFERENCES Travelers(traveler_id),
+	FOREIGN KEY (train_id) REFERENCES Trains(train_id),
+	FOREIGN KEY (first_stop) REFERENCES Stations(station_id),
+	FOREIGN KEY (last_stop) REFERENCES Stations(station_id)
 );
 
 
@@ -76,7 +76,7 @@ CREATE TABLE Wagons (
 	wagon_capacity	INT,
 	train_id		INT,
 
-	FOREIGN KEY (train_id) REFERENCES Train(train_id)
+	FOREIGN KEY (train_id) REFERENCES Trains(train_id)
 );
 
 
