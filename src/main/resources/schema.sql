@@ -61,6 +61,7 @@ CREATE TABLE Ticket (
 	train_id		INT				NOT NULL,
 	wagon_num		INT				NOT NULL,
 	seat_num		INT,
+	is_expired		BOOLEAN			DEFAULT TRUE,
 
 	FOREIGN KEY (traveler_id) REFERENCES Traveler(traveler_id),
 	FOREIGN KEY (train_id) REFERENCES Train(train_id),
