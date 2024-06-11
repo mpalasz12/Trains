@@ -1,0 +1,164 @@
+.bottom_separator{
+    width: 500px;
+    height: 150px;
+    float: left;
+}
+
+p{
+    margin: 0px;
+    padding-top: 5px;
+}
+
+.wagon_info{
+    text-align: center;
+    width: 500px;
+    height: 120px;
+    background-color: #D3D5D4;
+}
+
+.grid_seats{
+    margin: auto;
+    padding-top: 4px;
+    width: 490px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    gap: 5px;
+}
+
+.seatElementOccupied{
+    height: 50px;
+    background-color: rgb(215, 61, 61);
+}
+.seatElementFree{
+    height: 50px;
+    background-color: rgb(65, 172, 65);
+}
+
+
+.ticket_info{
+    padding-left: 10px;
+    border-width: 2px;
+    border-color: #454851;
+    border-style: solid;
+    width: 186px;
+    height: 148px;
+    background-color: #D3D5D4;
+    float: left;
+}
+
+.train_struct_display{
+    border-width: 2px;
+    border-color: #454851;
+    border-style: solid;
+    background-color: #A2C5AC;
+    width: 100%;
+    height: 26px;
+}
+
+.btn_locomotive{
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 10px;
+    width: 60px;
+    height: 22px;
+    background-color: #D3D5D4;
+    float: left;
+}
+
+.wagons_panel{
+    width: 425px;
+    height: 100%;
+    float: left;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+}
+
+.btn_locomotive_focused{
+    font-weight: bold;
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 10px;
+    width: 60px;
+    height: 22px;
+    background-color: #9DB5B2;
+    float: left;
+}
+
+.btn_train{
+    width: 180px;
+    height: 40px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    background-color: #D3D5D4;
+}
+
+.btn_train_focused{
+    font-size: large;
+    font-weight: bold;
+    width: 186px;
+    height: 40px;
+    margin-left: 8px;
+    margin-bottom: 10px;
+    background-color: #9DB5B2;
+}
+
+.btn_wagon{
+    margin-top: 2px;
+    width: 50px;
+    height: 22px;
+    background-color: #D3D5D4;
+}
+
+.btn_wagon_focused{
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 2px;
+    width: 50px;
+    height: 22px;
+    background-color: #9DB5B2;
+}
+
+.app{
+    width: 700px;
+    height: 650px;
+    margin: auto;
+    border-style: solid;
+    border-width: 5px;
+}
+
+.left_panel{
+    width: 500px;
+    height: 500px;
+    float: left;
+}
+
+.trains_header{
+    border-bottom-width: 2px;
+    border-bottom-color: #454851;
+    border-bottom-style: solid;
+    background-color: #A2C5AC;
+    height: 40px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 12px;
+
+}
+
+.right_panel{
+    border-left-width: 2px;
+    border-left-color: #454851;
+    border-left-style: solid;
+    width: 198px;
+    height: 500px;
+    background-color: #D3D5D4;
+    float: left;
+}
+
+.bottom_panel{
+    width: 100%;
+    height: 150px;
+    clear: both;
+
+}
