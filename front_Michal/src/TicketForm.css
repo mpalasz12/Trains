@@ -1,12 +1,15 @@
 form {
     display: flex;
     flex-direction: column;
+    max-width: 300px;
 }
 
 form label {
     margin-bottom: 10px;
+    align-self: flex-end;
 }
 
 form input[type="submit"] {
-    width: 50%;
+    width: 300px;
+    align-self: center;
 }
