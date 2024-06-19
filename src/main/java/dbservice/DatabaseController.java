@@ -15,6 +15,9 @@ public class DatabaseController {
 	private final StationDAO stationDAO;
 	private final LinestopDAO linestopDAO;
 	private final LineDAO lineDAO;
+	private final LocomotiveDAO locomotiveDAO;
+	private final TicketDAO ticketDAO;
+	private final WagonDAO wagonDAO;
 
 	@Autowired
 	public DatabaseController(
@@ -23,7 +26,10 @@ public class DatabaseController {
 			CityDAO cityDAO,
 			StationDAO stationDAO,
 			LinestopDAO linestopDAO,
-			LineDAO lineDAO
+			LineDAO lineDAO,
+			LocomotiveDAO locomotiveDAO,
+			TicketDAO ticketDAO,
+			WagonDAO wagonDAO
 	) { // add new DAOs as
 																								// arguments
 		// initialize new DAOs
@@ -33,14 +39,33 @@ public class DatabaseController {
 		this.stationDAO = stationDAO;
 		this.linestopDAO = linestopDAO;
 		this.lineDAO = lineDAO;
+		this.locomotiveDAO = locomotiveDAO;
+		this.ticketDAO = ticketDAO;
+		this.wagonDAO = wagonDAO;
 	}
 
 	/*
 	 * ---------------------------------- TRAIN ------------------------------------
 	 */
 
-	public void addTrain(Train train) {
-		trainDAO.addTrain(train);
+	public int addTrain(Train train) {
+		return trainDAO.addTrainGetID(train);
+	}
+
+	public void deleteTrain(int id) {
+		trainDAO.deleteTrain(id);
+	}
+
+	public void changeLocomotive(int id, int newLocomotiveID) {
+		trainDAO.changeLocomotive(id, newLocomotiveID);
+	}
+
+	public void changeLinestop(int id, int nextLinestopID) {
+		trainDAO.changeLinestop(id, nextLinestopID);
+	}
+
+	public void advanceTrain(int id) {
+		trainDAO.changeLinestop(id, linestopDAO.getNextLinestopID(trainDAO.getLinestopID(id)));
 	}
 
 	/*
@@ -67,6 +92,10 @@ public class DatabaseController {
 		cityDAO.addCity(city);
 	}
 
+	public String getCity(int id) {
+		return cityDAO.getCity(id);
+	}
+
 	/*
 	 * ---------------------------------STATION ------------------------------------
 	 */
@@ -79,15 +108,85 @@ public class DatabaseController {
 	 * --------------------------------LINESTOP ------------------------------------
 	 */
 
-	public int addLinestopUpdateID(Linestop linestop) {
+	// for regular stations, requires nextLinestop and nextDistance
+	public int addLinestop(Linestop linestop) {
 		return linestopDAO.addLinestopGetID(linestop);
 	}
 
+	// for terminus, doesn't requrie nextLinestop and nextDistance
+	public int addTerminus(Linestop linestop) {
+		return linestopDAO.addTerminusGetID(linestop);
+	}
+
+	public int getNextLinestopID(int id) {
+		return linestopDAO.getNextLinestopID(id);
+	}
+
+	public int getNextLinestopDistance(int id) {
+		return linestopDAO.getNextLinestopDistance(id);
+	}
+
+	public void setNextLinestop(int id, int nextLinestopID) {
+		linestopDAO.setNextLinestop(id, nextLinestopID);
+	}
+
+	public void setNextLinestopDistance(int id, int distance) {
+		linestopDAO.setNextLinestopDistance(id, distance);
+	}
+	
 	/*
-	 * --------------------------------LINESTOP ------------------------------------
+	 * --------------------------------LINE ----------------------------------------
 	 */
 
-	public int addLineUpdateID(Line line) {
+	public int addLine(Line line) {
 		return lineDAO.addLineGetID(line);
+	}
+
+	/*
+	 * --------------------------------LOCOMOTIVE ------------------------------------
+	 */
+
+	public void addLocomotive(Locomotive locomotive) {
+		locomotiveDAO.addLocomotive(locomotive);
+	}
+
+	/*
+	 * --------------------------------TICKET ------------------------------------
+	 */
+
+	public void addTicket(Ticket ticket) {
+		ticketDAO.addTicketGetID(ticket);
+	}
+
+	public void expireTicket(int id) {
+		ticketDAO.expireTicket(id);
+	}
+
+	/*
+	 * --------------------------------WAGON ------------------------------------
+	 */
+
+	public int addWagon(Wagon wagon) {
+		return wagonDAO.addWagonGetID(wagon);
+	}
+
+	public void deleteWagon(int id) {
+		wagonDAO.deleteWagon(id);
+	}
+
+	public void changeWagonNum(int id, int newWagonNum) {
+		wagonDAO.changeWagonNum(id, newWagonNum);
+	}
+
+	public int getWagonNum(int id) {
+		return wagonDAO.getWagonNum(id);
+	}
+
+	public int getTrainID(int id) {
+		return wagonDAO.getTrainID(id);
+	}
+
+	public void changeTrain(int id, int newTrainID) {
+		wagonDAO.changeTrain(id, newTrainID);
 	}
 }

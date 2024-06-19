@@ -18,4 +18,9 @@ public class CityDAO {
 		String sql = "INSERT INTO Cities (name) VALUES (?)";
 		jdbcTemplate.update(sql, city.getName());
 	}
+
+	public String getCity(int id) {
+		String sql = "SELECT name FROM Cities WHERE city_id = ?";
+		return jdbcTemplate.queryForObject(sql, String.class, id);
+	}
 }

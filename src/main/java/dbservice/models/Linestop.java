@@ -15,7 +15,7 @@ public class Linestop {
 		this.nextLinestop = id;
 	}
 
-	public int getNextstop() {
+	public int getNextStop() {
 		return nextLinestop;
 	}
 
