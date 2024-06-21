@@ -1,9 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import './TicketForm.css';
 
 function TicketForm() {
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setIsSubmitted(true);
+    };
+
+    const ticketId = 123456789
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <label>
                 Stacja początkowa:
                 <input type="text" name="startStation" />
@@ -33,6 +42,12 @@ function TicketForm() {
                 <input type="number" name="seat" />
             </label>
             <input type="submit" value="Kup" />
+            {isSubmitted && (
+                <div className="ticket-id-container">
+                    <span className="ticket-id-label">Id kupionego biletu:</span>
+                    <span className="ticket-id">{ticketId}</span>
+                </div>
+            )}
         </form>
     );
 }

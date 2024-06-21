@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import TicketForm from "./TicketForm";
 import './App.css';
 import Statistics from "./Statistics";
+import TicketCheck from "./TicketCheck";
 
 function App() {
     const [activeButton, setActiveButton] = useState(null);
@@ -16,6 +17,7 @@ function App() {
             <Sidebar onButtonClick={handleButtonClick} />
             <div className="app-content">
                 {activeButton === 'Kup bilet' && <TicketForm />}
+                {activeButton === 'Sprawdź bilet' && <TicketCheck />}
                 {activeButton === 'Statystyki' && <Statistics />}
             </div>
         </div>
