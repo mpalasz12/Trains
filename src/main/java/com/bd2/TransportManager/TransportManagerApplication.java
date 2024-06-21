@@ -28,10 +28,10 @@ public class TransportManagerApplication {
 		City city = new City("Warszawa");
 		database.addCity(city);
 
-		Station wcent_station = new Station("Warszawa Centralna", 1);
-		Station wwest_station = new Station("Warszawa Zachodnia", 1);
-
-		database.addStation(wwest_station);
-		database.addStation(wcent_station);
+//		Station wcent_station = new Station("Warszawa Centralna", 1);
+//		Station wwest_station = new Station("Warszawa Zachodnia", 1);
+//
+//		database.addStation(wwest_station);
+//		database.addStation(wcent_station);
 	}
 }

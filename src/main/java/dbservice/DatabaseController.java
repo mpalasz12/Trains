@@ -1,6 +1,7 @@
 package dbservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.RestController;
 
 import dbservice.DAOs.*;
@@ -94,12 +95,18 @@ public class DatabaseController {
 		cityDAO.addCity(city);
 	}
 
-	public String getCity(int id) {
+	public String getCity(Long id) {
 		return cityDAO.getCity(id);
 	}
 
 	public City getCityByName(String name) {
-		return cityDAO.getCityByName(name);
+		City city;
+		try {
+			city = cityDAO.getCityByName(name);
+		} catch (DataAccessException e) {
+			return null;
+		}
+		return city;
 	}
 
 	/*

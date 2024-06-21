@@ -33,8 +33,9 @@ public class DataService {
 	public String getCity(@RequestParam(name = "id") String id) {  // RequestParam to beda parametry przekazywane w URL, np. localhost:8000/data/city?id=1. mozesz ich dac kilka
 		// i tutaj kod, ktory bedzie zwracal odpowiedz na zapytanie
 		// mozesz tez zwrocic np caly obiekt City, i wtedy on sie ladnie na jsona zamieni
-		int idInt = Integer.parseInt(id);
-		return database.getCity(idInt);  // w klasie DatabaseController sa dokladne metody ktore zwracaja rzeczy
+//		int idInt = Integer.parseInt(id);
+		Long idLong = Long.parseLong(id);
+		return database.getCity(idLong);  // w klasie DatabaseController sa dokladne metody ktore zwracaja rzeczy
 										 // jak chcesz dodac metode, to kazde DAO ma konkretne polecenia w SQL
 	}
 
