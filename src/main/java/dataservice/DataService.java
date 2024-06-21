@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/data")  // sciezka bazowa dla wszystkich endpointow (localhost:8000/data)
 public class DataService {
@@ -42,4 +44,14 @@ public class DataService {
 	}
 
 
+	@GetMapping("/station_by_id")
+	public Station getStation(@RequestParam(name = "id") String id) {
+		int idInt = Integer.parseInt(id);
+		return database.getStation(idInt);
+	}
+
+	@GetMapping("/all_stations")
+	public List<Station> getAllStations() {
+		return database.getAllStations();
+	}
 }

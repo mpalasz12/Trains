@@ -20,8 +20,18 @@ public class TransportManagerApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(TransportManagerApplication.class, args);
 		DatabaseController database = context.getBean(DatabaseController.class);
 
+		initDatabase(database);
+
+	}
+
+	public static void initDatabase(DatabaseController database) {
 		City city = new City("Warszawa");
 		database.addCity(city);
-		//Station station = new Station("Warszawa Centralna", 1);
+
+		Station wcent_station = new Station("Warszawa Centralna", 1);
+		Station wwest_station = new Station("Warszawa Zachodnia", 1);
+
+		database.addStation(wwest_station);
+		database.addStation(wcent_station);
 	}
 }

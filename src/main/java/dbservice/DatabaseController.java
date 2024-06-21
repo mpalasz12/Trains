@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import dbservice.DAOs.*;
 import dbservice.models.*;
 
+import java.util.List;
+
 @RestController
 public class DatabaseController {
 	// DAOs objects go here
@@ -106,6 +108,14 @@ public class DatabaseController {
 
 	public void addStation(Station station) {
 		stationDAO.addStation(station);
+	}
+
+	public Station getStation(int id) {
+		return stationDAO.getStation(id);
+	}
+
+	public List<Station> getAllStations() {
+		return stationDAO.getAllStations();
 	}
 
 	/*

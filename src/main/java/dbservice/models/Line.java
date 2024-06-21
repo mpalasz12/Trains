@@ -1,15 +1,27 @@
 package dbservice.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class Line {
-	private String name;
-	private int firstStopID;
 
-	public Line(String name, int id) {
+	private long line_id;
+	private String name;
+	private long firstStopID;
+
+	public Line() {}
+
+	public Line(String name, int firstStopID) {
 		this.name = name;
-		this.firstStopID = id;
+		this.firstStopID = firstStopID;
+	}
+
+	public Line(long id, String name, long firstStopID) {
+		this.line_id = id;
+		this.name = name;
+		this.firstStopID = firstStopID;
 	}
 
 	public String getName() {
@@ -20,11 +32,15 @@ public class Line {
 		this.name = name;
 	}
 
-	public int getFirstStopID() {
+	public long getFirstStopID() {
 		return firstStopID;
 	}
 
-	public void setFirstStopID(int id) {
+	public void setFirstStopID(long id) {
 		this.firstStopID = id;
 	}
+
+	public long getId() {return line_id;}
+
+	public void setId(long id) {this.line_id = id;}
 }

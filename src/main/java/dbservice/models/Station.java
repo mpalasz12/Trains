@@ -1,9 +1,11 @@
 package dbservice.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 @Entity
 public class Station {
+	private int id;
 	private String name;
 	private int cityID;
 
@@ -28,5 +30,10 @@ public class Station {
 	public void setName(int id) {
 		this.cityID = id;
 	}
+
+	@Column(name = "station_id")
+	public int getId() {return id;}
+
+	public void setId(int id) {this.id = id;}
 
 }

@@ -20,13 +20,13 @@ public class CityDAO {
 		jdbcTemplate.update(sql, city.getName());
 	}
 
-	public String getCity(int id) {
+	public String getCity(long id) {
 		String sql = "SELECT name FROM Cities WHERE city_id = ?";
 		return jdbcTemplate.queryForObject(sql, String.class, id);
 	}
 
 	public City getCityByName(String name) {
-		String sql = "SELECT * FROM Cities WHERE name = ?";
+		String sql = "SELECT city_id, name FROM Cities WHERE name = ?";
 		return jdbcTemplate.queryForObject(sql, new Object[]{name}, new BeanPropertyRowMapper<>(City.class));
 	}
 }
