@@ -6,6 +6,8 @@ function TicketForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        // TODO pobranie danych i zainicjowanie biletu w bazie danych
+        //      + wyświetlnenie ID kupionego biletu
         setIsSubmitted(true);
     };
 
