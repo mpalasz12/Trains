@@ -26,12 +26,21 @@ public class TransportManagerApplication {
 
 	public static void initDatabase(DatabaseController database) {
 		City city = new City("Warszawa");
+		City city2 = new City("Krakow");
 		database.addCity(city);
+		database.addCity(city2);
+
 		city = database.getCityByName("Warszawa");
+		city2 = database.getCityByName("Krakow");
+
+
 
 		Station wcent_station = new Station("Warszawa Centralna", city.getCity_id());
 		Station wwest_station = new Station("Warszawa Zachodnia", city.getCity_id());
-//
+		Station kcent_station = new Station("Krakow Centralny", city2.getCity_id());
+
+
+		database.addStation(kcent_station);
 		database.addStation(wwest_station);
 		database.addStation(wcent_station);
 	}

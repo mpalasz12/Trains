@@ -125,6 +125,10 @@ public class DatabaseController {
 		return stationDAO.getAllStations();
 	}
 
+	public List<Station> getStationsByCityId(Long city_id) {
+		return stationDAO.getStationsByCityId(city_id);
+	}
+
 	/*
 	 * --------------------------------LINESTOP ------------------------------------
 	 */
