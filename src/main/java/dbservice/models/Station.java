@@ -5,14 +5,22 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Station {
-	private int id;
+	private Long station_id;
 	private String name;
-	private int cityID;
+	private Long city_id;
 
-	public Station(){}
-	public Station(String name, int cityID) {
+	public Station() {}
+	public Station(String name, Long city_id) {
 		this.name = name;
-		this.cityID = cityID;
+		this.city_id = city_id;
+	}
+
+	public Long getStation_id() {
+		return station_id;
+	}
+
+	public void setStation_id(Long station_id) {
+		this.station_id = station_id;
 	}
 
 	public String getName() {
@@ -23,17 +31,11 @@ public class Station {
 		this.name = name;
 	}
 
-	public int getCityID() {
-		return cityID;
+	public Long getCity_id() {
+		return city_id;
 	}
 
-	public void setName(int id) {
-		this.cityID = id;
+	public void setCity_id(Long city_id) {
+		this.city_id = city_id;
 	}
-
-	@Column(name = "station_id")
-	public int getId() {return id;}
-
-	public void setId(int id) {this.id = id;}
-
 }

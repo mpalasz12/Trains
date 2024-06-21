@@ -117,7 +117,7 @@ public class DatabaseController {
 		stationDAO.addStation(station);
 	}
 
-	public Station getStation(int id) {
+	public Station getStation(Long id) {
 		return stationDAO.getStation(id);
 	}
 

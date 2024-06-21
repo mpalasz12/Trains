@@ -47,8 +47,8 @@ public class DataService {
 
 	@GetMapping("/station_by_id")
 	public Station getStation(@RequestParam(name = "id") String id) {
-		int idInt = Integer.parseInt(id);
-		return database.getStation(idInt);
+		Long idLong = Long.parseLong(id);
+		return database.getStation(idLong);
 	}
 
 	@GetMapping("/all_stations")

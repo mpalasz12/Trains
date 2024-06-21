@@ -19,10 +19,10 @@ public class StationDAO {
 
 	public void addStation(Station Station) {
 		String sql = "INSERT INTO Stations (name, city_id) VALUES (?, ?)";
-		jdbcTemplate.update(sql, Station.getName(), Station.getCityID());
+		jdbcTemplate.update(sql, Station.getName(), Station.getCity_id());
 	}
 
-	public Station getStation(long id) {
+	public Station getStation(Long id) {
 		String sql = "SELECT * FROM Stations WHERE station_id = ?";
 		return jdbcTemplate.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<>(Station.class));
 	}
