@@ -96,6 +96,10 @@ public class DatabaseController {
 		return cityDAO.getCity(id);
 	}
 
+	public City getCityByName(String name) {
+		return cityDAO.getCityByName(name);
+	}
+
 	/*
 	 * ---------------------------------STATION ------------------------------------
 	 */

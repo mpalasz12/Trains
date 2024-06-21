@@ -2,6 +2,7 @@ package dbservice.DAOs;
 
 import dbservice.models.City;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -22,5 +23,10 @@ public class CityDAO {
 	public String getCity(int id) {
 		String sql = "SELECT name FROM Cities WHERE city_id = ?";
 		return jdbcTemplate.queryForObject(sql, String.class, id);
+	}
+
+	public City getCityByName(String name) {
+		String sql = "SELECT * FROM Cities WHERE name = ?";
+		return jdbcTemplate.queryForObject(sql, new Object[]{name}, new BeanPropertyRowMapper<>(City.class));
 	}
 }

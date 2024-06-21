@@ -35,4 +35,11 @@ public class DataService {
 		return database.getCity(idInt);  // w klasie DatabaseController sa dokladne metody ktore zwracaja rzeczy
 										 // jak chcesz dodac metode, to kazde DAO ma konkretne polecenia w SQL
 	}
+
+	@GetMapping("/city_by_name")
+	public City getCityByName(@RequestParam(name = "name") String name) {
+		return database.getCityByName(name);
+	}
+
+
 }
