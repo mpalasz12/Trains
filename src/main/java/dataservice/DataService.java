@@ -181,7 +181,7 @@ public class DataService {
 		}
 	}
 
-	@GetMapping("/get_actiive_trains")
+	@GetMapping("/get_active_trains")
 // komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
 	public List<Train> getActiveTrains() {
 		return database.getActiveTrains();
