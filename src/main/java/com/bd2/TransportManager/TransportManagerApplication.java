@@ -58,7 +58,7 @@ public class TransportManagerApplication {
 		ls1.setID(database.addLinestop(ls1));
 		ls2.setID(database.addLinestop(ls2));
 
-		Line line = new Line("Gdansk-Krakow", ls1.getID());
+		Line line = new Line("Gdansk-Krakow", ls2.getID());
 		database.addLine(line);
 
 	}

@@ -22,7 +22,7 @@ public class LineDAO {
 
 	public Long addLineGetID(Line line) {
 		String sql = "INSERT INTO Lines (name, first_stop_id) VALUES (?, ?)";
-		jdbcTemplate.update(sql, line.getName(), line.getFirstStopID());
+		jdbcTemplate.update(sql, line.getName(), line.getFirst_stop_id());
 		return acquireID();
 	}
 
@@ -33,6 +33,6 @@ public class LineDAO {
 
 	public void updateLine(Line line) {
 		String sql = "UPDATE Lines SET name = ?, first_stop_id = ? WHERE line_id = ?";
-		jdbcTemplate.update(sql, line.getName(), line.getFirstStopID(), line.getID());
+		jdbcTemplate.update(sql, line.getName(), line.getFirst_stop_id(), line.getLine_id());
 	}
 }

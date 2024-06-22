@@ -6,46 +6,45 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Line {
-
 	private Long line_id;
 	private String name;
-	private Long firstStopID;
+	private Long first_stop_id;
 
 	public Line() {
 	}
 
-	public Line(String name, Long firstStopID) {
+	public Line(String name, Long first_stop_id) {
 		this.name = name;
-		this.firstStopID = firstStopID;
+		this.first_stop_id = first_stop_id;
 	}
 
-	public Line(Long id, String name, Long firstStopID) {
+	public Line(Long id, String name, Long first_stop_id) {
 		this.line_id = id;
 		this.name = name;
-		this.firstStopID = firstStopID;
+		this.first_stop_id = first_stop_id;
 	}
 
-	public String getName() {
-		return name;
+	public void setLine_id(Long id) {
+		this.line_id = id;
+	}
+
+	public Long getLine_id() {
+		return line_id;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Long getFirstStopID() {
-		return firstStopID;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstStopID(Long id) {
-		this.firstStopID = id;
+	public void setFirst_stop_id(Long id) {
+		this.first_stop_id = id;
 	}
 
-	public Long getID() {
-		return line_id;
-	}
-
-	public void setID(Long id) {
-		this.line_id = id;
+	public Long getFirst_stop_id() {
+		return first_stop_id;
 	}
 }

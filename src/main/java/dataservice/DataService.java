@@ -151,6 +151,11 @@ public class DataService {
 		database.addLine(line);
 	}
 
+	@GetMapping("/get_line")
+	public Line getLine(@RequestParam(name = "line_id") String line_id) {
+		return database.getLineByID(Long.parseLong(line_id));
+	}
+
 	// PROPER STOP ADDING - TODO: TEST THIS!!
 	@GetMapping("/add_stop")
 	public void addStop(
@@ -161,14 +166,14 @@ public class DataService {
 		Line line = database.getLineByID(Long.parseLong(line_id));
 
 		// create new linestop
-		Linestop linestop = new Linestop(line.getFirstStopID(), Integer.parseInt(distance),
+		Linestop linestop = new Linestop(line.getFirst_stop_id(), Integer.parseInt(distance),
 				Long.parseLong(station_id));
 
 		// add linestop to database, acquire ID
 		linestop.setID(database.addLinestop(linestop));
 
 		// change line first stop to new linestop
-		line.setFirstStopID(linestop.getID());
+		line.setFirst_stop_id(linestop.getID());
 
 		// update line in database
 		database.updateLine(line);
