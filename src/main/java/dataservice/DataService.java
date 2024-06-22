@@ -141,9 +141,9 @@ public class DataService {
 	@GetMapping("/add_line")
 	public void addLine(
 			@RequestParam(name = "name") String name,
-			@RequestParam(name = "stop_id") String last_stop_id) {
+			@RequestParam(name = "station_id") String station_id) {
 		// create linestop terminus for new line
-		Linestop linestop = new Linestop(Long.parseLong(last_stop_id));
+		Linestop linestop = new Linestop(Long.parseLong(station_id));
 		// acquire ID for linestop and upload to database
 		linestop.setID(database.addTerminus(linestop));
 		// add line to database with terminus
@@ -155,7 +155,7 @@ public class DataService {
 	@GetMapping("/add_stop")
 	public void addStop(
 			@RequestParam(name = "line_id") String line_id,
-			@RequestParam(name = "station") String station_id,
+			@RequestParam(name = "station_id") String station_id,
 			@RequestParam(name = "distance") String distance) {
 		// get line
 		Line line = database.getLineByID(Long.parseLong(line_id));
