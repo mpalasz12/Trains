@@ -30,6 +30,7 @@ public class DataService {
 
 	// APPLICATION TEST - GET CITY ENDPOINT
 	@GetMapping("/city")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public String getCity(@RequestParam(name = "id") String id) {
 		Long idLong = Long.parseLong(id);
 		try {
@@ -40,11 +41,13 @@ public class DataService {
 	}
 
 	@GetMapping("/city_by_name")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public City getCityByName(@RequestParam(name = "name") String name) {
 		return database.getCityByName(name);
 	}
 
 	@GetMapping("/station_by_id")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Station getStation(@RequestParam(name = "id") String id) {
 		Long idLong = Long.parseLong(id);
 		try {
@@ -55,11 +58,13 @@ public class DataService {
 	}
 
 	@GetMapping("/all_stations")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Station> getAllStations() {
 		return database.getAllStations();
 	}
 
 	@GetMapping("/stations_by_city_id")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Station> getStationsByCityId(@RequestParam(name = "city_id") String city_id) {
 		Long city_idLong = Long.parseLong(city_id);
 		try {
@@ -70,11 +75,13 @@ public class DataService {
 	}
 
 	@GetMapping("/tickets_by_mail")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Ticket> getTicketsByMail(@RequestParam(name = "mail") String mail) {
 		return database.getTicketsByTravelerID(database.getTravelerIDbyMail(mail));
 	}
 
 	@PostMapping("/add_traveler")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addTraveler(
 			@RequestParam(name = "first_name") String first_name,
 			@RequestParam(name = "last_name") String last_name,
@@ -83,6 +90,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_ticket")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addTicket(
 			@RequestParam(name = "traveler_id") String traveler_id,
 			@RequestParam(name = "first_stop") String first_stop,
@@ -101,11 +109,13 @@ public class DataService {
 	}
 
 	@GetMapping("/get_traveler_mail")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Long getTravelerMail(@RequestParam(name = "mail") String mail) {
 		return database.getTravelerIDbyMail(mail);
 	}
 
 	@PostMapping("/add_train")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addTrain(
 			@RequestParam(name = "line_id") String line_id,
 			@RequestParam(name = "locomotive_id") String locomotive_id) {
@@ -114,6 +124,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_locomotive")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addLocomotive(
 			@RequestParam(name = "model") String model,
 			@RequestParam(name = "origin_country") String country) {
@@ -122,6 +133,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_wagon")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addWagon(
 			@RequestParam(name = "wagon_num") String wagon_num,
 			@RequestParam(name = "wagon_capacity") String wagon_capacity,
@@ -134,6 +146,7 @@ public class DataService {
 	// BASIC LINE ADDING INTERFACE, REQUIRES MANUAL ID ACQUISITION AND EXISTING
 	// LINESTOP
 	@PostMapping("/add_line_basic")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addLineBasic(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "first_stop_id") String first_stop_id) {
@@ -143,6 +156,7 @@ public class DataService {
 
 	// PROPER LINE ADDING INTERFACE, EASIER TO USE
 	@PostMapping("/add_line")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addLine(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "station_id") String station_id) {
@@ -156,6 +170,7 @@ public class DataService {
 	}
 
 	@GetMapping("/get_line")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Line getLine(@RequestParam(name = "line_id") String line_id) {
 		try {
 			return database.getLineByID(Long.parseLong(line_id));
@@ -164,8 +179,15 @@ public class DataService {
 		}
 	}
 
-	// PROPER STOP ADDING - TODO: TEST THIS!!
+	@GetMapping("/get_actiive_trains")
+	@CrossOrigin(origins = "http://localhost:5173")
+	public List<Train> getActiveTrains() {
+		// TODO: implement
+		return null;
+	}
+
 	@PostMapping("/add_stop")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addStop(
 			@RequestParam(name = "line_id") String line_id,
 			@RequestParam(name = "station_id") String station_id,
@@ -189,6 +211,7 @@ public class DataService {
 
 	// MANUAL LINESTOP ADDING - NOT RECOMMENDED
 	@PostMapping("/add_terminus")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addTerminus(
 			@RequestParam(name = "station_id") String station_id) {
 		Linestop linestop = new Linestop(Long.parseLong(station_id));
@@ -196,6 +219,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_linestop")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addLinestop(
 			@RequestParam(name = "next_linestop") String next_linestop,
 			@RequestParam(name = "distance") String distance,
@@ -206,6 +230,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_station")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addStation(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "city_id") String city_id) {
@@ -214,6 +239,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_city")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addCity(
 			@RequestParam(name = "name") String name) {
 		City city = new City(name);
