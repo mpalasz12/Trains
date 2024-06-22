@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Traveler {
-	private Long traveler_id;
+	private Integer traveler_id;
 	private String firstName;
 	private String lastName;
 	private String mailAddress;
@@ -18,11 +18,11 @@ public class Traveler {
 		this.mailAddress = mail;
 	}
 
-	public Long getTravelerID() {
+	public Integer getTravelerID() {
 		return traveler_id;
 	}
 
-	public void setTravelerID(Long traveler_id) {
+	public void setTravelerID(Integer traveler_id) {
 		this.traveler_id = traveler_id;
 	}
 

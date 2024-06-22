@@ -19,18 +19,18 @@ public class TravelerDAO {
 		jdbcTemplate.update(sql, traveler.getFirstName(), traveler.getLastName(), traveler.getMailAddress());
 	}
 
-	public void deleteTraveler(Long id) {
+	public void deleteTraveler(Integer id) {
 		String sql = "DELETE FROM Travelers WHERE traveler_id = ?";
 		jdbcTemplate.update(sql, id);
 	}
 
-	public void changeMail(String newMail, Long id) {
+	public void changeMail(String newMail, Integer id) {
 		String sql = "UPDATE Travelers SET mail_address = ? WHERE traveler_id = ?";
 		jdbcTemplate.update(sql, newMail, id);
 	}
 
-	public Long getTravelerIDbyMail(String mail) {
+	public Integer getTravelerIDbyMail(String mail) {
 		String sql = "SELECT traveler_id FROM Travelers WHERE mail_address = ?";
-		return jdbcTemplate.queryForObject(sql, Long.class, mail);
+		return jdbcTemplate.queryForObject(sql, Integer.class, mail);
 	}
 }

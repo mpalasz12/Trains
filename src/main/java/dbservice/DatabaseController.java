@@ -50,23 +50,23 @@ public class DatabaseController {
 	 * ---------------------------------- TRAIN ------------------------------------
 	 */
 
-	public Long addTrain(Train train) {
+	public Integer addTrain(Train train) {
 		return trainDAO.addTrainGetID(train);
 	}
 
-	public void deleteTrain(Long id) {
+	public void deleteTrain(Integer id) {
 		trainDAO.deleteTrain(id);
 	}
 
-	public void changeLocomotive(Long id, Long newLocomotiveID) {
+	public void changeLocomotive(Integer id, Integer newLocomotiveID) {
 		trainDAO.changeLocomotive(id, newLocomotiveID);
 	}
 
-	public void changeLinestop(Long id, Long nextLinestopID) {
+	public void changeLinestop(Integer id, Integer nextLinestopID) {
 		trainDAO.changeLinestop(id, nextLinestopID);
 	}
 
-	public void advanceTrain(Long id) {
+	public void advanceTrain(Integer id) {
 		trainDAO.changeLinestop(id, linestopDAO.getNextLinestopID(trainDAO.getLinestopID(id)));
 	}
 
@@ -78,15 +78,15 @@ public class DatabaseController {
 		travelerDAO.addTraveler(traveler);
 	}
 
-	public void deleteTraveler(Long id) {
+	public void deleteTraveler(Integer id) {
 		travelerDAO.deleteTraveler(id);
 	}
 
-	public void changeMail(String newMail, Long id) {
+	public void changeMail(String newMail, Integer id) {
 		travelerDAO.changeMail(newMail, id);
 	}
 
-	public Long getTravelerIDbyMail(String mail) {
+	public Integer getTravelerIDbyMail(String mail) {
 		return travelerDAO.getTravelerIDbyMail(mail);
 	}
 
@@ -98,7 +98,7 @@ public class DatabaseController {
 		cityDAO.addCity(city);
 	}
 
-	public String getCity(Long id) {
+	public String getCity(Integer id) {
 		return cityDAO.getCity(id);
 	}
 
@@ -120,7 +120,7 @@ public class DatabaseController {
 		stationDAO.addStation(station);
 	}
 
-	public Station getStation(Long id) {
+	public Station getStation(Integer id) {
 		return stationDAO.getStation(id);
 	}
 
@@ -128,7 +128,7 @@ public class DatabaseController {
 		return stationDAO.getAllStations();
 	}
 
-	public List<Station> getStationsByCityId(Long city_id) {
+	public List<Station> getStationsByCityId(Integer city_id) {
 		return stationDAO.getStationsByCityId(city_id);
 	}
 
@@ -137,16 +137,16 @@ public class DatabaseController {
 	 */
 
 	// for regular stations, requires nextLinestop and nextDistance
-	public Long addLinestop(Linestop linestop) {
+	public Integer addLinestop(Linestop linestop) {
 		return linestopDAO.addLinestopGetID(linestop);
 	}
 
 	// for terminus, doesn't requrie nextLinestop and nextDistance
-	public Long addTerminus(Linestop linestop) {
+	public Integer addTerminus(Linestop linestop) {
 		return linestopDAO.addTerminusGetID(linestop);
 	}
 
-	public Long getNextLinestopID(Long id) {
+	public Integer getNextLinestopID(Integer id) {
 		return linestopDAO.getNextLinestopID(id);
 	}
 
@@ -154,11 +154,11 @@ public class DatabaseController {
 		return linestopDAO.getNextLinestopDistance(id);
 	}
 
-	public void setNextLinestop(Long id, Long nextLinestopID) {
+	public void setNextLinestop(Integer id, Integer nextLinestopID) {
 		linestopDAO.setNextLinestop(id, nextLinestopID);
 	}
 
-	public void setNextLinestopDistance(Long id, Long distance) {
+	public void setNextLinestopDistance(Integer id, Integer distance) {
 		linestopDAO.setNextLinestopDistance(id, distance);
 	}
 
@@ -166,11 +166,11 @@ public class DatabaseController {
 	 * --------------------------------LINE ----------------------------------------
 	 */
 
-	public Long addLine(Line line) {
+	public Integer addLine(Line line) {
 		return lineDAO.addLineGetID(line);
 	}
 
-	public Line getLineByID(Long lineID) {
+	public Line getLineByID(Integer lineID) {
 		return lineDAO.getLineByID(lineID);
 	}
 
@@ -191,15 +191,15 @@ public class DatabaseController {
 	 * --------------------------------TICKET ------------------------------------
 	 */
 
-	public Long addTicket(Ticket ticket) {
+	public Integer addTicket(Ticket ticket) {
 		return ticketDAO.addTicketGetID(ticket);
 	}
 
-	public void expireTicket(Long id) {
+	public void expireTicket(Integer id) {
 		ticketDAO.expireTicket(id);
 	}
 
-	public List<Ticket> getTicketsByTravelerID(Long travelerID) {
+	public List<Ticket> getTicketsByTravelerID(Integer travelerID) {
 		return ticketDAO.getTicketsByTravelerID(travelerID);
 	}
 
@@ -207,15 +207,15 @@ public class DatabaseController {
 	 * --------------------------------WAGON ------------------------------------
 	 */
 
-	public Long addWagon(Wagon wagon) {
+	public Integer addWagon(Wagon wagon) {
 		return wagonDAO.addWagonGetID(wagon);
 	}
 
-	public void deleteWagon(Long id) {
+	public void deleteWagon(Integer id) {
 		wagonDAO.deleteWagon(id);
 	}
 
-	public void changeWagonNum(Long id, int newWagonNum) {
+	public void changeWagonNum(Integer id, int newWagonNum) {
 		wagonDAO.changeWagonNum(id, newWagonNum);
 	}
 
@@ -223,11 +223,11 @@ public class DatabaseController {
 		return wagonDAO.getWagonNum(id);
 	}
 
-	public Long getTrainID(Long id) {
+	public Integer getTrainID(Integer id) {
 		return wagonDAO.getTrainID(id);
 	}
 
-	public void changeTrain(Long id, Long newTrainID) {
+	public void changeTrain(Integer id, Integer newTrainID) {
 		wagonDAO.changeTrain(id, newTrainID);
 	}
 }

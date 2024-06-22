@@ -20,7 +20,7 @@ public class CityDAO {
 		jdbcTemplate.update(sql, city.getName());
 	}
 
-	public String getCity(Long id) {
+	public String getCity(Integer id) {
 		String sql = "SELECT name FROM Cities WHERE city_id = ?";
 		return jdbcTemplate.queryForObject(sql, String.class, id);
 	}

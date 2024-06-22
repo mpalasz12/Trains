@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Locomotive {
-	Long id;
+	Integer id;
 	String model;
 	String originCountry;
 
@@ -17,11 +17,11 @@ public class Locomotive {
 	}
 
 	// getters and setters
-	public Long getID() {
+	public Integer getID() {
 		return id;
 	}
 
-	public void setID(Long id) {
+	public void setID(Integer id) {
 		this.id = id;
 	}
 

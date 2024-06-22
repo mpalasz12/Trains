@@ -5,21 +5,21 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Station {
-	private Long station_id;
+	private Integer station_id;
 	private String name;
-	private Long city_id;
+	private Integer city_id;
 
 	public Station() {}
-	public Station(String name, Long city_id) {
+	public Station(String name, Integer city_id) {
 		this.name = name;
 		this.city_id = city_id;
 	}
 
-	public Long getStation_id() {
+	public Integer getStation_id() {
 		return station_id;
 	}
 
-	public void setStation_id(Long station_id) {
+	public void setStation_id(Integer station_id) {
 		this.station_id = station_id;
 	}
 
@@ -31,11 +31,11 @@ public class Station {
 		this.name = name;
 	}
 
-	public Long getCity_id() {
+	public Integer getCity_id() {
 		return city_id;
 	}
 
-	public void setCity_id(Long city_id) {
+	public void setCity_id(Integer city_id) {
 		this.city_id = city_id;
 	}
 }

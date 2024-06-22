@@ -14,27 +14,27 @@ public class LinestopDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	private Long acquireID() {
+	private Integer acquireID() {
 		// Get newest entry ID
 		String sql = "SELECT TOP 1 linestop_id FROM Linestops ORDER BY linestop_id DESC";
-		return jdbcTemplate.queryForObject(sql, Long.class);
+		return jdbcTemplate.queryForObject(sql, Integer.class);
 	}
 
-	public Long addTerminusGetID(Linestop linestop) {
+	public Integer addTerminusGetID(Linestop linestop) {
 		String sql = "INSERT INTO Linestops (station_id) VALUES (?)";
 		jdbcTemplate.update(sql, linestop.getStationID());
 		return acquireID();
 	}
 
-	public Long addLinestopGetID(Linestop linestop) {
+	public Integer addLinestopGetID(Linestop linestop) {
 		String sql = "INSERT INTO Linestops (next_linestop, distance_next, station_id) VALUES (?, ?, ?)";
 		jdbcTemplate.update(sql, linestop.getNextStop(), linestop.getNextDistance(), linestop.getStationID());
 		return acquireID();
 	}
 
-	public Long getNextLinestopID(Long id) {
+	public Integer getNextLinestopID(Integer id) {
 		String sql = "SELECT next_linestop FROM Linestops WHERE linestop_id = ?";
-		return jdbcTemplate.queryForObject(sql, Long.class, id);
+		return jdbcTemplate.queryForObject(sql, Integer.class, id);
 	}
 
 	public int getNextLinestopDistance(int id) {
@@ -42,12 +42,12 @@ public class LinestopDAO {
 		return jdbcTemplate.queryForObject(sql, int.class, id);
 	}
 
-	public void setNextLinestop(Long id, Long nextLinestopID) {
+	public void setNextLinestop(Integer id, Integer nextLinestopID) {
 		String sql = "UPDATE Linestops SET next_linestop = ? WHERE linestop_id = ?";
 		jdbcTemplate.update(sql, nextLinestopID, id);
 	}
 
-	public void setNextLinestopDistance(Long id, Long distance) {
+	public void setNextLinestopDistance(Integer id, Integer distance) {
 		String sql = "UPDATE Linestops SET distance_next = ? WHERE linestop_id = ?";
 		jdbcTemplate.update(sql, distance, id);
 	}

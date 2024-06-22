@@ -22,7 +22,7 @@ public class StationDAO {
 		jdbcTemplate.update(sql, Station.getName(), Station.getCity_id());
 	}
 
-	public Station getStation(Long id) {
+	public Station getStation(Integer id) {
 		String sql = "SELECT * FROM Stations WHERE station_id = ?";
 		return jdbcTemplate.queryForObject(sql, new Object[] { id }, new BeanPropertyRowMapper<>(Station.class));
 	}
@@ -32,7 +32,7 @@ public class StationDAO {
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Station.class));
 	}
 
-	public List<Station> getStationsByCityId(Long city_id) {
+	public List<Station> getStationsByCityId(Integer city_id) {
 		String sql = "SELECT * FROM Stations WHERE city_id = ?";
 		return jdbcTemplate.query(sql, new Object[] { city_id }, new BeanPropertyRowMapper<>(Station.class));
 	}

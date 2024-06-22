@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class City {
-	private Long city_id;
+	private Integer city_id;
 	private String name;
 
 	public City() {}
@@ -14,11 +14,11 @@ public class City {
 		this.name = name;
 	}
 
-	public Long getCity_id() {
+	public Integer getCity_id() {
 		return city_id;
 	}
 
-	public void setCity_id(Long city_id) {
+	public void setCity_id(Integer city_id) {
 		this.city_id = city_id;
 	}
 

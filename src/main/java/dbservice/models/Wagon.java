@@ -4,12 +4,12 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Wagon {
-	Long wagonID;
+	Integer wagonID;
 	int wagonNum;
 	int wagonCapacity;
-	Long trainID;
+	Integer trainID;
 
-	public Wagon(int wagonNum, int wagonCapacity, Long trainID) {
+	public Wagon(int wagonNum, int wagonCapacity, Integer trainID) {
 		this.wagonNum = wagonNum;
 		this.wagonCapacity = wagonCapacity;
 		this.trainID = trainID;
@@ -20,11 +20,11 @@ public class Wagon {
 	}
 
 	// getters and setters
-	public Long getWagonID() {
+	public Integer getWagonID() {
 		return wagonID;
 	}
 
-	public void setWagonID(Long wagonID) {
+	public void setWagonID(Integer wagonID) {
 		this.wagonID = wagonID;
 	}
 
@@ -44,11 +44,11 @@ public class Wagon {
 		this.wagonCapacity = wagonCapacity;
 	}
 
-	public Long getTrainID() {
+	public Integer getTrainID() {
 		return trainID;
 	}
 
-	public void setTrainID(Long trainID) {
+	public void setTrainID(Integer trainID) {
 		this.trainID = trainID;
 	}
 
