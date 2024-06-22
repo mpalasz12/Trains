@@ -28,6 +28,8 @@ public class DataService {
 		this.database = context.getBean(DatabaseController.class);
 	}
 
+// UWAGA - niektórych endpointow uzywam do tego zeby testowac co nie dziala
+// potem bedzie mozna je usunac, ale poki co niech zostana
 	// APPLICATION TEST - GET CITY ENDPOINT
 	@GetMapping("/city")
 // komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
@@ -247,7 +249,7 @@ public class DataService {
 		database.addCity(city);
 	}
 
-	@GetMapping("/advance_train")
+	@PostMapping("/advance_train")
 	public void advanceTrain(@RequestParam(name = "train_id") String train_id) {
 		Integer train_idInt = Integer.parseInt(train_id);
 		database.advanceTrain(train_idInt);
@@ -258,7 +260,7 @@ public class DataService {
 		return database.getTrainByID(Integer.parseInt(train_id));
 	}
 
-	@GetMapping("/change_linestop")
+	@PostMapping("/change_linestop")
 	public void changeLinestop(@RequestParam(name = "train_id") String train_id, @RequestParam(name = "next_linestop") String next_linestop) {
 		database.changeLinestop(Integer.parseInt(train_id), Integer.parseInt(next_linestop));
 	}
@@ -267,4 +269,6 @@ public class DataService {
 	public Integer getFirstStop(@RequestParam(name = "line_id") String line_id) {
 		return database.getFirstStopID(Integer.parseInt(line_id));
 	}
+
+
 }
