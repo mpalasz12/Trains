@@ -48,8 +48,6 @@ public class TransportManagerApplication {
 		database.addStation(gdn_wrzeszcz_station);
 
 
-		Locomotive loco = new Locomotive("Test", "Poland");
-		database.addLocomotive(loco);
 
 		Linestop ls1 = new Linestop( 4);
 		Linestop ls2 = new Linestop( 1, 200,  3);
@@ -61,5 +59,10 @@ public class TransportManagerApplication {
 		Line line = new Line("Gdansk-Krakow", ls2.getID());
 		database.addLine(line);
 
+		Locomotive loco = new Locomotive("Test", "Poland");
+		loco.setID(database.addLocomotive(loco));
+
+		Train train = new Train(1, loco.getID());
+		train.setTrain_id(database.addTrain(train));
 	}
 }

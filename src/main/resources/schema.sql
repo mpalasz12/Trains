@@ -25,7 +25,7 @@ CREATE TABLE Linestops (
 	station_id		INT				NOT NULL,
 
 	FOREIGN KEY (station_id) REFERENCES Stations(station_id),
-	FOREIGN KEY (linestop_id) REFERENCES Linestops(linestop_id)
+	FOREIGN KEY (next_linestop) REFERENCES Linestops(linestop_id)
 );
 
 CREATE TABLE Lines (

@@ -184,8 +184,7 @@ public class DataService {
 	@GetMapping("/get_actiive_trains")
 // komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
 	public List<Train> getActiveTrains() {
-		// TODO: implement
-		return null;
+		return database.getActiveTrains();
 	}
 
 	@PostMapping("/add_stop")
@@ -246,5 +245,26 @@ public class DataService {
 			@RequestParam(name = "name") String name) {
 		City city = new City(name);
 		database.addCity(city);
+	}
+
+	@GetMapping("/advance_train")
+	public void advanceTrain(@RequestParam(name = "train_id") String train_id) {
+		Integer train_idInt = Integer.parseInt(train_id);
+		database.advanceTrain(train_idInt);
+	}
+
+	@GetMapping("/get_train")
+	public Train getTrain(@RequestParam(name = "train_id") String train_id) {
+		return database.getTrainByID(Integer.parseInt(train_id));
+	}
+
+	@GetMapping("/change_linestop")
+	public void changeLinestop(@RequestParam(name = "train_id") String train_id, @RequestParam(name = "next_linestop") String next_linestop) {
+		database.changeLinestop(Integer.parseInt(train_id), Integer.parseInt(next_linestop));
+	}
+
+	@GetMapping("/first_stop")
+	public Integer getFirstStop(@RequestParam(name = "line_id") String line_id) {
+		return database.getFirstStopID(Integer.parseInt(line_id));
 	}
 }

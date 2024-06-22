@@ -4,46 +4,55 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Train {
-	Integer trainID;
-	int lineID;
-	int locomotiveID;
-	int currentLinestop;
+	Integer train_id;
+	Integer line_id;
+	Integer locomotive_id;
+	Integer curr_linestop;
 
-	public Train(int lineID, int locomotiveID) {
-		this.lineID = lineID;
-		this.locomotiveID = locomotiveID;
+	public Train() {
 	}
 
-	// getters and setters
-	public Integer getTrainID() {
-		return trainID;
+	public Train(Integer line_id, Integer locomotive_id) {
+		this.line_id = line_id;
+		this.locomotive_id = locomotive_id;
 	}
 
-	public void setTrainID(Integer trainID) {
-		this.trainID = trainID;
+	public Train(Integer train_id, Integer line_id, Integer locomotive_id, Integer curr_linestop) {
+		this.train_id = train_id;
+		this.line_id = line_id;
+		this.locomotive_id = locomotive_id;
+		this.curr_linestop = curr_linestop;
 	}
 
-	public int getLineID() {
-		return lineID;
+	public Integer getTrain_id() {
+		return train_id;
 	}
 
-	public void setLineID(int lineID) {
-		this.lineID = lineID;
+	public void setTrain_id(Integer train_id) {
+		this.train_id = train_id;
 	}
 
-	public int getLocomotiveID() {
-		return locomotiveID;
+	public Integer getLine_id() {
+		return line_id;
 	}
 
-	public void setLocomotiveID(int locomotiveID) {
-		this.locomotiveID = locomotiveID;
+	public void setLine_id(Integer line_id) {
+		this.line_id = line_id;
 	}
 
-	public int getCurrentLinestop() {
-		return currentLinestop;
+	public Integer getLocomotive_id() {
+		return locomotive_id;
 	}
 
-	public void setCurrentLinestop(int currentLinestop) {
-		this.currentLinestop = currentLinestop;
+	public void setLocomotive_id(Integer locomotive_id) {
+		this.locomotive_id = locomotive_id;
+	}
+
+	public Integer getCurr_linestop() {
+		return curr_linestop;
+	}
+
+	public void setCurr_linestop(Integer curr_linestop) {
+		this.curr_linestop = curr_linestop;
 	}
 }

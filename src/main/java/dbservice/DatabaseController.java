@@ -66,8 +66,22 @@ public class DatabaseController {
 		trainDAO.changeLinestop(id, nextLinestopID);
 	}
 
+	public Train getTrainByID(Integer id) {
+		return trainDAO.getTrainByID(id);
+	}
+
 	public void advanceTrain(Integer id) {
-		trainDAO.changeLinestop(id, linestopDAO.getNextLinestopID(trainDAO.getLinestopID(id)));
+		Train train = trainDAO.getTrainByID(id);
+
+		if (train.getCurr_linestop() != null) {
+			trainDAO.changeLinestop(id, linestopDAO.getNextLinestopID(train.getCurr_linestop()));
+		} else {
+			trainDAO.changeLinestop(id, lineDAO.getFirstStopID(train.getLine_id()));
+		}
+	}
+
+	public List<Train> getActiveTrains() {
+		return trainDAO.getActiveTrains();
 	}
 
 	/*
@@ -178,13 +192,17 @@ public class DatabaseController {
 		lineDAO.updateLine(line);
 	}
 
+	public Integer getFirstStopID(Integer lineID) {
+		return lineDAO.getFirstStopID(lineID);
+	}
+
 	/*
 	 * --------------------------------LOCOMOTIVE
 	 * ------------------------------------
 	 */
 
-	public void addLocomotive(Locomotive locomotive) {
-		locomotiveDAO.addLocomotive(locomotive);
+	public Integer addLocomotive(Locomotive locomotive) {
+		return locomotiveDAO.addLocomotive(locomotive);
 	}
 
 	/*

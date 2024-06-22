@@ -26,6 +26,11 @@ public class LineDAO {
 		return acquireID();
 	}
 
+	public Integer getFirstStopID(Integer lineID) {
+		String sql = "SELECT first_stop_id FROM Lines WHERE line_id = ?";
+		return jdbcTemplate.queryForObject(sql, Integer.class, lineID);
+	}
+
 	public Line getLineByID(Integer lineID) {
 		String sql = "SELECT * FROM Lines WHERE line_id = ?";
 		return jdbcTemplate.queryForObject(sql, new Object[] { lineID }, new BeanPropertyRowMapper<>(Line.class));
