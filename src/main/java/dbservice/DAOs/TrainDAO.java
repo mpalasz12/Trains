@@ -13,33 +13,33 @@ public class TrainDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public int acquireID() {
-		String sql = "SELECT IDENTITY()";
-		return jdbcTemplate.queryForObject(sql, int.class);
+	public Long acquireID() {
+		String sql = "SELECT TOP 1 train_id FROM Trains ORDER BY train_id DESC";
+		return jdbcTemplate.queryForObject(sql, Long.class);
 	}
 
-	public int addTrainGetID(Train train) {
+	public Long addTrainGetID(Train train) {
 		String sql = "INSERT INTO Trains (line_id, locomotive_id) VALUES (?, ?)";
 		jdbcTemplate.update(sql, train.getLineID(), train.getLocomotiveID());
 		return acquireID();
 	}
 
-	public void deleteTrain(int id) {
-		String sql = "DELETE FROM Trains WHERE id = ?";
+	public void deleteTrain(Long id) {
+		String sql = "DELETE FROM Trains WHERE train_id = ?";
 		jdbcTemplate.update(sql, id);
 	}
 
-	public int getLinestopID(int id) {
+	public Long getLinestopID(Long id) {
 		String sql = "SELECT current_linestop FROM Trains WHERE train_id = ?";
-		return jdbcTemplate.queryForObject(sql, int.class, id);
+		return jdbcTemplate.queryForObject(sql, Long.class, id);
 	}
 
-	public void changeLocomotive(int id, int newLocomotiveID) {
+	public void changeLocomotive(Long id, Long newLocomotiveID) {
 		String sql = "UPDATE Trains SET locomotive_id = ? WHERE train_id = ?";
 		jdbcTemplate.update(sql, newLocomotiveID, id);
 	}
 
-	public void changeLinestop(int id, int nextLinestopID) {
+	public void changeLinestop(Long id, Long nextLinestopID) {
 		String sql = "UPDATE Trains SET current_linestop = ? WHERE train_id = ?";
 		jdbcTemplate.update(sql, id, nextLinestopID);
 	}

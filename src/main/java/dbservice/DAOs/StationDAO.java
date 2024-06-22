@@ -24,7 +24,7 @@ public class StationDAO {
 
 	public Station getStation(Long id) {
 		String sql = "SELECT * FROM Stations WHERE station_id = ?";
-		return jdbcTemplate.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<>(Station.class));
+		return jdbcTemplate.queryForObject(sql, new Object[] { id }, new BeanPropertyRowMapper<>(Station.class));
 	}
 
 	public List<Station> getAllStations() {
@@ -34,6 +34,6 @@ public class StationDAO {
 
 	public List<Station> getStationsByCityId(Long city_id) {
 		String sql = "SELECT * FROM Stations WHERE city_id = ?";
-		return jdbcTemplate.query(sql, new Object[]{city_id}, new BeanPropertyRowMapper<>(Station.class));
+		return jdbcTemplate.query(sql, new Object[] { city_id }, new BeanPropertyRowMapper<>(Station.class));
 	}
 }

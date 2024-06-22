@@ -13,7 +13,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 @Configuration
-@ComponentScan(basePackages = {"dbservice", "dataservice"})
+@ComponentScan(basePackages = { "dbservice", "dataservice" })
 public class TransportManagerApplication {
 
 	public static void main(String[] args) {
@@ -33,15 +33,25 @@ public class TransportManagerApplication {
 		city = database.getCityByName("Warszawa");
 		city2 = database.getCityByName("Krakow");
 
-
-
-		Station wcent_station = new Station("Warszawa Centralna", city.getCity_id());
-		Station wwest_station = new Station("Warszawa Zachodnia", city.getCity_id());
 		Station kcent_station = new Station("Krakow Centralny", city2.getCity_id());
-
+		Station wwest_station = new Station("Warszawa Zachodnia", city.getCity_id());
+		Station wcent_station = new Station("Warszawa Centralna", city.getCity_id());
 
 		database.addStation(kcent_station);
 		database.addStation(wwest_station);
 		database.addStation(wcent_station);
+
+		Locomotive loco = new Locomotive("Test", "Poland");
+		database.addLocomotive(loco);
+
+		Linestop ls1 = new Linestop((long) 1);
+		Linestop ls2 = new Linestop((long) 3, 200, (long) 3);
+
+		ls1.setID(database.addLinestop(ls1));
+		ls2.setID(database.addLinestop(ls2));
+
+		Line line = new Line("Warszawa-Krakow", ls1.getID());
+		database.addLine(line);
+
 	}
 }

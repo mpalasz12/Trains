@@ -50,23 +50,23 @@ public class DatabaseController {
 	 * ---------------------------------- TRAIN ------------------------------------
 	 */
 
-	public int addTrain(Train train) {
+	public Long addTrain(Train train) {
 		return trainDAO.addTrainGetID(train);
 	}
 
-	public void deleteTrain(int id) {
+	public void deleteTrain(Long id) {
 		trainDAO.deleteTrain(id);
 	}
 
-	public void changeLocomotive(int id, int newLocomotiveID) {
+	public void changeLocomotive(Long id, Long newLocomotiveID) {
 		trainDAO.changeLocomotive(id, newLocomotiveID);
 	}
 
-	public void changeLinestop(int id, int nextLinestopID) {
+	public void changeLinestop(Long id, Long nextLinestopID) {
 		trainDAO.changeLinestop(id, nextLinestopID);
 	}
 
-	public void advanceTrain(int id) {
+	public void advanceTrain(Long id) {
 		trainDAO.changeLinestop(id, linestopDAO.getNextLinestopID(trainDAO.getLinestopID(id)));
 	}
 
@@ -137,16 +137,16 @@ public class DatabaseController {
 	 */
 
 	// for regular stations, requires nextLinestop and nextDistance
-	public int addLinestop(Linestop linestop) {
+	public Long addLinestop(Linestop linestop) {
 		return linestopDAO.addLinestopGetID(linestop);
 	}
 
 	// for terminus, doesn't requrie nextLinestop and nextDistance
-	public int addTerminus(Linestop linestop) {
+	public Long addTerminus(Linestop linestop) {
 		return linestopDAO.addTerminusGetID(linestop);
 	}
 
-	public int getNextLinestopID(int id) {
+	public Long getNextLinestopID(Long id) {
 		return linestopDAO.getNextLinestopID(id);
 	}
 
@@ -154,11 +154,11 @@ public class DatabaseController {
 		return linestopDAO.getNextLinestopDistance(id);
 	}
 
-	public void setNextLinestop(int id, int nextLinestopID) {
+	public void setNextLinestop(Long id, Long nextLinestopID) {
 		linestopDAO.setNextLinestop(id, nextLinestopID);
 	}
 
-	public void setNextLinestopDistance(int id, int distance) {
+	public void setNextLinestopDistance(Long id, Long distance) {
 		linestopDAO.setNextLinestopDistance(id, distance);
 	}
 
@@ -166,8 +166,16 @@ public class DatabaseController {
 	 * --------------------------------LINE ----------------------------------------
 	 */
 
-	public int addLine(Line line) {
+	public Long addLine(Line line) {
 		return lineDAO.addLineGetID(line);
+	}
+
+	public Line getLineByID(Long lineID) {
+		return lineDAO.getLineByID(lineID);
+	}
+
+	public void updateLine(Line line) {
+		lineDAO.updateLine(line);
 	}
 
 	/*
@@ -199,15 +207,15 @@ public class DatabaseController {
 	 * --------------------------------WAGON ------------------------------------
 	 */
 
-	public int addWagon(Wagon wagon) {
+	public Long addWagon(Wagon wagon) {
 		return wagonDAO.addWagonGetID(wagon);
 	}
 
-	public void deleteWagon(int id) {
+	public void deleteWagon(Long id) {
 		wagonDAO.deleteWagon(id);
 	}
 
-	public void changeWagonNum(int id, int newWagonNum) {
+	public void changeWagonNum(Long id, int newWagonNum) {
 		wagonDAO.changeWagonNum(id, newWagonNum);
 	}
 
@@ -215,11 +223,11 @@ public class DatabaseController {
 		return wagonDAO.getWagonNum(id);
 	}
 
-	public int getTrainID(int id) {
+	public Long getTrainID(Long id) {
 		return wagonDAO.getTrainID(id);
 	}
 
-	public void changeTrain(int id, int newTrainID) {
+	public void changeTrain(Long id, Long newTrainID) {
 		wagonDAO.changeTrain(id, newTrainID);
 	}
 }

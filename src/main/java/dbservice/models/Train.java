@@ -4,16 +4,25 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Train {
+	Long trainID;
 	int lineID;
 	int locomotiveID;
 	int currentLinestop;
 
-	public Train(int lineID, int locomotiveID)	{
+	public Train(int lineID, int locomotiveID) {
 		this.lineID = lineID;
 		this.locomotiveID = locomotiveID;
 	}
 
 	// getters and setters
+	public Long getTrainID() {
+		return trainID;
+	}
+
+	public void setTrainID(Long trainID) {
+		this.trainID = trainID;
+	}
+
 	public int getLineID() {
 		return lineID;
 	}

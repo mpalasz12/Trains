@@ -7,18 +7,19 @@ import jakarta.persistence.Id;
 @Entity
 public class Line {
 
-	private int line_id;
+	private Long line_id;
 	private String name;
-	private int firstStopID;
+	private Long firstStopID;
 
-	public Line() {}
+	public Line() {
+	}
 
-	public Line(String name, int firstStopID) {
+	public Line(String name, Long firstStopID) {
 		this.name = name;
 		this.firstStopID = firstStopID;
 	}
 
-	public Line(int id, String name, int firstStopID) {
+	public Line(Long id, String name, Long firstStopID) {
 		this.line_id = id;
 		this.name = name;
 		this.firstStopID = firstStopID;
@@ -32,15 +33,19 @@ public class Line {
 		this.name = name;
 	}
 
-	public int getFirstStopID() {
+	public Long getFirstStopID() {
 		return firstStopID;
 	}
 
-	public void setFirstStopID(int id) {
+	public void setFirstStopID(Long id) {
 		this.firstStopID = id;
 	}
 
-	public int getId() {return line_id;}
+	public Long getID() {
+		return line_id;
+	}
 
-	public void setId(int id) {this.line_id = id;}
+	public void setID(Long id) {
+		this.line_id = id;
+	}
 }

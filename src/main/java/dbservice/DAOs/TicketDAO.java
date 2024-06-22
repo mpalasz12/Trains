@@ -18,7 +18,7 @@ public class TicketDAO {
 	}
 
 	private Long acquireID() {
-		String sql = "SELECT IDENTITY()";
+		String sql = "SELECT TOP 1 ticket_id FROM Tickets ORDER BY ticket_id DESC";
 		return jdbcTemplate.queryForObject(sql, Long.class);
 	}
 

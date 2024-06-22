@@ -4,18 +4,29 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Linestop {
-	private int id;
-	private int nextLinestop;
+	private Long id;
+	private Long nextLinestop;
 	private int nextDistance;
-	private int stationID;
+	private Long stationID;
 
-	public Linestop() {}
+	public Linestop() {
+	}
 
-	public void setNextStop(int id) {
+	public Linestop(Long nextLinestop, int nextDistance, Long stationID) {
+		this.nextLinestop = nextLinestop;
+		this.nextDistance = nextDistance;
+		this.stationID = stationID;
+	}
+
+	public Linestop(Long stationID) {
+		this.stationID = stationID;
+	}
+
+	public void setNextStop(Long id) {
 		this.nextLinestop = id;
 	}
 
-	public int getNextStop() {
+	public Long getNextStop() {
 		return nextLinestop;
 	}
 
@@ -27,19 +38,19 @@ public class Linestop {
 		return nextDistance;
 	}
 
-	public void setStationID(int id) {
+	public void setStationID(Long id) {
 		this.stationID = id;
 	}
 
-	public int getStationID() {
+	public Long getStationID() {
 		return stationID;
 	}
 
-	public void setID(int id) {
+	public void setID(Long id) {
 		this.id = id;
 	}
 
-	public int getID() {
+	public Long getID() {
 		return id;
 	}
 
