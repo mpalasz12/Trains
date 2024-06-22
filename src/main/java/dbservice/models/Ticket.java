@@ -4,16 +4,19 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Ticket {
-	private int ticket_id;
-	private int traveler_id;
-	private int first_stop;
-	private int last_stop;
-	private int train_id;
+	private Long ticket_id;
+	private Long traveler_id;
+	private Long first_stop;
+	private Long last_stop;
+	private Long train_id;
 	private int wagon_num;
 	private int seat_num;
 	private boolean is_expired;
 
-	public Ticket(int traveler_id, int first_stop, int last_stop, int train_id, int wagon_num, int seat_num) {
+	public Ticket() {
+	}
+
+	public Ticket(Long traveler_id, Long first_stop, Long last_stop, Long train_id, int wagon_num, int seat_num) {
 		this.traveler_id = traveler_id;
 		this.first_stop = first_stop;
 		this.last_stop = last_stop;
@@ -24,43 +27,43 @@ public class Ticket {
 	}
 
 	// getters and setters
-	public int getTicketID() {
+	public Long getTicketID() {
 		return ticket_id;
 	}
 
-	public void setTicketID(int ticket_id) {
+	public void setTicketID(Long ticket_id) {
 		this.ticket_id = ticket_id;
 	}
 
-	public int getTravelerID() {
+	public Long getTravelerID() {
 		return traveler_id;
 	}
 
-	public void setTravelerID(int traveler_id) {
+	public void setTravelerID(Long traveler_id) {
 		this.traveler_id = traveler_id;
 	}
 
-	public int getFirstStop() {
+	public Long getFirstStop() {
 		return first_stop;
 	}
 
-	public void setFirstStop(int first_stop) {
+	public void setFirstStop(Long first_stop) {
 		this.first_stop = first_stop;
 	}
 
-	public int getLastStop() {
+	public Long getLastStop() {
 		return last_stop;
 	}
 
-	public void setLastStop(int last_stop) {
+	public void setLastStop(Long last_stop) {
 		this.last_stop = last_stop;
 	}
 
-	public int getTrainID() {
+	public Long getTrainID() {
 		return train_id;
 	}
 
-	public void setTrainID(int train_id) {
+	public void setTrainID(Long train_id) {
 		this.train_id = train_id;
 	}
 

@@ -61,4 +61,43 @@ public class DataService {
 		Long city_idLong = Long.parseLong(city_id);
 		return database.getStationsByCityId(city_idLong);
 	}
+
+	@GetMapping("/tickets_by_mail")
+	public List<Ticket> getTicketsByMail(@RequestParam(name = "mail") String mail) {
+		return database.getTicketsByTravelerID(database.getTravelerIDbyMail(mail));
+	}
+
+	@GetMapping("/add_traveler")
+	public void addTraveler(
+			@RequestParam(name = "first_name") String first_name,
+			@RequestParam(name = "last_name") String last_name,
+			@RequestParam(name = "mail") String mail)
+		{
+		database.addTraveler(new Traveler(first_name, last_name, mail));
+	}
+
+	@GetMapping("/add_ticket")
+	public void addTicket(
+			@RequestParam(name = "traveler_id") String traveler_id,
+			@RequestParam(name = "first_stop") String first_stop,
+			@RequestParam(name = "last_stop") String last_stop,
+			@RequestParam(name = "train_id") String train_id,
+			@RequestParam(name = "wagon_num") String wagon_num,
+			@RequestParam(name = "seat_num") String seat_num)
+		{
+			Ticket ticket = new Ticket(
+					Long.parseLong(traveler_id),
+					Long.parseLong(first_stop),
+					Long.parseLong(last_stop),
+					Long.parseLong(train_id),
+					Integer.parseInt(wagon_num),
+					Integer.parseInt(seat_num));
+			ticket.setTicketID(database.addTicket(ticket));
+	}
+
+	@GetMapping("/get_traveler_mail")
+	public Long getTravelerMail(@RequestParam(name = "mail") String mail) {
+		return database.getTravelerIDbyMail(mail);
+	}
+
 }

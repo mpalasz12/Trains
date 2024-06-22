@@ -32,10 +32,9 @@ public class DatabaseController {
 			LineDAO lineDAO,
 			LocomotiveDAO locomotiveDAO,
 			TicketDAO ticketDAO,
-			WagonDAO wagonDAO
-	) { // add new DAOs as
-																								// arguments
-		// initialize new DAOs
+			WagonDAO wagonDAO) { // add new DAOs as
+									// arguments
+									// initialize new DAOs
 		this.trainDAO = trainDAO;
 		this.travelerDAO = travelerDAO;
 		this.cityDAO = cityDAO;
@@ -79,12 +78,16 @@ public class DatabaseController {
 		travelerDAO.addTraveler(traveler);
 	}
 
-	public void deleteTraveler(int id) {
+	public void deleteTraveler(Long id) {
 		travelerDAO.deleteTraveler(id);
 	}
 
-	public void changeMail(String newMail, int id) {
+	public void changeMail(String newMail, Long id) {
 		travelerDAO.changeMail(newMail, id);
+	}
+
+	public Long getTravelerIDbyMail(String mail) {
+		return travelerDAO.getTravelerIDbyMail(mail);
 	}
 
 	/*
@@ -158,7 +161,7 @@ public class DatabaseController {
 	public void setNextLinestopDistance(int id, int distance) {
 		linestopDAO.setNextLinestopDistance(id, distance);
 	}
-	
+
 	/*
 	 * --------------------------------LINE ----------------------------------------
 	 */
@@ -168,7 +171,8 @@ public class DatabaseController {
 	}
 
 	/*
-	 * --------------------------------LOCOMOTIVE ------------------------------------
+	 * --------------------------------LOCOMOTIVE
+	 * ------------------------------------
 	 */
 
 	public void addLocomotive(Locomotive locomotive) {
@@ -179,12 +183,16 @@ public class DatabaseController {
 	 * --------------------------------TICKET ------------------------------------
 	 */
 
-	public void addTicket(Ticket ticket) {
-		ticketDAO.addTicketGetID(ticket);
+	public Long addTicket(Ticket ticket) {
+		return ticketDAO.addTicketGetID(ticket);
 	}
 
-	public void expireTicket(int id) {
+	public void expireTicket(Long id) {
 		ticketDAO.expireTicket(id);
+	}
+
+	public List<Ticket> getTicketsByTravelerID(Long travelerID) {
+		return ticketDAO.getTicketsByTravelerID(travelerID);
 	}
 
 	/*
