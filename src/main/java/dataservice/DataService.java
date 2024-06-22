@@ -29,18 +29,14 @@ public class DataService {
 	}
 
 	// APPLICATION TEST - GET CITY ENDPOINT
-	@GetMapping("/city") // GET request, dajesz jaka chcesz sciezke do endpointu, np.
-							// localhost:8000/data/city
-	public String getCity(@RequestParam(name = "id") String id) { // RequestParam to beda parametry przekazywane w URL,
-																	// np. localhost:8000/data/city?id=1. mozesz ich dac
-																	// kilka
-		// i tutaj kod, ktory bedzie zwracal odpowiedz na zapytanie
-		// mozesz tez zwrocic np caly obiekt City, i wtedy on sie ladnie na jsona
-		// zamieni
+	@GetMapping("/city")
+	public String getCity(@RequestParam(name = "id") String id) {
 		Long idLong = Long.parseLong(id);
-		return database.getCity(idLong); // w klasie DatabaseController sa dokladne metody ktore zwracaja rzeczy
-											// jak chcesz dodac metode, to kazde DAO ma konkretne polecenia w SQL
-											// - dzieki B) pozdrawiam
+		try {
+			return database.getCity(idLong);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@GetMapping("/city_by_name")
@@ -51,7 +47,11 @@ public class DataService {
 	@GetMapping("/station_by_id")
 	public Station getStation(@RequestParam(name = "id") String id) {
 		Long idLong = Long.parseLong(id);
-		return database.getStation(idLong);
+		try {
+			return database.getStation(idLong);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@GetMapping("/all_stations")
@@ -62,7 +62,11 @@ public class DataService {
 	@GetMapping("/stations_by_city_id")
 	public List<Station> getStationsByCityId(@RequestParam(name = "city_id") String city_id) {
 		Long city_idLong = Long.parseLong(city_id);
-		return database.getStationsByCityId(city_idLong);
+		try {
+			return database.getStationsByCityId(city_idLong);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@GetMapping("/tickets_by_mail")
@@ -101,7 +105,7 @@ public class DataService {
 		return database.getTravelerIDbyMail(mail);
 	}
 
-	@GetMapping("/add_train")
+	@PostMapping("/add_train")
 	public void addTrain(
 			@RequestParam(name = "line_id") String line_id,
 			@RequestParam(name = "locomotive_id") String locomotive_id) {
@@ -109,7 +113,7 @@ public class DataService {
 		database.addTrain(train);
 	}
 
-	@GetMapping("/add_locomotive")
+	@PostMapping("/add_locomotive")
 	public void addLocomotive(
 			@RequestParam(name = "model") String model,
 			@RequestParam(name = "origin_country") String country) {
@@ -117,7 +121,7 @@ public class DataService {
 		database.addLocomotive(locomotive);
 	}
 
-	@GetMapping("/add_wagon")
+	@PostMapping("/add_wagon")
 	public void addWagon(
 			@RequestParam(name = "wagon_num") String wagon_num,
 			@RequestParam(name = "wagon_capacity") String wagon_capacity,
@@ -129,7 +133,7 @@ public class DataService {
 
 	// BASIC LINE ADDING INTERFACE, REQUIRES MANUAL ID ACQUISITION AND EXISTING
 	// LINESTOP
-	@GetMapping("/add_line_basic")
+	@PostMapping("/add_line_basic")
 	public void addLineBasic(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "first_stop_id") String first_stop_id) {
@@ -138,7 +142,7 @@ public class DataService {
 	}
 
 	// PROPER LINE ADDING INTERFACE, EASIER TO USE
-	@GetMapping("/add_line")
+	@PostMapping("/add_line")
 	public void addLine(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "station_id") String station_id) {
@@ -153,11 +157,15 @@ public class DataService {
 
 	@GetMapping("/get_line")
 	public Line getLine(@RequestParam(name = "line_id") String line_id) {
-		return database.getLineByID(Long.parseLong(line_id));
+		try {
+			return database.getLineByID(Long.parseLong(line_id));
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	// PROPER STOP ADDING - TODO: TEST THIS!!
-	@GetMapping("/add_stop")
+	@PostMapping("/add_stop")
 	public void addStop(
 			@RequestParam(name = "line_id") String line_id,
 			@RequestParam(name = "station_id") String station_id,
@@ -180,14 +188,14 @@ public class DataService {
 	}
 
 	// MANUAL LINESTOP ADDING - NOT RECOMMENDED
-	@GetMapping("/add_terminus")
+	@PostMapping("/add_terminus")
 	public void addTerminus(
 			@RequestParam(name = "station_id") String station_id) {
 		Linestop linestop = new Linestop(Long.parseLong(station_id));
 		database.addTerminus(linestop);
 	}
 
-	@GetMapping("/add_linestop")
+	@PostMapping("/add_linestop")
 	public void addLinestop(
 			@RequestParam(name = "next_linestop") String next_linestop,
 			@RequestParam(name = "distance") String distance,
@@ -197,7 +205,7 @@ public class DataService {
 		database.addLinestop(linestop);
 	}
 
-	@GetMapping("/add_station")
+	@PostMapping("/add_station")
 	public void addStation(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "city_id") String city_id) {
@@ -205,7 +213,7 @@ public class DataService {
 		database.addStation(station);
 	}
 
-	@GetMapping("/add_city")
+	@PostMapping("/add_city")
 	public void addCity(
 			@RequestParam(name = "name") String name) {
 		City city = new City(name);
