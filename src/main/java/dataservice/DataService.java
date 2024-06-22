@@ -30,6 +30,11 @@ public class DataService {
 
 // UWAGA - niektórych endpointow uzywam do tego zeby testowac co nie dziala
 // potem bedzie mozna je usunac, ale poki co niech zostana
+// do testowania jak co dziala - zeby nie miec tez problemow z postem
+// polecam wtyczke na chrome Tabbed Postman - wtedy mozna sobie testowac
+// gety i posty - zobaczyc co jest zwracane itd
+// dla porownania na stan bazy danych to localhost:{port - u mnie 8080 - wyswietla sie w konsoli}
+// /h2-console i jako jdbc url: jdbc:h2:mem:transportdb
 	// APPLICATION TEST - GET CITY ENDPOINT
 	@GetMapping("/city")
 // komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
