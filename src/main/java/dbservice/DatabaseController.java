@@ -84,6 +84,10 @@ public class DatabaseController {
 		return trainDAO.getActiveTrains();
 	}
 
+	public Integer getTrainCapacity(Integer train_id) {
+		return wagonDAO.getTrainCapacity(train_id);
+	}
+
 	/*
 	 * -------------------------------- TRAVELER -----------------------------------
 	 */

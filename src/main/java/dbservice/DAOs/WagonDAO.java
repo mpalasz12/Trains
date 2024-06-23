@@ -48,4 +48,9 @@ public class WagonDAO {
 		String sql = "UPDATE Wagons SET train_id = ? WHERE wagon_id = ?";
 		jdbcTemplate.update(sql, newTrainID, id);
 	}
+
+	public Integer getTrainCapacity(Integer train_id) {
+		String sql = "SELECT SUM(wagon_capacity * wagon_num) FROM Wagons WHERE train_id = ?";
+		return jdbcTemplate.queryForObject(sql, Integer.class, train_id);
+	}
 }
