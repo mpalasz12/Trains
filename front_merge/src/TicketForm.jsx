@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './TicketForm.css';
+import axios from 'axios';
 
 function TicketForm() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -7,6 +8,7 @@ function TicketForm() {
     const [endStation, setEndStation] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [mail, setMail] = useState('');
     const [train, setTrain] = useState('');
     const [wagon, setWagon] = useState('');
     const [seat, setSeat] = useState('');
@@ -25,6 +27,9 @@ function TicketForm() {
             case 'lastName':
                 setLastName(event.target.value);
                 break;
+            case 'mail':
+                setMail(event.target.value);
+                break;
             case 'train':
                 setTrain(event.target.value);
                 break;
@@ -39,21 +44,59 @@ function TicketForm() {
         }
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         console.log({
             startStation,
             endStation,
             firstName,
             lastName,
+            mail,
             train,
             wagon,
             seat
         });
+
+        const travelerData = {
+            first_name: firstName,
+            last_name: lastName,
+            mail: mail
+        };
+
+        try {
+            await axios.post("http://localhost:8080/data/add_traveler", travelerData);
+            console.log("Traveler added successfully");
+        } catch (error) {
+            console.error("Error adding traveler:", error);
+            return;
+        }
+
+        const response = await axios.get("http://localhost:8080/data/get_traveler_id_by_mail", {
+            params: { mail: mail }
+        });
+        const travelerId = response.data;
+
+        const ticketData = {
+            traveler_id: travelerId,
+            first_stop: startStation,
+            last_stop: endStation,
+            train_id: train,
+            wagon_num: wagon,
+            seat_num: seat
+        };
+
+        try {
+            await axios.post("http://localhost:8080/data/add_ticket", ticketData);
+            console.log("Ticket added successfully");
+            setIsSubmitted(true); // Assuming you want to set some state after successful submission
+        } catch (error) {
+            console.error("Error adding ticket:", error);
+        }
+
         setIsSubmitted(true);
     };
 
-    const ticketId = 123456789
+    //const ticketId = 123456789
 
     return (
         <form onSubmit={handleSubmit}>
@@ -72,6 +115,10 @@ function TicketForm() {
             <label>
                 Nazwisko:
                 <input type="text" name="lastName" value={lastName} onChange={handleChange} />
+            </label>
+            <label>
+                Mail:
+                <input type="text" name="mail" value={mail} onChange={handleChange} />
             </label>
             <label>
                 Pociąg:

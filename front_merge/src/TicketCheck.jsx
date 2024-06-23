@@ -10,7 +10,7 @@ function TicketCheck() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.get("http://localhost:8080/do_uzupelnienia", {
+            const response = await axios.get("http://localhost:8080/tickets_by_mail", {
                 params: {
                     id: ticketId
                 }
@@ -25,7 +25,7 @@ function TicketCheck() {
     return (
         <form onSubmit={handleSubmit}>
             <label>
-                Podaj ID biletu:
+                Podaj maila:
                 <input
                     type="text"
                     value={ticketId}
