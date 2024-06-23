@@ -267,7 +267,7 @@ public class DataService {
 		return database.getTrainByID(Integer.parseInt(train_id));
 	}
 
-	@PostMapping("/change_linestop")
+	@PostMapping("/change_linestop") // glownie pomocnicze do testowania
 // komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
 	public void changeLinestop(@RequestParam(name = "train_id") String train_id, @RequestParam(name = "next_linestop") String next_linestop) {
 		database.changeLinestop(Integer.parseInt(train_id), Integer.parseInt(next_linestop));
