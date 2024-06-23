@@ -188,6 +188,9 @@ public class DatabaseController {
 		linestopDAO.setNextLinestopDistance(id, distance);
 	}
 
+	public Linestop getLinestopByID(Integer id) {
+		return linestopDAO.getLinestopByID(id);
+	}
 	/*
 	 * --------------------------------LINE ----------------------------------------
 	 */

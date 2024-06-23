@@ -4,54 +4,53 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Linestop {
-	private Integer id;
-	private Integer nextLinestop;
-	private int nextDistance;
-	private Integer stationID;
+	private Integer linestop_id;
+	private Integer next_linestop;
+	private Integer distance_next;
+	private Integer station_id;
 
 	public Linestop() {
 	}
 
-	public Linestop(Integer nextLinestop, int nextDistance, Integer stationID) {
-		this.nextLinestop = nextLinestop;
-		this.nextDistance = nextDistance;
-		this.stationID = stationID;
+	public Linestop(Integer next_linestop, Integer distance_next, Integer station_id) {
+		this.next_linestop = next_linestop;
+		this.distance_next = distance_next;
+		this.station_id = station_id;
 	}
 
-	public Linestop(Integer stationID) {
-		this.stationID = stationID;
+	public Linestop(Integer station_id) {
+		this.station_id = station_id;
 	}
 
-	public void setNextStop(Integer id) {
-		this.nextLinestop = id;
+	public Integer getLinestop_id() {
+		return linestop_id;
 	}
 
-	public Integer getNextStop() {
-		return nextLinestop;
+	public void setLinestop_id(Integer linestop_id) {
+		this.linestop_id = linestop_id;
 	}
 
-	public void setNextDistance(int value) {
-		this.nextDistance = value;
+	public Integer getNext_linestop() {
+		return next_linestop;
 	}
 
-	public int getNextDistance() {
-		return nextDistance;
+	public void setNext_linestop(Integer next_linestop) {
+		this.next_linestop = next_linestop;
 	}
 
-	public void setStationID(Integer id) {
-		this.stationID = id;
+	public Integer getDistance_next() {
+		return distance_next;
 	}
 
-	public Integer getStationID() {
-		return stationID;
+	public void setDistance_next(Integer distance_next) {
+		this.distance_next = distance_next;
 	}
 
-	public void setID(Integer id) {
-		this.id = id;
+	public Integer getStation_id() {
+		return station_id;
 	}
 
-	public Integer getID() {
-		return id;
+	public void setStation_id(Integer station_id) {
+		this.station_id = station_id;
 	}
-
 }

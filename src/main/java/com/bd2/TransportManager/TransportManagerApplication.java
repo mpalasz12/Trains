@@ -53,10 +53,10 @@ public class TransportManagerApplication {
 		Linestop ls2 = new Linestop( 1, 200,  3);
 
 
-		ls1.setID(database.addLinestop(ls1));
-		ls2.setID(database.addLinestop(ls2));
+		ls1.setLinestop_id(database.addLinestop(ls1));
+		ls2.setLinestop_id(database.addLinestop(ls2));
 
-		Line line = new Line("Gdansk-Krakow", ls2.getID());
+		Line line = new Line("Gdansk-Krakow", ls2.getLinestop_id());
 		database.addLine(line);
 
 		Locomotive loco = new Locomotive("Test", "Poland");
