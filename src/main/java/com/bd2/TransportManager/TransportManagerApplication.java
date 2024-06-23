@@ -66,6 +66,6 @@ public class TransportManagerApplication {
 		train.setTrain_id(database.addTrain(train));
 
 		Wagon wagon = new Wagon(1, 100, train.getTrain_id());
-		wagon.setWagonID(database.addWagon(wagon));
+		wagon.setWagon_id(database.addWagon(wagon));
 	}
 }

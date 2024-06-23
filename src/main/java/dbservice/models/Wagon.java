@@ -4,52 +4,49 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Wagon {
-	Integer wagonID;
-	int wagonNum;
-	int wagonCapacity;
-	Integer trainID;
+	Integer wagon_id;
+	Integer wagon_num;
+	Integer wagon_capacity;
+	Integer train_id;
 
-	public Wagon(int wagonNum, int wagonCapacity, Integer trainID) {
-		this.wagonNum = wagonNum;
-		this.wagonCapacity = wagonCapacity;
-		this.trainID = trainID;
+	public Wagon() {
 	}
 
-	public Wagon(int wagonNum) {
-		this.wagonNum = wagonNum;
+	public Wagon(Integer wagon_num, Integer wagon_capacity, Integer train_id) {
+		this.wagon_num = wagon_num;
+		this.wagon_capacity = wagon_capacity;
+		this.train_id = train_id;
 	}
 
-	// getters and setters
-	public Integer getWagonID() {
-		return wagonID;
+	public Integer getWagon_id() {
+		return wagon_id;
 	}
 
-	public void setWagonID(Integer wagonID) {
-		this.wagonID = wagonID;
+	public void setWagon_id(Integer wagon_id) {
+		this.wagon_id = wagon_id;
 	}
 
-	public int getWagonNum() {
-		return wagonNum;
+	public Integer getWagon_num() {
+		return wagon_num;
 	}
 
-	public void setWagonNum(int wagonNum) {
-		this.wagonNum = wagonNum;
+	public void setWagon_num(Integer wagon_num) {
+		this.wagon_num = wagon_num;
 	}
 
-	public int getWagonCapacity() {
-		return wagonCapacity;
+	public Integer getWagon_capacity() {
+		return wagon_capacity;
 	}
 
-	public void setWagonCapacity(int wagonCapacity) {
-		this.wagonCapacity = wagonCapacity;
+	public void setWagon_capacity(Integer wagon_capacity) {
+		this.wagon_capacity = wagon_capacity;
 	}
 
-	public Integer getTrainID() {
-		return trainID;
+	public Integer getTrain_id() {
+		return train_id;
 	}
 
-	public void setTrainID(Integer trainID) {
-		this.trainID = trainID;
+	public void setTrain_id(Integer train_id) {
+		this.train_id = train_id;
 	}
-
 }

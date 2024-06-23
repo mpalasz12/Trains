@@ -290,4 +290,16 @@ public class DataService {
 	public List<Integer> getSeatsTaken(@RequestParam(name = "train_id") String train_id, @RequestParam(name = "wagon_num") String wagon_num) {
 		return database.getSeatsTaken(Integer.parseInt(train_id), Integer.parseInt(wagon_num));
 	}
+
+	@GetMapping("get_train_wagons")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	public List<Wagon> getTrainWagons(@RequestParam(name = "train_id") String train_id) {
+		return database.getWagonsByTrainID(Integer.parseInt(train_id));
+	}
+
+	@GetMapping("get_all_trains")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	public List<Train> getAllTrains() {
+		return database.getAllTrains();
+	}
 }
