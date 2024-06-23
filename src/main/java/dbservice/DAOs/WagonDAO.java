@@ -1,9 +1,13 @@
 package dbservice.DAOs;
 
+import dbservice.models.Train;
 import dbservice.models.Wagon;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class WagonDAO {
@@ -20,7 +24,7 @@ public class WagonDAO {
 
 	public Integer addWagonGetID(Wagon wagon) {
 		String sql = "INSERT INTO Wagons (wagon_num, wagon_capacity, train_id) VALUES (?, ?, ?)";
-		jdbcTemplate.update(sql, wagon.getWagonNum(), wagon.getWagonCapacity(), wagon.getTrainID());
+		jdbcTemplate.update(sql, wagon.getWagon_num(), wagon.getWagon_capacity(), wagon.getTrain_id());
 		return acquireID();
 	}
 
@@ -52,5 +56,10 @@ public class WagonDAO {
 	public Integer getTrainCapacity(Integer train_id) {
 		String sql = "SELECT SUM(wagon_capacity) FROM Wagons WHERE train_id = ?";
 		return jdbcTemplate.queryForObject(sql, Integer.class, train_id);
+	}
+
+	public List<Wagon> getWagonsByTrainID(Integer trainID) {
+		String sql = "SELECT * FROM Wagons WHERE train_id = ?";
+		return jdbcTemplate.query(sql, new Object[] { trainID }, new BeanPropertyRowMapper<>(Wagon.class));
 	}
 }
