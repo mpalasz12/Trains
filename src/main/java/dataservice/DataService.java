@@ -37,7 +37,7 @@ public class DataService {
 // /h2-console i jako jdbc url: jdbc:h2:mem:transportdb
 	// APPLICATION TEST - GET CITY ENDPOINT
 	@GetMapping("/city")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 // najlepiej 1. skopiowac komentarz "/ komentarz do usuniecia- jak juz bedzie z apka to odkomentowac"
 // 2. przy pomocy ctrl f zamienic wszystkie na puste
 	public String getCity(@RequestParam(name = "id") String id) {
@@ -50,13 +50,13 @@ public class DataService {
 	}
 
 	@GetMapping("/city_by_name")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public City getCityByName(@RequestParam(name = "name") String name) {
 		return database.getCityByName(name);
 	}
 
 	@GetMapping("/station_by_id")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Station getStation(@RequestParam(name = "id") String id) {
 		Integer idInteger = Integer.parseInt(id);
 		try {
@@ -67,13 +67,13 @@ public class DataService {
 	}
 
 	@GetMapping("/all_stations")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Station> getAllStations() {
 		return database.getAllStations();
 	}
 
 	@GetMapping("/stations_by_city_id")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Station> getStationsByCityId(@RequestParam(name = "city_id") String city_id) {
 		Integer city_idInteger = Integer.parseInt(city_id);
 		try {
@@ -84,13 +84,13 @@ public class DataService {
 	}
 
 	@GetMapping("/tickets_by_mail")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Ticket> getTicketsByMail(@RequestParam(name = "mail") String mail) {
 		return database.getTicketsByTravelerID(database.getTravelerIDbyMail(mail));
 	}
 
 	@PostMapping("/add_traveler")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addTraveler(
 			@RequestParam(name = "first_name") String first_name,
 			@RequestParam(name = "last_name") String last_name,
@@ -99,7 +99,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_ticket")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addTicket(
 			@RequestParam(name = "traveler_id") String traveler_id,
 			@RequestParam(name = "first_stop") String first_stop,
@@ -118,13 +118,13 @@ public class DataService {
 	}
 
 	@GetMapping("/get_traveler_mail")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Integer getTravelerMail(@RequestParam(name = "mail") String mail) {
 		return database.getTravelerIDbyMail(mail);
 	}
 
 	@PostMapping("/add_train")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addTrain(
 			@RequestParam(name = "line_id") String line_id,
 			@RequestParam(name = "locomotive_id") String locomotive_id) {
@@ -133,7 +133,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_locomotive")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addLocomotive(
 			@RequestParam(name = "model") String model,
 			@RequestParam(name = "origin_country") String country) {
@@ -142,7 +142,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_wagon")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addWagon(
 			@RequestParam(name = "wagon_num") String wagon_num,
 			@RequestParam(name = "wagon_capacity") String wagon_capacity,
@@ -155,7 +155,7 @@ public class DataService {
 	// BASIC LINE ADDING INTERFACE, REQUIRES MANUAL ID ACQUISITION AND EXISTING
 	// LINESTOP
 	@PostMapping("/add_line_basic")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addLineBasic(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "first_stop_id") String first_stop_id) {
@@ -165,7 +165,7 @@ public class DataService {
 
 	// PROPER LINE ADDING INTERFACE, EASIER TO USE
 	@PostMapping("/add_line")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addLine(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "station_id") String station_id) {
@@ -179,7 +179,7 @@ public class DataService {
 	}
 
 	@GetMapping("/get_line")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Line getLine(@RequestParam(name = "line_id") String line_id) {
 		try {
 			return database.getLineByID(Integer.parseInt(line_id));
@@ -189,13 +189,13 @@ public class DataService {
 	}
 
 	@GetMapping("/get_active_trains")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Train> getActiveTrains() {
 		return database.getActiveTrains();
 	}
 
 	@PostMapping("/add_stop")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addStop(
 			@RequestParam(name = "line_id") String line_id,
 			@RequestParam(name = "station_id") String station_id,
@@ -219,7 +219,7 @@ public class DataService {
 
 	// MANUAL LINESTOP ADDING - NOT RECOMMENDED
 	@PostMapping("/add_terminus")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addTerminus(
 			@RequestParam(name = "station_id") String station_id) {
 		Linestop linestop = new Linestop(Integer.parseInt(station_id));
@@ -227,7 +227,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_linestop")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addLinestop(
 			@RequestParam(name = "next_linestop") String next_linestop,
 			@RequestParam(name = "distance") String distance,
@@ -238,7 +238,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_station")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addStation(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "city_id") String city_id) {
@@ -247,7 +247,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_city")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addCity(
 			@RequestParam(name = "name") String name) {
 		City city = new City(name);
@@ -255,80 +255,80 @@ public class DataService {
 	}
 
 	@PostMapping("/advance_train")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void advanceTrain(@RequestParam(name = "train_id") String train_id) {
 		Integer train_idInt = Integer.parseInt(train_id);
 		database.advanceTrain(train_idInt);
 	}
 
 	@GetMapping("/get_train")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Train getTrain(@RequestParam(name = "train_id") String train_id) {
 		return database.getTrainByID(Integer.parseInt(train_id));
 	}
 
 	@PostMapping("/change_linestop") // glownie pomocnicze do testowania
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void changeLinestop(@RequestParam(name = "train_id") String train_id, @RequestParam(name = "next_linestop") String next_linestop) {
 		database.changeLinestop(Integer.parseInt(train_id), Integer.parseInt(next_linestop));
 	}
 
 	@GetMapping("/first_stop")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Integer getFirstStop(@RequestParam(name = "line_id") String line_id) {
 		return database.getFirstStopID(Integer.parseInt(line_id));
 	}
 
 	@GetMapping("/get_train_capacity")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173"
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Integer getTrainCapacity(@RequestParam(name = "train_id") String train_id) {
 		return database.getTrainCapacity(Integer.parseInt(train_id));
 	}
 
 	@GetMapping("/get_seats_taken")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Integer> getSeatsTaken(@RequestParam(name = "train_id") String train_id, @RequestParam(name = "wagon_num") String wagon_num) {
 		return database.getSeatsTaken(Integer.parseInt(train_id), Integer.parseInt(wagon_num));
 	}
 
 	@GetMapping("/get_train_wagons")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Wagon> getTrainWagons(@RequestParam(name = "train_id") String train_id) {
 		return database.getWagonsByTrainID(Integer.parseInt(train_id));
 	}
 
 	@GetMapping("/get_all_trains")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Train> getAllTrains() {
 		return database.getAllTrains();
 	}
 
 	@GetMapping("/get_traveler_id_by_mail")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Integer getTravelerIDbyMail(@RequestParam(name = "mail") String mail) {
 		return database.getTravelerIDbyMail(mail);
 	}
 
 	@GetMapping("/get_locomotive_by_id")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Locomotive getLocomotiveByID(@RequestParam(name = "locomotive_id") String locomotive_id) {
 		return database.getLocomotiveByID(Integer.parseInt(locomotive_id));
 	}
 
 	@GetMapping("/get_all_locomotives")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Locomotive> getAllLocomotives() {
 		return database.getAllLocomotives();
 	}
 
 	@GetMapping("/get_all_cities")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<City> getAllCities() {
 		return database.getAllCities();
 	}
 
 	@GetMapping("/get_all_lines")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Line> getAllLines() {
 		return database.getAllLines();
 	}
