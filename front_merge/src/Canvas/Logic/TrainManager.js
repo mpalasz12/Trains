@@ -1,6 +1,23 @@
 import Locomotive from "./Locomotive";
-import Train from "./Train"
+import Train from "./Train";
+import axios from "axios";
 import Wagon from "./Wagon";
+
+// function for adding locomotive to database api
+export function addLocomotive(locomotive) {
+	event.preventDefault();
+	try {
+		const params = new URLSearchParams();
+		params.append("model", locomotive.name);
+		params.append("origin_country", locomotive.country);
+		const response = axios.post('http://localhost:8080/data/add_locomotive?' + params.toString());
+		console.log('Answer from server: ', response.data);
+	} catch (error) {
+		console.error("Error adding locomotive: ", error);
+	}
+}
+
+export function addWagon(wagon, train_id, wagon_num)
 
 class TrainManager
 {
@@ -19,8 +36,11 @@ class TrainManager
     {
         // Locomotives
         var IC9215 = new Locomotive("IC9215", "Poland", 200);
+		addLocomotive(IC9215);
         var LI3122 = new Locomotive("LI3122", "Germany", 180);
+		addLocomotive(LI3122);
         var KK1233 = new Locomotive("KK1233", "Sweden", 50);
+		addLocomotive(KK1233);
 
         var wkd_wagons = [
             new Wagon("wkd1", 1, 20),
