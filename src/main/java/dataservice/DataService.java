@@ -304,6 +304,7 @@ public class DataService {
 	}
 
 	@GetMapping("/get_traveler_id_by_mail")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
 	public Integer getTravelerIDbyMail(@RequestParam(name = "mail") String mail) {
 		return database.getTravelerIDbyMail(mail);
 	}
