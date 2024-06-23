@@ -284,4 +284,11 @@ public class DataService {
 	public Integer getTrainCapacity(@RequestParam(name = "train_id") String train_id) {
 		return database.getTrainCapacity(Integer.parseInt(train_id));
 	}
+
+	// TODO:
+	//  - pobieranie liczby dostepnych miejsc w pociagu? wagonie?
+	//  - moze jakies triggery i procedury przy usuwaniu roznych rzeczy
+	//  	- pociagu, przystanku, tego typu benc
+	//  trzeba uzgodnic czegog sie trzymamy, teraz nie jestem pewny
+	//  w jaki sposob to dalej robic wiec koncze na tym
 }
