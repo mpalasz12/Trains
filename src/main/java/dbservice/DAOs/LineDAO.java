@@ -47,4 +47,9 @@ public class LineDAO {
 		String sql = "SELECT * FROM Lines";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Line.class));
 	}
+
+	public Line getLineByName(String name) {
+		String sql = "SELECT * FROM Lines WHERE name = ?";
+		return jdbcTemplate.queryForObject(sql, new Object[]{name}, new BeanPropertyRowMapper<>(Line.class));
+	}
 }
