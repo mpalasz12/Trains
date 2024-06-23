@@ -7,6 +7,7 @@ import TicketCheck from "./TicketCheck";
 import AddLine from "./AddLine";
 import StartTrain from "./StartTrain";
 import FindConnection from "./FindConnection";
+import TrainSimulation from "./TrainSimulation";
 import axios from 'axios';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <div className="app">
             <Sidebar onButtonClick={handleButtonClick} />
             <div className="app-content">
+                {activeButton === 'Mapa' && <TrainSimulation />}
                 {activeButton === 'Kup bilet' && <TicketForm />}
                 {activeButton === 'Sprawdź bilet' && <TicketCheck />}
                 {activeButton === 'Sprawdź połączenie' && <FindConnection />}
