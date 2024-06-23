@@ -285,6 +285,11 @@ public class DataService {
 		return database.getTrainCapacity(Integer.parseInt(train_id));
 	}
 
+	@GetMapping("get_seats_taken")
+	public List<Integer> getSeatsTaken(@RequestParam(name = "train_id") String train_id, @RequestParam(name = "wagon_num") String wagon_num) {
+		return database.getSeatsTaken(Integer.parseInt(train_id), Integer.parseInt(wagon_num));
+	}
+
 	// TODO:
 	//  - pobieranie liczby dostepnych miejsc w pociagu? wagonie?
 	//  - moze jakies triggery i procedury przy usuwaniu roznych rzeczy

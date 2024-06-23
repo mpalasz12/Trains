@@ -43,4 +43,9 @@ public class TicketDAO {
 		String sql = "SELECT * FROM Tickets WHERE traveler_id = ?";
 		return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Ticket.class), travelerID);
 	}
+
+	public List<Integer> getSeatsTaken(Integer trainID, Integer wagonNum) {
+		String sql = "SELECT seat_num FROM Tickets WHERE is_expired = FALSE AND train_id = ? AND wagon_num = ?";
+		return jdbcTemplate.queryForList(sql, Integer.class, trainID, wagonNum);
+	}
 }
