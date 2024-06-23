@@ -208,6 +208,10 @@ public class DatabaseController {
 		return lineDAO.getFirstStopID(lineID);
 	}
 
+	public List<Line> getAllLines() {
+		return lineDAO.getAllLines();
+	}
+
 	/*
 	 * --------------------------------LOCOMOTIVE
 	 * ------------------------------------

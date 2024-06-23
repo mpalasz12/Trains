@@ -326,4 +326,11 @@ public class DataService {
 	public List<City> getAllCities() {
 		return database.getAllCities();
 	}
+
+	@GetMapping("/get_all_lines")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	public List<Line> getAllLines() {
+		return database.getAllLines();
+	}
+	
 }

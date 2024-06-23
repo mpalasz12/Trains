@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class LineDAO {
 
@@ -39,5 +41,10 @@ public class LineDAO {
 	public void updateLine(Line line) {
 		String sql = "UPDATE Lines SET name = ?, first_stop_id = ? WHERE line_id = ?";
 		jdbcTemplate.update(sql, line.getName(), line.getFirst_stop_id(), line.getLine_id());
+	}
+
+	public List<Line> getAllLines() {
+		String sql = "SELECT * FROM Lines";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Line.class));
 	}
 }
