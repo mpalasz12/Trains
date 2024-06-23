@@ -4,6 +4,10 @@ import TicketForm from "./TicketForm";
 import './App.css';
 import Statistics from "./Statistics";
 import TicketCheck from "./TicketCheck";
+import AddLine from "./AddLine";
+import StartTrain from "./StartTrain";
+import FindConnection from "./FindConnection";
+import axios from 'axios';
 
 function App() {
     const [activeButton, setActiveButton] = useState(null);
@@ -18,6 +22,9 @@ function App() {
             <div className="app-content">
                 {activeButton === 'Kup bilet' && <TicketForm />}
                 {activeButton === 'Sprawdź bilet' && <TicketCheck />}
+                {activeButton === 'Sprawdź połączenie' && <FindConnection />}
+                {activeButton === 'Wystartuj pociąg' && <StartTrain />}
+                {activeButton === 'Dodaj linię' && <AddLine />}
                 {activeButton === 'Statystyki' && <Statistics />}
             </div>
         </div>

@@ -7,6 +7,10 @@
     flex-direction: column;
 }
 
+.sidebar-buttons {
+    margin-bottom: auto;
+}
+
 .sidebar-dev_button,
 .sidebar-button {
     display: block;
@@ -20,8 +24,7 @@
     background-color: #f0f0f0;
 }
 
-.sidebar .sidebar-dev_button {
+.sidebar .sidebar-dev_buttons {
     margin-top: auto;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
-

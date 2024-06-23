@@ -1,32 +1,31 @@
 import React, { useState } from "react";
 import './TicketCheck.css';
+import axios from 'axios';
 
 function TicketCheck() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [ticketId, setTicketId] = useState('');
     const [ticketData, setTicketData] = useState(null);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-		// TODO pobranie danych z biletu
-        const fetchedTicketData = {
-            id: ticketId,
-            startStation: 'Warszawa',
-            endStation: 'Kraków',
-            firstName: 'Jan',
-            lastName: 'Kowalski',
-            train: 'IC1234',
-            wagon: 5,
-            seat: 12
-        };
-        setTicketData(fetchedTicketData);
-        setIsSubmitted(true);
+        try {
+            const response = await axios.get("http://localhost:8080/do_uzupelnienia", {
+                params: {
+                    id: ticketId
+                }
+            });
+            setTicketData(response.data);
+            setIsSubmitted(true);
+        } catch (error) {
+            console.error('There was an error in !', error);
+        }
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <label>
-                Podaj ID biletu: 
+                Podaj ID biletu:
                 <input
                     type="text"
                     value={ticketId}
