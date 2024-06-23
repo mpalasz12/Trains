@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="train-lane" directorySegmentName="seg_0" id="1D2CB575-588F-923A-43F4-F816B053C2B5">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>9D849D90-BFEE-1B5A-A542-71C3F504E3FA</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<sourcePk>7A37609C-4A3A-B768-EB08-49276D0FE64C</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>195EDA49-C8FC-C9F1-A47E-CF83FBE94609</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>D96C90C0-EE7C-E1A3-EB2B-0BA223399584</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

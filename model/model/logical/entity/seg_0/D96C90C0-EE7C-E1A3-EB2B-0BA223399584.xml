@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D96C90C0-EE7C-E1A3-EB2B-0BA223399584" name="Trains">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>BCFE5548-2F47-FB02-0DF1-46DD160300C0</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="train_id" id="558CC9A2-0FB2-EE6C-BC55-A8FFDEE6BC7B">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>C105EA14-47EF-B536-2C63-808ED7E5FEF4</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="locomotive_id" id="862F975B-3E53-B0AA-1425-7C2B5F1A3CC8">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<generatorID>5A6F3694-7078-E3B6-8CD4-0228E1258E86</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<importedID>12BE93C0-3767-11BE-666F-E87EB74C23AF</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<referedAttribute>01EC102F-CA94-FCC2-7DC0-3D8E06934FC5</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="line_id" id="DD2CDAF7-EBC0-6A12-30F4-4B539CF81E6A">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<generatorID>1D2CB575-588F-923A-43F4-F816B053C2B5</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<importedID>60E49834-A1A9-6FE5-5AFD-F7DF9E5E4B54</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<referedAttribute>22F72AF8-56A9-9578-9240-BEEA2EC8471A</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="curr_linestop" id="3A71157A-9B23-FF6B-DC81-0DBACEC1973F">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<generatorID>0A571812-AFE8-44BB-103A-F2E10FB7D13F</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<importedID>FB72B055-B4E6-DCF3-95C3-341BF0BC76B5</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>E21EE3DA-3168-D5F2-1D6F-B6047534A114</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="5333281A-93D9-81A1-2285-5127F6AE4EF6" name="Train PK">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>06A0E171-D0AF-637D-61C0-969F5E45E95A</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>558CC9A2-0FB2-EE6C-BC55-A8FFDEE6BC7B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

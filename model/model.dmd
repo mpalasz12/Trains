@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="model" id="D71594BE-63EE-286B-5B7F-B1581669BAA0" version="3.5">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:00:27 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>D71594BE-63EE-286B-5B7F-B1581669BAA0</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="B242DA74-8CC5-5E4D-CBC8-974FC42306F0">
+<designStoragePath>/home/sucholbluk31/Desktop/chuj</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="2333B282-B50D-719A-A55A-7B2F5A1DA999">
+<designStoragePath>/home/sucholbluk31/Desktop/nowy/logiczny</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="767E6612-D810-3411-86D0-8B33202626C6">
+<designStoragePath>/home/sucholbluk31/studia/sem4/bd2/bd2-z21/model-logiczny/model-logiczny</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>

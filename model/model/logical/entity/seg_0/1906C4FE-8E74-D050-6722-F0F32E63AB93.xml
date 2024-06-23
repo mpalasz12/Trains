@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1906C4FE-8E74-D050-6722-F0F32E63AB93" name="Linestops">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>BC6DCCA7-307A-8DDF-63CE-1FCFB24846BA</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="linestop_id" id="E21EE3DA-3168-D5F2-1D6F-B6047534A114">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>F18515F2-6AEB-D379-B2A2-0D2D164424B8</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="distance_next" id="20CDFD7C-42C3-4B77-009B-F89FD72B3087">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>D357C4F7-1BE7-38D4-F67A-531C9F1C3DD6</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="station_id" id="56B75887-D4E4-6DA4-72DE-8D21187F8F02">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<generatorID>6D98F59E-40F5-14EC-5237-3F68032A7393</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<importedID>E565973D-2F6C-E53B-1F97-A5AEE7A2F583</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<referedAttribute>7C8AE4BC-BF10-3442-F466-D21126415798</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="next_stop" id="2D6F9D14-62D4-4DAC-9774-75F07830E268">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<generatorID>043F03ED-9FE9-6B22-462A-77897F94B820</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<importedID>B90E897D-C13E-7414-1072-CE502BF74464</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>E21EE3DA-3168-D5F2-1D6F-B6047534A114</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="train_id" id="2DDC966B-6629-89E5-DACE-79581CBDF07B">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<generatorID>0A571812-AFE8-44BB-103A-F2E10FB7D13F</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<importedID>DAC62455-5FF6-E902-6E02-184D0C377125</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>558CC9A2-0FB2-EE6C-BC55-A8FFDEE6BC7B</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A185B68D-89CA-879E-41E8-F0D254BA457E" name="Linestops PK">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>A8D06B45-C906-50C8-8E44-AE78CC06F064</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E21EE3DA-3168-D5F2-1D6F-B6047534A114</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

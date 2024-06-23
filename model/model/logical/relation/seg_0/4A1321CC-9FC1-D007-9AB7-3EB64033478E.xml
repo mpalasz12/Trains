@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="station-location" directorySegmentName="seg_0" id="4A1321CC-9FC1-D007-9AB7-3EB64033478E">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>CACB1632-0B4A-957D-18F4-16CF78856C93</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<sourcePk>C9E9391D-A3D8-3644-524D-C6EBF4043828</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>FFFD5D8C-B62F-0E2F-BB3C-165F3D13E029</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>81F2D087-1DC7-B519-18C3-E15B71569E36</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
