@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9BD5DAC5-AE77-7456-49EB-625F0965386B" name="Tickets">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>DDE6DDF5-86BA-ACC1-ED4F-DD2404593618</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ticket_id" id="2FED5BE7-8D5B-D72B-DC82-DD129D28E103">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>6F9C090D-CACE-0990-A353-B376567FC542</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="train_id" id="260BEFBC-0700-F6E0-4B99-3634644826E0">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<generatorID>EEFD74F2-3578-2696-2C50-FD228D050DE6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<importedID>396A5202-C15B-2824-26CC-2939358AA37B</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>558CC9A2-0FB2-EE6C-BC55-A8FFDEE6BC7B</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="traveler_id" id="1A6DB2FC-B608-92F0-ECA2-26FA91F9370B">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<generatorID>8C87BC04-3FCD-2A83-6D83-748A47122725</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<importedID>92EDFBF0-144A-ABB4-AD33-B91F929AB508</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<referedAttribute>46776547-2376-279C-4C1A-574FFCAA54E5</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="linestop_id" id="58910166-409F-58E3-523A-B3752476A387">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:40 UTC</createdTime>
+<generatorID>8ED41950-CE20-2499-90C4-B8080A54BD6A</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<referedAttribute>E21EE3DA-3168-D5F2-1D6F-B6047534A114</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="linestop_id1" id="97B2180D-9E4E-2B97-B45C-92F824ECA3B2">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:06:50 UTC</createdTime>
+<generatorID>D89E9216-8D85-BA18-8BCC-29232E2F7886</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<referedAttribute>E21EE3DA-3168-D5F2-1D6F-B6047534A114</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="33383159-4BA7-EB24-653A-1D8441D94EE0" name="Tickets PK">
+<createdBy>sucholbluk31</createdBy>
+<createdTime>2024-06-23 15:02:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<importedID>41C98DEC-5182-52E9-F72A-FCB0E8EA5EF3</importedID>
+<engineerTo>
+<item key="2E1A633D-B760-B700-145D-811EF5EDA8B8" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2FED5BE7-8D5B-D72B-DC82-DD129D28E103</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

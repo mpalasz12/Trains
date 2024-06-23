@@ -1,10 +1,13 @@
 package dbservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.RestController;
 
 import dbservice.DAOs.*;
 import dbservice.models.*;
+
+import java.util.List;
 
 @RestController
 public class DatabaseController {
@@ -29,10 +32,9 @@ public class DatabaseController {
 			LineDAO lineDAO,
 			LocomotiveDAO locomotiveDAO,
 			TicketDAO ticketDAO,
-			WagonDAO wagonDAO
-	) { // add new DAOs as
-																								// arguments
-		// initialize new DAOs
+			WagonDAO wagonDAO) { // add new DAOs as
+									// arguments
+									// initialize new DAOs
 		this.trainDAO = trainDAO;
 		this.travelerDAO = travelerDAO;
 		this.cityDAO = cityDAO;
@@ -48,24 +50,42 @@ public class DatabaseController {
 	 * ---------------------------------- TRAIN ------------------------------------
 	 */
 
-	public int addTrain(Train train) {
+	public Integer addTrain(Train train) {
 		return trainDAO.addTrainGetID(train);
 	}
 
-	public void deleteTrain(int id) {
+	public void deleteTrain(Integer id) {
 		trainDAO.deleteTrain(id);
 	}
 
-	public void changeLocomotive(int id, int newLocomotiveID) {
+	public void changeLocomotive(Integer id, Integer newLocomotiveID) {
 		trainDAO.changeLocomotive(id, newLocomotiveID);
 	}
 
-	public void changeLinestop(int id, int nextLinestopID) {
+	public void changeLinestop(Integer id, Integer nextLinestopID) {
 		trainDAO.changeLinestop(id, nextLinestopID);
 	}
 
-	public void advanceTrain(int id) {
-		trainDAO.changeLinestop(id, linestopDAO.getNextLinestopID(trainDAO.getLinestopID(id)));
+	public Train getTrainByID(Integer id) {
+		return trainDAO.getTrainByID(id);
+	}
+
+	public void advanceTrain(Integer id) {
+		Train train = trainDAO.getTrainByID(id);
+
+		if (train.getCurr_linestop() != null) {
+			trainDAO.changeLinestop(id, linestopDAO.getNextLinestopID(train.getCurr_linestop()));
+		} else {
+			trainDAO.changeLinestop(id, lineDAO.getFirstStopID(train.getLine_id()));
+		}
+	}
+
+	public List<Train> getActiveTrains() {
+		return trainDAO.getActiveTrains();
+	}
+
+	public Integer getTrainCapacity(Integer train_id) {
+		return wagonDAO.getTrainCapacity(train_id);
 	}
 
 	/*
@@ -76,12 +96,16 @@ public class DatabaseController {
 		travelerDAO.addTraveler(traveler);
 	}
 
-	public void deleteTraveler(int id) {
+	public void deleteTraveler(Integer id) {
 		travelerDAO.deleteTraveler(id);
 	}
 
-	public void changeMail(String newMail, int id) {
+	public void changeMail(String newMail, Integer id) {
 		travelerDAO.changeMail(newMail, id);
+	}
+
+	public Integer getTravelerIDbyMail(String mail) {
+		return travelerDAO.getTravelerIDbyMail(mail);
 	}
 
 	/*
@@ -92,8 +116,18 @@ public class DatabaseController {
 		cityDAO.addCity(city);
 	}
 
-	public String getCity(int id) {
+	public String getCity(Integer id) {
 		return cityDAO.getCity(id);
+	}
+
+	public City getCityByName(String name) {
+		City city;
+		try {
+			city = cityDAO.getCityByName(name);
+		} catch (DataAccessException e) {
+			return null;
+		}
+		return city;
 	}
 
 	/*
@@ -104,21 +138,33 @@ public class DatabaseController {
 		stationDAO.addStation(station);
 	}
 
+	public Station getStation(Integer id) {
+		return stationDAO.getStation(id);
+	}
+
+	public List<Station> getAllStations() {
+		return stationDAO.getAllStations();
+	}
+
+	public List<Station> getStationsByCityId(Integer city_id) {
+		return stationDAO.getStationsByCityId(city_id);
+	}
+
 	/*
 	 * --------------------------------LINESTOP ------------------------------------
 	 */
 
 	// for regular stations, requires nextLinestop and nextDistance
-	public int addLinestop(Linestop linestop) {
+	public Integer addLinestop(Linestop linestop) {
 		return linestopDAO.addLinestopGetID(linestop);
 	}
 
 	// for terminus, doesn't requrie nextLinestop and nextDistance
-	public int addTerminus(Linestop linestop) {
+	public Integer addTerminus(Linestop linestop) {
 		return linestopDAO.addTerminusGetID(linestop);
 	}
 
-	public int getNextLinestopID(int id) {
+	public Integer getNextLinestopID(Integer id) {
 		return linestopDAO.getNextLinestopID(id);
 	}
 
@@ -126,55 +172,76 @@ public class DatabaseController {
 		return linestopDAO.getNextLinestopDistance(id);
 	}
 
-	public void setNextLinestop(int id, int nextLinestopID) {
+	public void setNextLinestop(Integer id, Integer nextLinestopID) {
 		linestopDAO.setNextLinestop(id, nextLinestopID);
 	}
 
-	public void setNextLinestopDistance(int id, int distance) {
+	public void setNextLinestopDistance(Integer id, Integer distance) {
 		linestopDAO.setNextLinestopDistance(id, distance);
 	}
-	
+
 	/*
 	 * --------------------------------LINE ----------------------------------------
 	 */
 
-	public int addLine(Line line) {
+	public Integer addLine(Line line) {
 		return lineDAO.addLineGetID(line);
 	}
 
+	public Line getLineByID(Integer lineID) {
+		return lineDAO.getLineByID(lineID);
+	}
+
+	public void updateLine(Line line) {
+		lineDAO.updateLine(line);
+	}
+
+	public Integer getFirstStopID(Integer lineID) {
+		return lineDAO.getFirstStopID(lineID);
+	}
+
 	/*
-	 * --------------------------------LOCOMOTIVE ------------------------------------
+	 * --------------------------------LOCOMOTIVE
+	 * ------------------------------------
 	 */
 
-	public void addLocomotive(Locomotive locomotive) {
-		locomotiveDAO.addLocomotive(locomotive);
+	public Integer addLocomotive(Locomotive locomotive) {
+		return locomotiveDAO.addLocomotive(locomotive);
 	}
 
 	/*
 	 * --------------------------------TICKET ------------------------------------
 	 */
 
-	public void addTicket(Ticket ticket) {
-		ticketDAO.addTicketGetID(ticket);
+	public Integer addTicket(Ticket ticket) {
+		return ticketDAO.addTicketGetID(ticket);
 	}
 
-	public void expireTicket(int id) {
+	public void expireTicket(Integer id) {
 		ticketDAO.expireTicket(id);
+	}
+
+	public List<Ticket> getTicketsByTravelerID(Integer travelerID) {
+		return ticketDAO.getTicketsByTravelerID(travelerID);
+	}
+
+	public List<Integer> getSeatsTaken(Integer trainID, Integer wagonNum) {
+		return ticketDAO.getSeatsTaken(trainID, wagonNum);
 	}
 
 	/*
 	 * --------------------------------WAGON ------------------------------------
 	 */
 
-	public int addWagon(Wagon wagon) {
+	public Integer addWagon(Wagon wagon) {
 		return wagonDAO.addWagonGetID(wagon);
 	}
 
-	public void deleteWagon(int id) {
+	public void deleteWagon(Integer id) {
 		wagonDAO.deleteWagon(id);
 	}
 
-	public void changeWagonNum(int id, int newWagonNum) {
+	public void changeWagonNum(Integer id, int newWagonNum) {
 		wagonDAO.changeWagonNum(id, newWagonNum);
 	}
 
@@ -182,11 +249,11 @@ public class DatabaseController {
 		return wagonDAO.getWagonNum(id);
 	}
 
-	public int getTrainID(int id) {
+	public Integer getTrainID(Integer id) {
 		return wagonDAO.getTrainID(id);
 	}
 
-	public void changeTrain(int id, int newTrainID) {
+	public void changeTrain(Integer id, Integer newTrainID) {
 		wagonDAO.changeTrain(id, newTrainID);
 	}
 }

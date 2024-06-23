@@ -4,13 +4,27 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Locomotive {
+	Integer id;
 	String model;
 	String originCountry;
 
 	public Locomotive() {
 	}
 
+	public Locomotive(String model, String originCountry) {
+		this.model = model;
+		this.originCountry = originCountry;
+	}
+
 	// getters and setters
+	public Integer getID() {
+		return id;
+	}
+
+	public void setID(Integer id) {
+		this.id = id;
+	}
+
 	public String getModel() {
 		return model;
 	}
