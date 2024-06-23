@@ -213,6 +213,14 @@ public class DatabaseController {
 		return locomotiveDAO.addLocomotive(locomotive);
 	}
 
+	public Locomotive getLocomotiveByID(Integer id) {
+		return locomotiveDAO.getLocomotiveByID(id);
+	}
+
+	public List<Locomotive> getAllLocomotives() {
+		return locomotiveDAO.getAllLocomotives();
+	}
+
 	/*
 	 * --------------------------------TICKET ------------------------------------
 	 */
@@ -265,3 +273,4 @@ public class DatabaseController {
 		return wagonDAO.getWagonsByTrainID(trainID);
 	}
 }
+

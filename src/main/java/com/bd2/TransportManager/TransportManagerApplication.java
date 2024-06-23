@@ -60,9 +60,9 @@ public class TransportManagerApplication {
 		database.addLine(line);
 
 		Locomotive loco = new Locomotive("Test", "Poland");
-		loco.setID(database.addLocomotive(loco));
+		loco.setLocomotive_id(database.addLocomotive(loco));
 
-		Train train = new Train(1, loco.getID());
+		Train train = new Train(1, loco.getLocomotive_id());
 		train.setTrain_id(database.addTrain(train));
 
 		Wagon wagon = new Wagon(1, 100, train.getTrain_id());

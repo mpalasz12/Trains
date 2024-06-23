@@ -308,4 +308,17 @@ public class DataService {
 	public Integer getTravelerIDbyMail(@RequestParam(name = "mail") String mail) {
 		return database.getTravelerIDbyMail(mail);
 	}
+
+	@GetMapping("/get_locomotive_by_id")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	public Locomotive getLocomotiveByID(@RequestParam(name = "locomotive_id") String locomotive_id) {
+		return database.getLocomotiveByID(Integer.parseInt(locomotive_id));
+	}
+
+	@GetMapping("/get_all_locomotives")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	public List<Locomotive> getAllLocomotives() {
+		return database.getAllLocomotives();
+	}
+
 }
