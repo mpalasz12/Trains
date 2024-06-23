@@ -2,6 +2,7 @@ package dbservice.DAOs;
 
 import dbservice.models.Linestop;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -22,13 +23,13 @@ public class LinestopDAO {
 
 	public Integer addTerminusGetID(Linestop linestop) {
 		String sql = "INSERT INTO Linestops (station_id) VALUES (?)";
-		jdbcTemplate.update(sql, linestop.getStationID());
+		jdbcTemplate.update(sql, linestop.getStation_id());
 		return acquireID();
 	}
 
 	public Integer addLinestopGetID(Linestop linestop) {
 		String sql = "INSERT INTO Linestops (next_linestop, distance_next, station_id) VALUES (?, ?, ?)";
-		jdbcTemplate.update(sql, linestop.getNextStop(), linestop.getNextDistance(), linestop.getStationID());
+		jdbcTemplate.update(sql, linestop.getNext_linestop(), linestop.getDistance_next(), linestop.getStation_id());
 		return acquireID();
 	}
 
@@ -50,5 +51,10 @@ public class LinestopDAO {
 	public void setNextLinestopDistance(Integer id, Integer distance) {
 		String sql = "UPDATE Linestops SET distance_next = ? WHERE linestop_id = ?";
 		jdbcTemplate.update(sql, distance, id);
+	}
+
+	public Linestop getLinestopByID(Integer id) {
+		String sql = "SELECT * FROM Linestops WHERE linestop_id = ?";
+		return jdbcTemplate.queryForObject(sql, new Object[] { id }, new BeanPropertyRowMapper<>(Linestop.class));
 	}
 }

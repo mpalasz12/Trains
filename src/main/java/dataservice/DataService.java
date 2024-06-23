@@ -172,9 +172,9 @@ public class DataService {
 		// create linestop terminus for new line
 		Linestop linestop = new Linestop(Integer.parseInt(station_id));
 		// acquire ID for linestop and upload to database
-		linestop.setID(database.addTerminus(linestop));
+		linestop.setLinestop_id(database.addTerminus(linestop));
 		// add line to database with terminus
-		Line line = new Line(name, linestop.getID());
+		Line line = new Line(name, linestop.getLinestop_id());
 		database.addLine(line);
 	}
 
@@ -208,10 +208,10 @@ public class DataService {
 				Integer.parseInt(station_id));
 
 		// add linestop to database, acquire ID
-		linestop.setID(database.addLinestop(linestop));
+		linestop.setLinestop_id(database.addLinestop(linestop));
 
 		// change line first stop to new linestop
-		line.setFirst_stop_id(linestop.getID());
+		line.setFirst_stop_id(linestop.getLinestop_id());
 
 		// update line in database
 		database.updateLine(line);
@@ -332,5 +332,11 @@ public class DataService {
 	public List<Line> getAllLines() {
 		return database.getAllLines();
 	}
-	
+
+	@GetMapping("/get_linestop_by_id")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	public Linestop getLinestopByID(@RequestParam(name = "linestop_id") String linestop_id) {
+		return database.getLinestopByID(Integer.parseInt(linestop_id));
+	}
+
 }
