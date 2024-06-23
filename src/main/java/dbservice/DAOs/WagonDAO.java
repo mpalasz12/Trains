@@ -50,7 +50,7 @@ public class WagonDAO {
 	}
 
 	public Integer getTrainCapacity(Integer train_id) {
-		String sql = "SELECT SUM(wagon_capacity * wagon_num) FROM Wagons WHERE train_id = ?";
+		String sql = "SELECT SUM(wagon_capacity) FROM Wagons WHERE train_id = ?";
 		return jdbcTemplate.queryForObject(sql, Integer.class, train_id);
 	}
 }
