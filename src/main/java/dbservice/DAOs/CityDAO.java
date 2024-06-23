@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class CityDAO {
 
@@ -28,5 +30,10 @@ public class CityDAO {
 	public City getCityByName(String name) {
 		String sql = "SELECT * FROM Cities WHERE name = ?";
 		return jdbcTemplate.queryForObject(sql, new Object[]{name}, new BeanPropertyRowMapper<>(City.class));
+	}
+
+	public List<City> getAllCities() {
+		String sql = "SELECT * FROM Cities";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(City.class));
 	}
 }

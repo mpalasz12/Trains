@@ -134,6 +134,10 @@ public class DatabaseController {
 		return city;
 	}
 
+	public List<City> getAllCities() {
+		return cityDAO.getAllCities();
+	}
+
 	/*
 	 * ---------------------------------STATION ------------------------------------
 	 */

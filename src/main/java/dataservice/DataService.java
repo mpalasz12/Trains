@@ -321,4 +321,9 @@ public class DataService {
 		return database.getAllLocomotives();
 	}
 
+	@GetMapping("/get_all_cities")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	public List<City> getAllCities() {
+		return database.getAllCities();
+	}
 }
