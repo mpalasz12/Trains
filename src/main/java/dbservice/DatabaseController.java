@@ -88,6 +88,10 @@ public class DatabaseController {
 		return wagonDAO.getTrainCapacity(train_id);
 	}
 
+	public List<Train> getAllTrains() {
+		return trainDAO.getAllTrains();
+	}
+
 	/*
 	 * -------------------------------- TRAVELER -----------------------------------
 	 */

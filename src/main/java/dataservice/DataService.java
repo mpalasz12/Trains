@@ -297,4 +297,9 @@ public class DataService {
 		return database.getWagonsByTrainID(Integer.parseInt(train_id));
 	}
 
+	@GetMapping("get_all_trains")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	public List<Train> getAllTrains() {
+		return database.getAllTrains();
+	}
 }

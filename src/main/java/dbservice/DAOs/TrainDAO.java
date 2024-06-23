@@ -57,4 +57,9 @@ public class TrainDAO {
 		String sql = "SELECT * FROM Trains WHERE curr_linestop IS NOT NULL";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Train.class));
 	}
+
+	public List<Train> getAllTrains() {
+		String sql = "SELECT * FROM Trains";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Train.class));
+	}
 }
