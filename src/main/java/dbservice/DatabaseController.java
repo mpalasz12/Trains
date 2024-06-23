@@ -215,6 +215,10 @@ public class DatabaseController {
 		return lineDAO.getAllLines();
 	}
 
+	public Line getLineByName(String name) {
+		return lineDAO.getLineByName(name);
+	}
+
 	/*
 	 * --------------------------------LOCOMOTIVE
 	 * ------------------------------------
