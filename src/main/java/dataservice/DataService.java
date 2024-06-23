@@ -286,14 +286,15 @@ public class DataService {
 	}
 
 	@GetMapping("get_seats_taken")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Integer> getSeatsTaken(@RequestParam(name = "train_id") String train_id, @RequestParam(name = "wagon_num") String wagon_num) {
 		return database.getSeatsTaken(Integer.parseInt(train_id), Integer.parseInt(wagon_num));
 	}
 
 	// TODO:
-	//  - pobieranie liczby dostepnych miejsc w pociagu? wagonie?
+	//  - usuwanie? jakies procedury usuwania, moze procedura uniewaznianai biletow jak pociag minie przystanek koncowy
+	//  - moze jakies sprawdzanie zeby nie mozna bylo ododac 2 biletow na to samo miejsce w tym samym wagonie
+	//  czy polaczenie train_id, wagon_num, seat_num i is_expired jest unikalne?
 	//  - moze jakies triggery i procedury przy usuwaniu roznych rzeczy
 	//  	- pociagu, przystanku, tego typu benc
-	//  trzeba uzgodnic czegog sie trzymamy, teraz nie jestem pewny
-	//  w jaki sposob to dalej robic wiec koncze na tym
 }
