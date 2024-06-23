@@ -25,6 +25,7 @@ function AddLine() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log(lineData);
         try {
             const response = await axios.post("http://localhost:8080/do_uzupelnienia", lineData);
             if (response.status === 200) {

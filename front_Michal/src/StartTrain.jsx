@@ -11,6 +11,7 @@ function StartTrain() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log(trainId);
         try {
             const response = await axios.post("http://localhost:8080/do_uzupelnienia", { id: trainId });
             if (response.status === 200) {
