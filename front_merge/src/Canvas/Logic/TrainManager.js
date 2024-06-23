@@ -3,6 +3,13 @@ import Train from "./Train";
 import axios from "axios";
 import Wagon from "./Wagon";
 
+// INSTRUKCJA
+// Dodałem póki co metode do lokomotyw i wagonów
+// Kolejność powinna być taka:
+// 1. Dodanie lokomotywy
+// 2. Dodanie pociągu i zebranie jego ID
+// 3. Dodanie wagonów z podpiętym train_id, numery wagonów dodać w pętli (obsługuje to processWagonList)
+
 // function for adding locomotive to database api
 export function addLocomotive(locomotive) {
 	event.preventDefault();
@@ -17,7 +24,26 @@ export function addLocomotive(locomotive) {
 	}
 }
 
-export function addWagon(wagon, train_id, wagon_num)
+export function addWagon(wagon, train_id, wagon_num) {
+	event.preventDefault();
+	try {
+		const params = new URLSearchParams();
+		params.append("wagon_num", wagon_num);
+		params.append("wagon_capacity", wagon.capacity);
+		params.append("train_id", train_id);
+		const response = axios.post('http://localhost:8080/data/add_wagon?' + params.toString());
+		console.log('Answer from server: ', response.data);
+	} catch (error) {
+		console.error("Error adding wagon: ", error);
+	}
+}
+
+export function processWagonList(wagonList, trainID) {
+	// iterate over wagons and add to db
+	for (let i = 0; i < wagonList.length; i++) {
+		addWagon(wagonList[i], trainID, String(i));
+	}
+}
 
 class TrainManager
 {
@@ -45,20 +71,31 @@ class TrainManager
         var wkd_wagons = [
             new Wagon("wkd1", 1, 20),
             new Wagon("wkd2", 1, 20),
-            new Wagon("wkd3", 1, 28),
-            new Wagon("wkd4", 2, 28),
-            new Wagon("wkd5", 2, 28),
-            new Wagon("wkd6", 3, 28)];
+            new Wagon("wkd3", 3, 20)];
+
+		// iterate over wagons and add to db
+		processWagonList(wkd_wagons, 1);
+		
             
         var skm_wagons = [
             new Wagon("skm1", 1, 28),
             new Wagon("skm2", 2, 28)];
+
+		// same
+		//for (let i = 0; i < skm_wagons.length; i++) {
+		//	addWagon(skm_wagons[i], 2, String(i));
+		//}
             
         var ls_wagons = [
             new Wagon("ls1", 1, 28),
             new Wagon("ls2", 2, 28),
             new Wagon("ls3", 2, 28),
             new Wagon("ls4", 2, 28)];
+
+		// same
+		//for (let i = 0; i < ls_wagons.length; i++) {
+		//	addWagon(ls_wagons[i], 3, String(i));
+		//}
             
         var ic_wagons = [
             new Wagon("ic1", 1, 10),
@@ -68,6 +105,11 @@ class TrainManager
             new Wagon("ic5", 1, 10),
             new Wagon("ic6", 1, 10),
             new Wagon("ic7", 1, 10)];
+
+		// same
+		//for (let i = 0; i < ic_wagons.length; i++) {
+		//	addWagon(ic_wagons[i], 4, String(i));
+		//}
 
         // Trains
         var WKD = new Train("WKD", IC9215, wkd_wagons, this.tracksManager.tracks[0]);
