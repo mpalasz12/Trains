@@ -1,0 +1,30 @@
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background: #f5f5f5;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-buttons {
+    margin-bottom: auto;
+}
+
+.sidebar-dev_button,
+.sidebar-button {
+    display: block;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.sidebar-dev_button:hover,
+.sidebar-button:hover {
+    background-color: #f0f0f0;
+}
+
+.sidebar .sidebar-dev_buttons {
+    margin-top: auto;
+    margin-bottom: 30px;
+}
