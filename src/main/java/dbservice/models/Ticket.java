@@ -26,68 +26,70 @@ public class Ticket {
 		this.is_expired = false;
 	}
 
-	// getters and setters
-	public Integer getTicketID() {
+	public Ticket(Integer ticket_id, Integer traveler_id, Integer first_stop, Integer last_stop, Integer train_id, int wagon_num, int seat_num, boolean is_expired) {
+		this.ticket_id = ticket_id;
+		this.traveler_id = traveler_id;
+		this.first_stop = first_stop;
+		this.last_stop = last_stop;
+		this.train_id = train_id;
+		this.wagon_num = wagon_num;
+		this.seat_num = seat_num;
+		this.is_expired = is_expired;
+	}
+
+	public Integer getTicket_id() {
 		return ticket_id;
 	}
 
-	public void setTicketID(Integer ticket_id) {
+	public void setTicket_id(Integer ticket_id) {
 		this.ticket_id = ticket_id;
 	}
 
-	public Integer getTravelerID() {
+	public Integer getTraveler_id() {
 		return traveler_id;
 	}
 
-	public void setTravelerID(Integer traveler_id) {
+	public void setTraveler_id(Integer traveler_id) {
 		this.traveler_id = traveler_id;
 	}
 
-	public Integer getFirstStop() {
+	public Integer getFirst_stop() {
 		return first_stop;
 	}
 
-	public void setFirstStop(Integer first_stop) {
+	public void setFirst_stop(Integer first_stop) {
 		this.first_stop = first_stop;
 	}
 
-	public Integer getLastStop() {
+	public Integer getLast_stop() {
 		return last_stop;
 	}
 
-	public void setLastStop(Integer last_stop) {
+	public void setLast_stop(Integer last_stop) {
 		this.last_stop = last_stop;
 	}
 
-	public Integer getTrainID() {
+	public Integer getTrain_id() {
 		return train_id;
 	}
 
-	public void setTrainID(Integer train_id) {
+	public void setTrain_id(Integer train_id) {
 		this.train_id = train_id;
 	}
 
-	public int getWagonNum() {
+	public int getWagon_num() {
 		return wagon_num;
 	}
 
-	public void setWagonNum(int wagon_num) {
+	public void setWagon_num(int wagon_num) {
 		this.wagon_num = wagon_num;
 	}
 
-	public int getSeatNum() {
+	public int getSeat_num() {
 		return seat_num;
 	}
 
-	public void setSeatNum(int seat_num) {
+	public void setSeat_num(int seat_num) {
 		this.seat_num = seat_num;
-	}
-
-	public boolean getIsExpired() {
-		return is_expired;
-	}
-
-	public void setIsExpired(boolean is_expired) {
-		this.is_expired = is_expired;
 	}
 }

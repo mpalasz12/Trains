@@ -23,9 +23,9 @@ public class TicketDAO {
 	}
 
 	public Integer addTicketGetID(Ticket ticket) {
-		String sql = "INSERT INTO Tickets (traveler_id, first_stop, last_stop, train_id, wagon_num) VALUES (?, ?, ?, ?, ?)";
-		jdbcTemplate.update(sql, ticket.getTravelerID(), ticket.getFirstStop(), ticket.getLastStop(),
-				ticket.getTrainID(), ticket.getWagonNum());
+		String sql = "INSERT INTO Tickets (traveler_id, first_stop, last_stop, train_id, wagon_num, seat_num) VALUES (?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, ticket.getTraveler_id(), ticket.getFirst_stop(), ticket.getLast_stop(),
+				ticket.getTrain_id(), ticket.getWagon_num(), ticket.getSeat_num());
 		return acquireID();
 	}
 

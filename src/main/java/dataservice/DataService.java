@@ -114,7 +114,7 @@ public class DataService {
 				Integer.parseInt(train_id),
 				Integer.parseInt(wagon_num),
 				Integer.parseInt(seat_num));
-		ticket.setTicketID(database.addTicket(ticket));
+		ticket.setTicket_id(database.addTicket(ticket));
 	}
 
 	@GetMapping("/get_traveler_mail")
