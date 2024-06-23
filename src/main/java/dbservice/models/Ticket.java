@@ -92,4 +92,12 @@ public class Ticket {
 	public void setSeat_num(int seat_num) {
 		this.seat_num = seat_num;
 	}
+
+	public boolean isExpired() {
+		return is_expired;
+	}
+
+	public void setExpired(boolean is_expired) {
+		this.is_expired = is_expired;
+	}
 }
