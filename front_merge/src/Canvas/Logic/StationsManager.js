@@ -47,6 +47,7 @@ class StationsManager
         const response = await axios.get("http://localhost:8080/data/get_all_cities");
 
         console.log(`Adding stasdasdasdadsadauhaisdufyaisdofosaidfoasdsdadsation:`);
+        console.log(response.data);
 
         const stations = response.data;
         stations.forEach(station => {

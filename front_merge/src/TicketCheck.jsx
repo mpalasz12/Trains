@@ -4,21 +4,24 @@ import axios from 'axios';
 
 function TicketCheck() {
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [ticketId, setTicketId] = useState('');
+    const [mail, setMail] = useState('');
     const [ticketData, setTicketData] = useState(null);
+    const [travelerData, setTravelerData] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.get("http://localhost:8080/tickets_by_mail", {
+            console.log(mail);
+            const response = await axios.get("http://localhost:8080/tickets_by_mail", null, {
                 params: {
-                    id: ticketId
+                    mail: mail
                 }
             });
+            console.log("Ticket checked successfully");
             setTicketData(response.data);
             setIsSubmitted(true);
         } catch (error) {
-            console.error('There was an error in !', error);
+            console.error('There was an error in TicketCheck!', error);
         }
     };
 
@@ -28,8 +31,8 @@ function TicketCheck() {
                 Podaj maila:
                 <input
                     type="text"
-                    value={ticketId}
-                    onChange={(e) => setTicketId(e.target.value)}
+                    value={mail}
+                    onChange={(e) => setMail(e.target.value)}
                 />
             </label>
             <input type="submit" value="Sprawdź" />
@@ -37,35 +40,34 @@ function TicketCheck() {
                 <div className="ticket-details">
                     <div className="info-container">
                         <span className="info-label">ID Biletu:</span>
-                        <span className="info">{ticketData.id}</span>
+                        <span className="info">{ticketData.ticket_id}</span>
                     </div>
                     <div className="info-container">
                         <span className="info-label">Stacja początkowa:</span>
-                        <span className="info">{ticketData.startStation}</span>
+                        <span className="info">{ticketData.first_stop}</span>
                     </div>
                     <div className="info-container">
                         <span className="info-label">Stacja końcowa:</span>
-                        <span className="info">{ticketData.endStation}</span>
+                        <span className="info">{ticketData.last_stop}</span>
                     </div>
-                    <div className="info-container">
-                        <span className="info-label">Imię:</span>
-                        <span className="info">{ticketData.firstName}</span>
-                    </div>
-                    <div className="info-container">
-                        <span className="info-label">Nazwisko:</span>
-                        <span className="info">{ticketData.lastName}</span>
-                    </div>
+
+
+
                     <div className="info-container">
                         <span className="info-label">Pociąg:</span>
-                        <span className="info">{ticketData.train}</span>
+                        <span className="info">{ticketData.train_id}</span>
                     </div>
                     <div className="info-container">
                         <span className="info-label">Wagon:</span>
-                        <span className="info">{ticketData.wagon}</span>
+                        <span className="info">{ticketData.wagon_num}</span>
                     </div>
                     <div className="info-container">
                         <span className="info-label">Miejsce:</span>
-                        <span className="info">{ticketData.seat}</span>
+                        <span className="info">{ticketData.seat_num}</span>
+                    </div>
+                    <div className="info-container">
+                        <span className="info-label">Czy niewazny:</span>
+                        <span className="info">{ticketData.is_expired}</span>
                     </div>
                 </div>
             )}
@@ -74,3 +76,14 @@ function TicketCheck() {
 }
 
 export default TicketCheck;
+
+/*
+                    <div className="info-container">
+                        <span className="info-label">Imię:</span>
+                        <span className="info">{ticketData.firstName}</span>
+                    </div>
+                    <div className="info-container">
+                        <span className="info-label">Nazwisko:</span>
+                        <span className="info">{ticketData.lastName}</span>
+                    </div>
+*/
