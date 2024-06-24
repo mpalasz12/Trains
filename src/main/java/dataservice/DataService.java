@@ -101,7 +101,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_ticket")
-	// @CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addTicket(
 			@RequestParam(name = "traveler_id") String traveler_id,
 			@RequestParam(name = "first_stop") String first_stop,
