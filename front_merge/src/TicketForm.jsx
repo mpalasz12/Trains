@@ -56,43 +56,48 @@ function TicketForm() {
             wagon,
             seat
         });
-
+    
         const travelerData = {
             first_name: firstName,
             last_name: lastName,
             mail: mail
         };
-
+    
         try {
-            await axios.post("http://localhost:8080/data/add_traveler", travelerData);
+            await axios.post('http://localhost:8080/data/add_traveler', travelerData);
             console.log("Traveler added successfully");
         } catch (error) {
             console.error("Error adding traveler:", error);
             return;
         }
-
-        const response = await axios.get("http://localhost:8080/data/get_traveler_id_by_mail", {
-            params: { mail: mail }
-        });
-        const travelerId = response.data;
-
-        const ticketData = {
-            traveler_id: travelerId,
-            first_stop: startStation,
-            last_stop: endStation,
-            train_id: train,
-            wagon_num: wagon,
-            seat_num: seat
-        };
-
+    
         try {
-            await axios.post("http://localhost:8080/data/add_ticket", ticketData);
-            console.log("Ticket added successfully");
-            setIsSubmitted(true); // Assuming you want to set some state after successful submission
+            const response = await axios.get("http://localhost:8080/data/get_traveler_id_by_mail", {
+                params: { mail: mail }
+            });
+            const travelerId = response.data;
+    
+            const ticketData = {
+                traveler_id: travelerId,
+                first_stop: startStation,
+                last_stop: endStation,
+                train_id: train,
+                wagon_num: wagon,
+                seat_num: seat
+            };
+    
+            try {
+                const ticketResponse = await axios.post("http://localhost:8080/data/add_ticket", ticketData);
+                console.log("Ticket added successfully");
+                const ticketId = ticketResponse.data.ticket_id;
+                setIsSubmitted(true);
+            } catch (error) {
+                console.error("Error adding ticket:", error);
+            }
         } catch (error) {
-            console.error("Error adding ticket:", error);
+            console.error("Error fetching traveler ID:", error);
         }
-
+    
         setIsSubmitted(true);
     };
 

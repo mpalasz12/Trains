@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import './AddLine.css';
 import axios from 'axios';
 
+// export function procesLine() {
+//     pass    
+// }
+
 function AddLine() {
     const [lineData, setLineData] = useState({
         stations: [''],
@@ -27,7 +31,7 @@ function AddLine() {
         event.preventDefault();
         console.log(lineData);
         try {
-            const response = await axios.post("http://localhost:8080/do_uzupelnienia", lineData);
+            const response = await axios.post("http://localhost:8080/add_line", lineData);
             if (response.status === 200) {
                 alert('Linia została dodana pomyślnie!');
             } else {

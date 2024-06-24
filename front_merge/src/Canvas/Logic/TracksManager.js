@@ -38,5 +38,21 @@ class TracksManager
             track4
         ]
     }
+
+    async init_lines() {
+        try {
+            const response = await axios.get("http://localhost:8080/data/get_all_lines");    
+            const stations = response.data;
+            stations.forEach(station => {
+              
+            });
+            return stations;
+        } catch (error) {
+            console.error("Error initializing stations:", error);
+            return [];
+        }
+      }
+    
+
 }
 export default TracksManager;
