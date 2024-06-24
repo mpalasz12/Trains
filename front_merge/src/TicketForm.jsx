@@ -134,7 +134,7 @@ function TicketForm() {
         // Add ticket
         try {
             console.log("jestem w add ticket");
-            const response = await axios.post('http://localhost:8080/data/add_ticket', null, {
+            const response = await axios.post('http://localhost:8080/data/add_ticket', {
                 params: {
                     traveler_id: travelerID,
                     first_stop: lineData[1],
@@ -148,7 +148,7 @@ function TicketForm() {
 
             // Fetch ticket ID
             console.log("jestem w get ticketID");
-            const ticketResponse = await axios.get('http://localhost:8080/data/tickets_by_mail', {
+            const ticketResponse = await axios.get('http://localhost:8080/data/tickets_by_mail', null, {
                 params: { mail: mail }
             });
             console.log(ticketResponse.data);

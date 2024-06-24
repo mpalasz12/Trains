@@ -90,7 +90,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_traveler")
-	// @CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public void addTraveler(
 			@RequestParam(name = "first_name") String first_name,
 			@RequestParam(name = "last_name") String last_name,

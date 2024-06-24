@@ -12,6 +12,7 @@ function Statistics() {
 
 	const [stations, setStations] = useState([]);
 	const [lines, setLines] = useState([]);
+	const [mailes, setMailes] = useState([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -29,9 +30,33 @@ function Statistics() {
 			} catch (error) {
 				console.error("Error getting all lines:", error);
 			}
+			try {
+				const responseMailes = await axios.get('http://localhost:8080/data/get_all_mails', null, {});
+				console.log("All mailes, response:", responseMailes.data);
+				setMailes(responseMailes.data);
+			} catch (error) {
+				console.error("Error getting all mailes:", error);
+			}
+		};
+		const fetchTicketsByMail = async (mail) => {
+			try {
+				const response = await axios.get('http://localhost:8080/data/get_tickets_by_mail', null, {
+					params: { mail: mail }
+				});
+				return response.data;
+			} catch (error) {
+				console.error(`Error fetching tickets for mail ${mail}:`, error);
+				return null;
+			}
+		};
+		const handleFetchTickets = async () => {
+			const ticketsByMail = await Promise.all(mailes.map(mail => fetchTicketsByMail(mail)));
+			console.log(ticketsByMail);
 		};
 
+
 		fetchData();
+		handleFetchTickets();
 	}, []);
 
 	return (
