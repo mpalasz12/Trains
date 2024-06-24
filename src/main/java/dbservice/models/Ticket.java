@@ -93,11 +93,11 @@ public class Ticket {
 		this.seat_num = seat_num;
 	}
 
-	public boolean isExpired() {
+	public boolean getIs_expired() {
 		return is_expired;
 	}
 
-	public void setExpired(boolean is_expired) {
+	public void setIs_expired(boolean is_expired) {
 		this.is_expired = is_expired;
 	}
 }

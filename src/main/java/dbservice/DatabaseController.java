@@ -8,6 +8,7 @@ import dbservice.DAOs.*;
 import dbservice.models.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class DatabaseController {
@@ -74,6 +75,7 @@ public class DatabaseController {
 		Train train = trainDAO.getTrainByID(id);
 
 		if (train.getCurr_linestop() != null) {
+			expireTicketsWithLastLinestop(train.getTrain_id(), train.getCurr_linestop());
 			trainDAO.changeLinestop(id, linestopDAO.getNextLinestopID(train.getCurr_linestop()));
 		} else {
 			trainDAO.changeLinestop(id, linestopDAO.getFirstLinestopID(train.getLine_id()));
@@ -290,6 +292,15 @@ public class DatabaseController {
 
 	public List<Ticket> getTicketsByTrainID(Integer trainID) {
 		return ticketDAO.getTicketsByTrainID(trainID);
+	}
+
+	public void expireTicketsWithLastLinestop(Integer trainID, Integer linestopID) {
+		List<Ticket> tickets = getTicketsByTrainID(trainID);
+		for (Ticket ticket : tickets) {
+			if (ticket.getLast_stop() == linestopID) {
+				expireTicket(ticket.getTicket_id());
+			}
+		}
 	}
 
 	/*
