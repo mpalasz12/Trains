@@ -76,7 +76,7 @@ public class DatabaseController {
 		if (train.getCurr_linestop() != null) {
 			trainDAO.changeLinestop(id, linestopDAO.getNextLinestopID(train.getCurr_linestop()));
 		} else {
-			trainDAO.changeLinestop(id, lineDAO.getFirstStopID(train.getLine_id()));
+			trainDAO.changeLinestop(id, linestopDAO.getFirstLinestopID(train.getLine_id()));
 		}
 	}
 
@@ -195,25 +195,32 @@ public class DatabaseController {
 	public Linestop getLinestopByID(Integer id) {
 		return linestopDAO.getLinestopByID(id);
 	}
+
+	public List<Integer> findLineID(String startName, String endName) {
+		return linestopDAO.findLineID(startName, endName);
+	}
 	/*
 	 * --------------------------------LINE ----------------------------------------
 	 */
 
 	public Integer createLine(String name, Integer stationId) {
-		Linestop linestop = new Linestop(stationId);
+		Line line = new Line(name);
+		Integer lineID = addLine(line);
+		Linestop linestop = new Linestop(stationId, lineID);
+		linestop.setIs_first(true);	
 		// acquire ID for linestop and upload to database
 		linestop.setLinestop_id(addTerminus(linestop));
 		// add line to database with terminus
-		Line line = new Line(name, linestop.getLinestop_id());
-		return addLine(line);
+		return lineID;
 	}
 
 	public void addStopToLine(Integer lineID, Integer distance, Integer stationID) {
-		Line line = getLineByID(lineID);
-		Linestop linestop = new Linestop(line.getFirst_stop_id(), distance, stationID);
+		//Line line = getLineByID(lineID);
+		//
+		// Get first linestop ID and unset it for the found match, set this linestop as first
+		Linestop linestop = new Linestop(linestopDAO.getFirstAndUnset(lineID), distance, stationID, lineID, true);
 		linestop.setLinestop_id(addLinestop(linestop));
-		line.setFirst_stop_id(linestop.getLinestop_id());
-		updateLine(line);
+		//updateLine(line);
 	}
 
 	public Integer addLine(Line line) {
@@ -224,12 +231,12 @@ public class DatabaseController {
 		return lineDAO.getLineByID(lineID);
 	}
 
-	public void updateLine(Line line) {
-		lineDAO.updateLine(line);
-	}
+	//public void updateLine(Line line) {
+	//	lineDAO.updateLine(line);
+	//}
 
 	public Integer getFirstStopID(Integer lineID) {
-		return lineDAO.getFirstStopID(lineID);
+		return linestopDAO.getFirstLinestopID(lineID);
 	}
 
 	public List<Line> getAllLines() {

@@ -8,20 +8,20 @@ import jakarta.persistence.Id;
 public class Line {
 	private Integer line_id;
 	private String name;
-	private Integer first_stop_id;
+	//private Integer first_stop_id;
 
 	public Line() {
 	}
 
-	public Line(String name, Integer first_stop_id) {
+	public Line(String name) {
 		this.name = name;
-		this.first_stop_id = first_stop_id;
+		//this.first_stop_id = first_stop_id;
 	}
 
-	public Line(Integer id, String name, Integer first_stop_id) {
+	public Line(Integer id, String name) {
 		this.line_id = id;
 		this.name = name;
-		this.first_stop_id = first_stop_id;
+		//this.first_stop_id = first_stop_id;
 	}
 
 	public void setLine_id(Integer id) {
@@ -40,11 +40,11 @@ public class Line {
 		return name;
 	}
 
-	public void setFirst_stop_id(Integer id) {
-		this.first_stop_id = id;
-	}
+	//public void setFirst_stop_id(Integer id) {
+	//	this.first_stop_id = id;
+	//}
 
-	public Integer getFirst_stop_id() {
-		return first_stop_id;
-	}
+	//public Integer getFirst_stop_id() {
+	//	return first_stop_id;
+	//}
 }

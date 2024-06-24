@@ -23,25 +23,25 @@ public class LineDAO {
 	}
 
 	public Integer addLineGetID(Line line) {
-		String sql = "INSERT INTO Lines (name, first_stop_id) VALUES (?, ?)";
-		jdbcTemplate.update(sql, line.getName(), line.getFirst_stop_id());
+		String sql = "INSERT INTO Lines (name) VALUES (?)";
+		jdbcTemplate.update(sql, line.getName());
 		return acquireID();
 	}
 
-	public Integer getFirstStopID(Integer lineID) {
-		String sql = "SELECT first_stop_id FROM Lines WHERE line_id = ?";
-		return jdbcTemplate.queryForObject(sql, Integer.class, lineID);
-	}
+	//public Integer getFirstStopID(Integer lineID) {
+	//	String sql = "SELECT first_stop_id FROM Lines WHERE line_id = ?";
+	//	return jdbcTemplate.queryForObject(sql, Integer.class, lineID);
+	//}
 
 	public Line getLineByID(Integer lineID) {
 		String sql = "SELECT * FROM Lines WHERE line_id = ?";
 		return jdbcTemplate.queryForObject(sql, new Object[] { lineID }, new BeanPropertyRowMapper<>(Line.class));
 	}
 
-	public void updateLine(Line line) {
-		String sql = "UPDATE Lines SET name = ?, first_stop_id = ? WHERE line_id = ?";
-		jdbcTemplate.update(sql, line.getName(), line.getFirst_stop_id(), line.getLine_id());
-	}
+	//public void updateLine(Line line) {
+	//	String sql = "UPDATE Lines SET name = ?, first_stop_id = ? WHERE line_id = ?";
+	//	jdbcTemplate.update(sql, line.getName(), line.getFirst_stop_id(), line.getLine_id());
+	//}
 
 	public List<Line> getAllLines() {
 		String sql = "SELECT * FROM Lines";
