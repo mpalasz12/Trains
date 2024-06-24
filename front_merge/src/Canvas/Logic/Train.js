@@ -1,6 +1,7 @@
+import axios from 'axios';
 
 class Train {
-    constructor(name, locomotive, wagons, track)
+    constructor(name, locomotive, wagons, track, train_id)
     {
       this.posX = track.getCurrentStation().posX;
       this.posY = track.getCurrentStation().posY;
@@ -9,6 +10,7 @@ class Train {
       this.locomotive = locomotive;
       this.wagons = wagons;
       this.distanceToDestination = this.calculateDistanceToDestination();
+      this.train_id = train_id;
     }
 
     get_occupied_seats()
@@ -33,7 +35,7 @@ class Train {
 
     update_position(deltaTime)
     {
-      const distanceToTravel = this.locomotive.speed * deltaTime/ 50000;
+      const distanceToTravel = this.locomotive.speed * deltaTime/ 5000;
       const distanceRatio = distanceToTravel / this.distanceToDestination;
   
       this.posX += (this.track.getNextStation().posX - this.posX) * distanceRatio;
@@ -41,7 +43,10 @@ class Train {
   
 
       if(this.distanceToDestination < 1)
+      {
         this.track.goToNextTation();
+        this.updateTickets();
+      }
       
       this.distanceToDestination = this.calculateDistanceToDestination();
     }
@@ -51,6 +56,34 @@ class Train {
         Math.pow(this.track.getNextStation().posX - this.posX, 2) +
         Math.pow(this.track.getNextStation().posY - this.posY, 2)
       );
+    }
+
+    resetWagonsSeats()
+    {
+      for(let i = 0; i < this.wagons.length; i++)
+      {
+        this.wagons[i].resetSeats();
+      }
+    }
+
+    async updateTickets(){
+      await axios.post('http://localhost:8080/data/advance_train', null, {
+        params: {
+            train_id: this.train_id
+        }
+      });
+
+      const tickets = await axios.get("http://localhost:8080/data/maciek_ticket", {
+        params: { 
+          train_id: this.train_id
+        }
+      });
+      this.resetWagonsSeats();
+      for(let i = 0; i < tickets.data.length; i++)
+      {
+        let ticket = tickets.data[i];
+        this.wagons[ticket.wagon_num-1].occupySeat(ticket.seat_num-1, ticket.traveler_name, ticket.traveler_surname, ticket.end_station);
+      }
     }
 }
 

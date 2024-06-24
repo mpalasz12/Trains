@@ -20,6 +20,12 @@ class Wagon {
       }
     }
 
+    occupySeat(seat_num, traveler_name, traveler_surname, end_station, ticket_id)
+    {
+        var traveler = new Traveler(traveler_name, traveler_surname, end_station, ticket_id);
+        this.seats[seat_num].occupy(traveler);
+    }
+
     // occupyRandomSeats(numSeatsToOccupy) {
     //   var FooTraveler = new Traveler("Marek", "Mostowiak", "Babice", "69420");
     //   const seatIndices = Array.from({ length: this.capacity }, (_, index) => index);

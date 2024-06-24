@@ -19,6 +19,7 @@ function App() {
 
     const refreshTrainData = () => {
         /* dodam w nastepnym commitcie :) */
+        console.log("Refres Tickets On Demand!")
     }
 
     return (

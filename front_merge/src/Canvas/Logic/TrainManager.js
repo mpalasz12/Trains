@@ -113,10 +113,10 @@ class TrainManager
 		//}
 
         // Trains
-        var WKD = new Train("WKD", IC9215, wkd_wagons, this.tracksManager.tracks[0]);
-        var SKM = new Train("SKM", LI3122, skm_wagons, this.tracksManager.tracks[1]);
-        var LS = new Train("ŁS", LI3122, ls_wagons, this.tracksManager.tracks[2]);
-        var IC = new Train("IC", KK1233, ic_wagons, this.tracksManager.tracks[3]);
+        var WKD = new Train("WKD", IC9215, wkd_wagons, this.tracksManager.tracks[0], 1);
+        var SKM = new Train("SKM", LI3122, skm_wagons, this.tracksManager.tracks[1], 2);
+        var LS = new Train("ŁS", LI3122, ls_wagons, this.tracksManager.tracks[2], 3);
+        var IC = new Train("IC", KK1233, ic_wagons, this.tracksManager.tracks[3], 4);
 
         return [
             WKD,

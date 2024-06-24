@@ -1,10 +1,10 @@
 class Traveler {
-    constructor(name, surname, end_station, ticket_id)
+    constructor(name, surname, end_station)
     {
+        console.log("traveler: " + name);
         this.name = name;
         this.surname = surname;
         this.end_station = end_station;
-        this.ticket_id = ticket_id;
     }
 }
 
