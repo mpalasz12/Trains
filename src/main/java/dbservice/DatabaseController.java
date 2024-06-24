@@ -127,6 +127,10 @@ public class DatabaseController {
 		return ticketDAO.getTicketCountByTravelerID(traveler.getTraveler_id());
 	}
 
+	public Traveler getTravelerByID(Integer id) {
+		return travelerDAO.getTravelerByID(id);
+	}
+
 	/*
 	 * ---------------------------------- CITY ------------------------------------
 	 */
@@ -310,6 +314,10 @@ public class DatabaseController {
 				expireTicket(ticket.getTicket_id());
 			}
 		}
+	}
+
+	public Ticket getTicketByID(Integer ticketID) {
+		return ticketDAO.getTicketByID(ticketID);
 	}
 
 	/*

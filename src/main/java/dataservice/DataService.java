@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/data") // sciezka bazowa dla wszystkich endpointow (localhost:8000/data)
@@ -394,5 +396,22 @@ public class DataService {
 	@CrossOrigin(origins = "http://localhost:5173")
 	public Integer getTicketCountByMail(@RequestParam(name = "mail") String mail) {
 		return database.getTicketCount(mail);
+	}
+
+	@GetMapping("/maciek_ticket")
+	@CrossOrigin(origins = "http://localhost:5173")
+	public Map<String, String> getMaciekTicket(@RequestParam(name = "ticket_id") String ticket_id) {
+		Map<String, String> response = new HashMap<>();
+		Ticket ticket = database.getTicketByID(Integer.parseInt(ticket_id));
+		Traveler traveler = database.getTravelerByID(ticket.getTraveler_id());
+		Station end_station = database.getStationByLinestopID(ticket.getLast_stop());
+
+		response.put("seat_num", Integer.toString(ticket.getSeat_num()));
+		response.put("wagon_num", Integer.toString(ticket.getWagon_num()));
+		response.put("traveler_name", traveler.getFirst_name());
+		response.put("traveler_surname", traveler.getLast_name());
+		response.put("end_station", end_station.getName());
+		// response.put("ticket_id", Integer.toString(ticket.getTicket_id()));
+		return response;
 	}
 }

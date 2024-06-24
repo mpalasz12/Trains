@@ -57,6 +57,10 @@ public class TicketDAO {
 	public Integer getTicketCountByTravelerID(Integer travelerID) {
 		String sql = "SELECT COUNT(*) FROM Tickets WHERE traveler_id = ?";
 		return jdbcTemplate.queryForObject(sql, Integer.class, travelerID);
+	}
 
+	public Ticket getTicketByID(Integer ticketID) {
+		String sql = "SELECT * FROM Tickets WHERE ticket_id = ?";
+		return jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Ticket.class), ticketID);
 	}
 }
