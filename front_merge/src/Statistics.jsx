@@ -13,6 +13,24 @@ function Statistics() {
 	const [stations, setStations] = useState([]);
 	const [lines, setLines] = useState([]);
 	const [mailes, setMailes] = useState([]);
+	const [ticketCounts, setTicketCounts] = useState([]);
+
+	const handleFetchTickets = async () => {
+		const newTicketCounts = [];
+		for (const mail of mailes) {
+			try {
+				const response = await axios.get('http://localhost:8080/data/get_ticket_count_by_mail', {
+					params: { mail: mail }
+				});
+				const tickets = response.data;
+				newTicketCounts.push({mail: mail, count: tickets});
+				console.log(`Tickets for mail ${mail}:`, tickets);
+			} catch (error) {
+				console.error(`Error fetching tickets for mail ${mail}:`, error);
+			}
+		}
+		setTicketCounts(newTicketCounts);
+	};
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -38,26 +56,15 @@ function Statistics() {
 				console.error("Error getting all mailes:", error);
 			}
 		};
-		const fetchTicketsByMail = async (mail) => {
-			try {
-				const response = await axios.get('http://localhost:8080/data/get_tickets_by_mail', null, {
-					params: { mail: mail }
-				});
-				return response.data;
-			} catch (error) {
-				console.error(`Error fetching tickets for mail ${mail}:`, error);
-				return null;
-			}
-		};
-		const handleFetchTickets = async () => {
-			const ticketsByMail = await Promise.all(mailes.map(mail => fetchTicketsByMail(mail)));
-			console.log(ticketsByMail);
-		};
-
 
 		fetchData();
-		handleFetchTickets();
 	}, []);
+
+	useEffect(() => {
+		if (mailes.length > 0) {
+			handleFetchTickets();
+		}
+	}, [mailes]);
 
 	return (
 		<div className="table-container">
@@ -114,6 +121,23 @@ function Statistics() {
 						</tr>
 					);
 				})}
+				</tbody>
+			</table>
+			<h2>Tickets by Mail</h2>
+			<table className="tickets">
+				<thead>
+				<tr>
+					<th>Mail</th>
+					<th>Ticket Count</th>
+				</tr>
+				</thead>
+				<tbody>
+				{ticketCounts.map((item) => (
+					<tr key={item.mail}>
+						<td>{item.mail}</td>
+						<td>{item.count}</td>
+					</tr>
+				))}
 				</tbody>
 			</table>
 		</div>
