@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import dbservice.DAOs.*;
 import dbservice.models.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @RestController
 public class DatabaseController {
@@ -370,6 +367,18 @@ public class DatabaseController {
 		response.put("traveler_surname", traveler.getLast_name());
 		response.put("end_station", end_station.getName());
 		// response.put("ticket_id", Integer.toString(ticket.getTicket_id()));
+
+		return response;
+	}
+
+	public List<Map<String, String>> getAllSimTicketsByTrain(Integer train_id) {
+		List<Ticket> tickets = getTicketsByTrainID(train_id);
+		List<Map<String, String>> response = new ArrayList<>();
+
+		for (Ticket ticket : tickets) {
+			response.add(getSimTicket(ticket.getTicket_id()));
+		}
+
 		return response;
 	}
 }
