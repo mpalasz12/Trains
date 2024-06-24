@@ -288,6 +288,10 @@ public class DatabaseController {
 		return ticketDAO.getSeatsTaken(trainID, wagonNum);
 	}
 
+	public List<Ticket> getTicketsByTrainID(Integer trainID) {
+		return ticketDAO.getTicketsByTrainID(trainID);
+	}
+
 	/*
 	 * --------------------------------WAGON ------------------------------------
 	 */

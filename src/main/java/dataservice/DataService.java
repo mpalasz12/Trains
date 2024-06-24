@@ -99,7 +99,7 @@ public class DataService {
 	}
 
 	@PostMapping("/add_ticket")
-	@CrossOrigin(origins = "http://localhost:5173")
+	// @CrossOrigin(origins = "http://localhost:5173")
 	public void addTicket(
 			@RequestParam(name = "traveler_id") String traveler_id,
 			@RequestParam(name = "first_stop") String first_stop,
@@ -342,33 +342,45 @@ public class DataService {
 	}
 
 	@GetMapping("/get_linestop_by_id")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Linestop getLinestopByID(@RequestParam(name = "linestop_id") String linestop_id) {
 		return database.getLinestopByID(Integer.parseInt(linestop_id));
 	}
 
 
 	@GetMapping("/get_line_by_name")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Line getLineByName(@RequestParam(name = "name") String name) {
 		return database.getLineByName(name);
 	}
 
 	@GetMapping("/get_station_by_linestop_id")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Station getStationByLinestopID(@RequestParam(name = "linestop_id") String linestop_id) {
 		return database.getStationByLinestopID(Integer.parseInt(linestop_id));
 	}
 
 	@GetMapping("/find_connection")
-	//@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public List<Integer> findConnection(@RequestParam(name = "start_name") String start_name, @RequestParam(name = "end_name") String end_name) {
 		return database.findLineID(start_name, end_name);
 	}
 
 	@GetMapping("/get_traveler_by_mail")
-// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = "http://localhost:5173")
 	public Traveler getTravelerByMail(@RequestParam(name = "mail") String mail) {
 		return database.getTravelerByMail(mail);
+	}
+
+	@GetMapping("/get_tickets_by_train_id")
+	@CrossOrigin(origins = "http://localhost:5173")
+	public List<Ticket> getTicketsByTrainID(@RequestParam(name = "train_id") String train_id) {
+		return database.getTicketsByTrainID(Integer.parseInt(train_id));
+	}
+
+	@PostMapping("/expire_ticket")
+	@CrossOrigin(origins = "http://localhost:5173")
+	public void expireTicket(@RequestParam(name = "ticket_id") String ticket_id) {
+		database.expireTicket(Integer.parseInt(ticket_id));
 	}
 }
