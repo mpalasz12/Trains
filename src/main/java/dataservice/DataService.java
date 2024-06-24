@@ -346,4 +346,9 @@ public class DataService {
 		return database.getLineByName(name);
 	}
 
+	@GetMapping("/get_station_by_linestop_id")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	public Station getStationByLinestopID(@RequestParam(name = "linestop_id") String linestop_id) {
+		return database.getStationByLinestopID(Integer.parseInt(linestop_id));
+	}
 }

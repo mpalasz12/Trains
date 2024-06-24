@@ -158,6 +158,10 @@ public class DatabaseController {
 		return stationDAO.getStationsByCityId(city_id);
 	}
 
+	public Station getStationByLinestopID(Integer linestopID) {
+		Integer stationID = linestopDAO.getLinestopByID(linestopID).getStation_id();
+		return stationDAO.getStation(stationID);
+	}
 	/*
 	 * --------------------------------LINESTOP ------------------------------------
 	 */
