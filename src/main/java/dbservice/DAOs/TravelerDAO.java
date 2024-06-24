@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class TravelerDAO {
 
@@ -43,5 +45,10 @@ public class TravelerDAO {
 	public Traveler getTravelerByMail(String mail) {
 		String sql = "SELECT * FROM Travelers WHERE mail_address = ?";
 		return jdbcTemplate.queryForObject(sql, new Object[] { mail }, new BeanPropertyRowMapper<>(Traveler.class));
+	}
+
+	public List<String> getAllMails() {
+		String sql = "SELECT mail_address FROM Travelers";
+		return jdbcTemplate.queryForList(sql, String.class);
 	}
 }

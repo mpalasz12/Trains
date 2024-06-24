@@ -383,4 +383,10 @@ public class DataService {
 	public void expireTicket(@RequestParam(name = "ticket_id") String ticket_id) {
 		database.expireTicket(Integer.parseInt(ticket_id));
 	}
+
+	@GetMapping("/get_all_mails")
+	@CrossOrigin(origins = "http://localhost:5173")
+	public List<String> getAllMails() {
+		return database.getAllMails();
+	}
 }

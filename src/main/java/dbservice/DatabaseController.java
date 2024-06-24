@@ -118,6 +118,10 @@ public class DatabaseController {
 		return travelerDAO.getTravelerByMail(mail);
 	}
 
+	public List<String> getAllMails() {
+		return travelerDAO.getAllMails();
+	}
+
 	/*
 	 * ---------------------------------- CITY ------------------------------------
 	 */
