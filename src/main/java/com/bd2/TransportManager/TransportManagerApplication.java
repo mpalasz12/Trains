@@ -132,6 +132,21 @@ public class TransportManagerApplication {
 		train3.setTrain_id(database.addTrain(train3));
 		train4.setTrain_id(database.addTrain(train4));
 
+		Wagon wagon1 = new Wagon(1, 20, train1.getTrain_id());
+		Wagon wagon2 = new Wagon(2, 20, train1.getTrain_id());
+		Wagon wagon3 = new Wagon(3, 20, train1.getTrain_id());
+		Wagon wagon4 = new Wagon(4, 20, train1.getTrain_id());
+		Wagon wagon5 = new Wagon(1, 20, train1.getTrain_id());
+		Wagon wagon6 = new Wagon(2, 20, train1.getTrain_id());
+
+		wagon1.setWagon_id(database.addWagon(wagon1));
+		wagon2.setWagon_id(database.addWagon(wagon2));
+		wagon3.setWagon_id(database.addWagon(wagon3));
+		wagon4.setWagon_id(database.addWagon(wagon4));
+		wagon5.setWagon_id(database.addWagon(wagon5));
+		wagon6.setWagon_id(database.addWagon(wagon6));
+		
+
 
 
 	}
