@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import './TicketForm.css';
 import axios from 'axios';
 
@@ -6,6 +6,7 @@ function TicketForm() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [wrongInput, setWrongInput] = useState(false);
     const [noDirectRoute, setNoDirectRoute] = useState(false);
+    const [isSeatTaken, setIsSeatTaken] = useState(false);
     const [startStation, setStartStation] = useState('');
     const [endStation, setEndStation] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -15,12 +16,11 @@ function TicketForm() {
     const [wagon, setWagon] = useState('');
     const [seat, setSeat] = useState('');
     const [ticket_id, setTicketId] = useState('');
-    const [lineData, setLineData] = useState('');
-    const [traveler_id, setTravelerID] = useState('');
-
+    //const [lineData, setLineData] = useState('');
+    //const [traveler_id, setTravelerID] = useState('');
 
     const handleChange = (event) => {
-        switch(event.target.name) {
+        switch (event.target.name) {
             case 'startStation':
                 setStartStation(event.target.value);
                 break;
@@ -36,11 +36,6 @@ function TicketForm() {
             case 'mail':
                 setMail(event.target.value);
                 break;
-                /*
-            case 'train':
-                setTrain(event.target.value);
-                break;
-                */
             case 'wagon':
                 setWagon(event.target.value);
                 break;
@@ -54,20 +49,12 @@ function TicketForm() {
 
     const handleSubmit = async (event) => {
         setNoDirectRoute(false);
+        setIsSeatTaken(false);
         event.preventDefault();
-        console.log({
-            startStation,
-            endStation,
-            firstName,
-            lastName,
-            mail,
-            wagon,
-            seat
-        });
-    
+
         let travelerID;
-    
-        // CHECK IF TRAVELER WITH THE SAME MAIL IS ALREADY REGISTERED
+
+        // Check if traveler with the same mail is already registered
         try {
             const response = await axios.get("http://localhost:8080/data/get_traveler_id_by_mail", {
                 params: { mail: mail }
@@ -76,8 +63,8 @@ function TicketForm() {
             console.log(travelerID);
         } catch (error) {
             console.log("Traveler not found, adding new traveler...");
-            
-            // ADD TRAVELER
+
+            // Add traveler
             try {
                 await axios.post('http://localhost:8080/data/add_traveler', null, {
                     params: {
@@ -87,8 +74,8 @@ function TicketForm() {
                     }
                 });
                 console.log("Traveler added successfully");
-    
-                // GET TRAVELER_ID BY MAIL AGAIN
+
+                // Get traveler_id by mail again
                 const response = await axios.get("http://localhost:8080/data/get_traveler_id_by_mail", {
                     params: { mail: mail }
                 });
@@ -99,8 +86,8 @@ function TicketForm() {
                 return;
             }
         }
-    
-        // GET CONNECTION BY START_NAME AND END_NAME
+
+        // Get connection by start_name and end_name
         let lineData;
         try {
             console.log("jestem w get connection");
@@ -124,11 +111,28 @@ function TicketForm() {
             setNoDirectRoute(true);
             return;
         }
-    
-        // ADD TICKET
+
+        // Check if the seat is already taken
+        try {
+            const response = await axios.get("http://localhost:8080/data/get_seats_taken", {
+                params: {
+                    train_id: lineData[0],
+                    wagon_num: wagon
+                }
+            });
+            const takenSeats = response.data;
+            if (takenSeats.includes(parseInt(seat))) {
+                setIsSeatTaken(true);
+                return;
+            }
+        } catch (error) {
+            console.error("Error checking seat availability:", error);
+            return;
+        }
+
+        // Add ticket
         try {
             console.log("jestem w add ticket");
-
             const response = await axios.post('http://localhost:8080/data/add_ticket', null, {
                 params: {
                     traveler_id: travelerID,
@@ -140,10 +144,9 @@ function TicketForm() {
                 }
             });
             console.log("Ticket added successfully");
-    
-            // FETCH TICKET ID
-            console.log("jestem w get ticketID");
 
+            // Fetch ticket ID
+            console.log("jestem w get ticketID");
             const ticketResponse = await axios.get('http://localhost:8080/data/tickets_by_mail', {
                 params: { mail: mail }
             });
@@ -152,7 +155,7 @@ function TicketForm() {
 
             setTicketId(ticketResponse.data[ticketResponse.data.length - 1].ticket_id);
             console.log("TicketID fetched successfully");
-    
+
             setIsSubmitted(true);
         } catch (error) {
             console.error("Error adding ticket or fetching ticket ID:", error);
@@ -201,15 +204,13 @@ function TicketForm() {
                     <span>Nie znaleziono trasy bezpośredniej.</span>
                 </div>
             )}
+            {isSeatTaken && (
+                <div className="error-message">
+                    <span>Wybrane miejsce jest już zajęte.</span>
+                </div>
+            )}
         </form>
     );
 }
 
 export default TicketForm;
-
-/*
-            <label>
-                Pociąg:
-                <input type="text" name="train" value={train} onChange={handleChange} />
-            </label>
-*/
