@@ -5,48 +5,48 @@ import jakarta.persistence.Entity;
 @Entity
 public class Traveler {
 	private Integer traveler_id;
-	private String firstName;
-	private String lastName;
-	private String mailAddress;
+	private String first_name;
+	private String last_name;
+	private String mail_address;
 
 	public Traveler() {
 	}
 
-	public Traveler(String firstName, String lastName, String mail) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.mailAddress = mail;
+	public Traveler(String first_name, String last_name, String mail_address) {
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.mail_address = mail_address;
 	}
 
-	public Integer getTravelerID() {
+	public Integer getTraveler_id() {
 		return traveler_id;
 	}
 
-	public void setTravelerID(Integer traveler_id) {
+	public void setTraveler_id(Integer traveler_id) {
 		this.traveler_id = traveler_id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirst_name() {
+		return first_name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getLast_name() {
+		return last_name;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
-	public String getMailAddress() {
-		return mailAddress;
+	public String getMail_address() {
+		return mail_address;
 	}
 
-	public void setMailAddress(String mailAddress) {
-		this.mailAddress = mailAddress;
+	public void setMail_address(String mail_address) {
+		this.mail_address = mail_address;
 	}
 }

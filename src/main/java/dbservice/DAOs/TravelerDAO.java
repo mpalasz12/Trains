@@ -2,6 +2,7 @@ package dbservice.DAOs;
 
 import dbservice.models.Traveler;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +17,7 @@ public class TravelerDAO {
 
 	public void addTraveler(Traveler traveler) {
 		String sql = "INSERT INTO Travelers (first_name, last_name, mail_address) VALUES (?, ?, ?)";
-		jdbcTemplate.update(sql, traveler.getFirstName(), traveler.getLastName(), traveler.getMailAddress());
+		jdbcTemplate.update(sql, traveler.getFirst_name(), traveler.getLast_name(), traveler.getMail_address());
 	}
 
 	public void deleteTraveler(Integer id) {
@@ -32,5 +33,15 @@ public class TravelerDAO {
 	public Integer getTravelerIDbyMail(String mail) {
 		String sql = "SELECT traveler_id FROM Travelers WHERE mail_address = ?";
 		return jdbcTemplate.queryForObject(sql, Integer.class, mail);
+	}
+
+	public Traveler getTravelerByID(Integer id) {
+		String sql = "SELECT * FROM Travelers WHERE traveler_id = ?";
+		return jdbcTemplate.queryForObject(sql, new Object[] { id }, new BeanPropertyRowMapper<>(Traveler.class));
+	}
+
+	public Traveler getTravelerByMail(String mail) {
+		String sql = "SELECT * FROM Travelers WHERE mail_address = ?";
+		return jdbcTemplate.queryForObject(sql, new Object[] { mail }, new BeanPropertyRowMapper<>(Traveler.class));
 	}
 }
