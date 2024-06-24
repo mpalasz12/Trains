@@ -157,9 +157,8 @@ public class DataService {
 	@PostMapping("/add_line_basic")
 	@CrossOrigin(origins = "http://localhost:5173")
 	public void addLineBasic(
-			@RequestParam(name = "name") String name,
-			@RequestParam(name = "first_stop_id") String first_stop_id) {
-		Line line = new Line(name, Integer.parseInt(first_stop_id));
+			@RequestParam(name = "name") String name) {
+		Line line = new Line(name);
 		database.addLine(line);
 	}
 
@@ -169,13 +168,20 @@ public class DataService {
 	public void addLine(
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "station_id") String station_id) {
-		// create linestop terminus for new line
-		Linestop linestop = new Linestop(Integer.parseInt(station_id));
-		// acquire ID for linestop and upload to database
+		// METHOD CHANGED 24.06
+		// Line ID is now stored in linestop, Line just holds the line name
+
+		// Create new line
+		Line line = new Line(name);
+		line.setLine_id(database.addLine(line));
+
+		// Create new linestop, assign line ID
+		Linestop linestop = new Linestop(Integer.parseInt(station_id), line.getLine_id());
+		// Set linestop as first
+		linestop.setIs_first(true);
+
+		// Add linestop to db
 		linestop.setLinestop_id(database.addTerminus(linestop));
-		// add line to database with terminus
-		Line line = new Line(name, linestop.getLinestop_id());
-		database.addLine(line);
 	}
 
 	@GetMapping("/get_line")
@@ -201,41 +207,43 @@ public class DataService {
 			@RequestParam(name = "station_id") String station_id,
 			@RequestParam(name = "distance") String distance) {
 		// get line
-		Line line = database.getLineByID(Integer.parseInt(line_id));
+		//Line line = database.getLineByID(Integer.parseInt(line_id));
 
-		// create new linestop
-		Linestop linestop = new Linestop(line.getFirst_stop_id(), Integer.parseInt(distance),
-				Integer.parseInt(station_id));
+		//// create new linestop
+		//Linestop linestop = new Linestop(line.getFirst_stop_id(), Integer.parseInt(distance),
+		//		Integer.parseInt(station_id));
 
-		// add linestop to database, acquire ID
-		linestop.setLinestop_id(database.addLinestop(linestop));
+		//// add linestop to database, acquire ID
+		//linestop.setLinestop_id(database.addLinestop(linestop));
 
-		// change line first stop to new linestop
-		line.setFirst_stop_id(linestop.getLinestop_id());
+		//// change line first stop to new linestop
+		//line.setFirst_stop_id(linestop.getLinestop_id());
 
-		// update line in database
-		database.updateLine(line);
+		//// update line in database
+		//database.updateLine(line);
+		database.addStopToLine(Integer.parseInt(line_id), Integer.parseInt(distance), Integer.parseInt(station_id));
 	}
 
 	// MANUAL LINESTOP ADDING - NOT RECOMMENDED
 	@PostMapping("/add_terminus")
 	@CrossOrigin(origins = "http://localhost:5173")
 	public void addTerminus(
-			@RequestParam(name = "station_id") String station_id) {
-		Linestop linestop = new Linestop(Integer.parseInt(station_id));
+			@RequestParam(name = "station_id") String station_id,
+			@RequestParam(name = "line_id") String line_id) {
+		Linestop linestop = new Linestop(Integer.parseInt(station_id), Integer.parseInt(line_id));
 		database.addTerminus(linestop);
 	}
 
-	@PostMapping("/add_linestop")
-	@CrossOrigin(origins = "http://localhost:5173")
-	public void addLinestop(
-			@RequestParam(name = "next_linestop") String next_linestop,
-			@RequestParam(name = "distance") String distance,
-			@RequestParam(name = "station_id") String station_id) {
-		Linestop linestop = new Linestop(Integer.parseInt(next_linestop), Integer.parseInt(distance),
-				Integer.parseInt(station_id));
-		database.addLinestop(linestop);
-	}
+	//@PostMapping("/add_linestop")
+	//@CrossOrigin(origins = "http://localhost:5173")
+	//public void addLinestop(
+	//		@RequestParam(name = "next_linestop") String next_linestop,
+	//		@RequestParam(name = "distance") String distance,
+	//		@RequestParam(name = "station_id") String station_id) {
+	//	Linestop linestop = new Linestop(Integer.parseInt(next_linestop), Integer.parseInt(distance),
+	//			Integer.parseInt(station_id));
+	//	database.addLinestop(linestop);
+	//}
 
 	@PostMapping("/add_station")
 	@CrossOrigin(origins = "http://localhost:5173")
@@ -350,5 +358,11 @@ public class DataService {
 // komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
 	public Station getStationByLinestopID(@RequestParam(name = "linestop_id") String linestop_id) {
 		return database.getStationByLinestopID(Integer.parseInt(linestop_id));
+	}
+
+	@GetMapping("/find_connection")
+	//@CrossOrigin(origins = "http://localhost:5173")
+	public List<Integer> findConnection(@RequestParam(name = "start_name") String start_name, @RequestParam(name = "end_name") String end_name) {
+		return database.findLineID(start_name, end_name);
 	}
 }

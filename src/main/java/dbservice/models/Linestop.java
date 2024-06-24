@@ -8,18 +8,23 @@ public class Linestop {
 	private Integer next_linestop;
 	private Integer distance_next;
 	private Integer station_id;
+	private Integer line_id;
+	private Boolean is_first;
 
 	public Linestop() {
 	}
 
-	public Linestop(Integer next_linestop, Integer distance_next, Integer station_id) {
+	public Linestop(Integer next_linestop, Integer distance_next, Integer station_id, Integer line_id, Boolean is_first) {
 		this.next_linestop = next_linestop;
 		this.distance_next = distance_next;
 		this.station_id = station_id;
+		this.line_id = line_id;
+		this.is_first = is_first;
 	}
 
-	public Linestop(Integer station_id) {
+	public Linestop(Integer station_id, Integer line_id) {
 		this.station_id = station_id;
+		this.line_id = line_id;
 	}
 
 	public Integer getLinestop_id() {
@@ -52,5 +57,21 @@ public class Linestop {
 
 	public void setStation_id(Integer station_id) {
 		this.station_id = station_id;
+	}
+
+	public Integer getLine_id() {
+		return line_id;
+	}
+
+	public void setLine_id(Integer line_id) {
+		this.line_id = line_id;
+	}
+
+	public Boolean getIs_first() {
+		return is_first;
+	}
+
+	public void setIs_first(Boolean is_first) {
+		this.is_first = is_first;
 	}
 }

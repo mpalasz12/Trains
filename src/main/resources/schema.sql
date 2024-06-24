@@ -18,23 +18,25 @@ CREATE TABLE Travelers (
 	mail_address	VARCHAR(50)		NOT NULL
 );
 
+CREATE TABLE Lines (
+	line_id			INT				PRIMARY KEY AUTO_INCREMENT,
+	name			VARCHAR(50)		NOT NULL UNIQUE
+);
+
 CREATE TABLE Linestops (
 	linestop_id		INT				PRIMARY KEY AUTO_INCREMENT,
 	next_linestop	INT,
 	distance_next	INT,
 	station_id		INT				NOT NULL,
+	-- TEST IF THIS WILL WORK:
+	line_id			INT				NOT NULL,
+	is_first		BOOLEAN			DEFAULT FALSE,
 
+	FOREIGN KEY (line_id) REFERENCES Lines(line_id),
 	FOREIGN KEY (station_id) REFERENCES Stations(station_id),
 	FOREIGN KEY (next_linestop) REFERENCES Linestops(linestop_id)
 );
 
-CREATE TABLE Lines (
-	line_id			INT				PRIMARY KEY AUTO_INCREMENT,
-	name			VARCHAR(50)		NOT NULL UNIQUE,
-	first_stop_id	INT				NOT NULL,
-
-	FOREIGN KEY (first_stop_id) REFERENCES Linestops(linestop_id)
-);
 
 CREATE TABLE Locomotives (
 	locomotive_id	INT				PRIMARY KEY AUTO_INCREMENT,
