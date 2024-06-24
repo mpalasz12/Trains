@@ -9,7 +9,7 @@ class Wagon {
         this.class = class_name;
         this.seats = Array(capacity).fill(null);
         this.resetSeats();
-        this.occupyRandomSeats(capacity/4);
+        // this.occupyRandomSeats(capacity/4);
     }
 
     resetSeats()
@@ -20,17 +20,17 @@ class Wagon {
       }
     }
 
-    occupyRandomSeats(numSeatsToOccupy) {
-      var FooTraveler = new Traveler("Marek", "Mostowiak", "Babice", "69420");
-      const seatIndices = Array.from({ length: this.capacity }, (_, index) => index);
-      seatIndices.sort(() => Math.random() - 0.5);
-      for (let i = 0; i < numSeatsToOccupy; i++) {
-        const seatIndex = seatIndices[i];
-        if (seatIndex !== undefined) {
-          this.seats[seatIndex].occupy(FooTraveler);
-        }
-      }
-    }
+    // occupyRandomSeats(numSeatsToOccupy) {
+    //   var FooTraveler = new Traveler("Marek", "Mostowiak", "Babice", "69420");
+    //   const seatIndices = Array.from({ length: this.capacity }, (_, index) => index);
+    //   seatIndices.sort(() => Math.random() - 0.5);
+    //   for (let i = 0; i < numSeatsToOccupy; i++) {
+    //     const seatIndex = seatIndices[i];
+    //     if (seatIndex !== undefined) {
+    //       this.seats[seatIndex].occupy(FooTraveler);
+    //     }
+    //   }
+    // }
 
 }
 

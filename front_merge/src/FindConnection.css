@@ -25,3 +25,8 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     border-width: 2px;
 }
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
