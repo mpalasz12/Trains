@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function TicketForm() {
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [wrongInput, setWrongInput] = useState(false);
+    //const [wrongInput, setWrongInput] = useState(false);
     const [noDirectRoute, setNoDirectRoute] = useState(false);
     const [isSeatTaken, setIsSeatTaken] = useState(false);
     const [startStation, setStartStation] = useState('');
@@ -48,6 +48,7 @@ function TicketForm() {
     };
 
     const handleSubmit = async (event) => {
+        setIsSubmitted(false);
         setNoDirectRoute(false);
         setIsSeatTaken(false);
         event.preventDefault();
