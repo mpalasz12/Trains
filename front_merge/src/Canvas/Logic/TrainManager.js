@@ -3,7 +3,8 @@ import Train from "./Train";
 import axios from "axios";
 import Wagon from "./Wagon";
 
-// INSTRUKCJA
+// NA RAZIE ZAKOMENTOWANE BO LUKASZ ROBI INACZEJ
+//
 // Dodałem póki co metode do lokomotyw i wagonów
 // Kolejność powinna być taka:
 // 1. Dodanie lokomotywy
@@ -11,39 +12,39 @@ import Wagon from "./Wagon";
 // 3. Dodanie wagonów z podpiętym train_id, numery wagonów dodać w pętli (obsługuje to processWagonList)
 
 // function for adding locomotive to database api
-export function addLocomotive(locomotive) {
-	event.preventDefault();
-	try {
-		const params = new URLSearchParams();
-		params.append("model", locomotive.name);
-		params.append("origin_country", locomotive.country);
-		const response = axios.post('http://localhost:8080/data/add_locomotive?' + params.toString());
-		console.log('Answer from server: ', response.data);
-	} catch (error) {
-		console.error("Error adding locomotive: ", error);
-	}
-}
+//export function addLocomotive(locomotive) {
+//	event.preventDefault();
+//	try {
+//		const params = new URLSearchParams();
+//		params.append("model", locomotive.name);
+//		params.append("origin_country", locomotive.country);
+//		const response = axios.post('http://localhost:8080/data/add_locomotive?' + params.toString());
+//		console.log('Answer from server: ', response.data);
+//	} catch (error) {
+//		console.error("Error adding locomotive: ", error);
+//	}
+//}
 
-export function addWagon(wagon, train_id, wagon_num) {
-	event.preventDefault();
-	try {
-		const params = new URLSearchParams();
-		params.append("wagon_num", wagon_num);
-		params.append("wagon_capacity", wagon.capacity);
-		params.append("train_id", train_id);
-		const response = axios.post('http://localhost:8080/data/add_wagon?' + params.toString());
-		console.log('Answer from server: ', response.data);
-	} catch (error) {
-		console.error("Error adding wagon: ", error);
-	}
-}
-
-export function processWagonList(wagonList, trainID) {
-	// iterate over wagons and add to db
-	for (let i = 0; i < wagonList.length; i++) {
-		addWagon(wagonList[i], trainID, String(i));
-	}
-}
+//export function addWagon(wagon, train_id, wagon_num) {
+//	event.preventDefault();
+//	try {
+//		const params = new URLSearchParams();
+//		params.append("wagon_num", wagon_num);
+//		params.append("wagon_capacity", wagon.capacity);
+//		params.append("train_id", train_id);
+//		const response = axios.post('http://localhost:8080/data/add_wagon?' + params.toString());
+//		console.log('Answer from server: ', response.data);
+//	} catch (error) {
+//		console.error("Error adding wagon: ", error);
+//	}
+//}
+//
+//export function processWagonList(wagonList, trainID) {
+//	// iterate over wagons and add to db
+//	for (let i = 0; i < wagonList.length; i++) {
+//		addWagon(wagonList[i], trainID, String(i));
+//	}
+//}
 
 class TrainManager
 {
@@ -62,11 +63,11 @@ class TrainManager
     {
         // Locomotives
         var IC9215 = new Locomotive("IC9215", "Poland", 200);
-		addLocomotive(IC9215);
         var LI3122 = new Locomotive("LI3122", "Germany", 180);
-		addLocomotive(LI3122);
         var KK1233 = new Locomotive("KK1233", "Sweden", 50);
-		addLocomotive(KK1233);
+		//addLocomotive(IC9215);
+		//addLocomotive(LI3122);
+		//addLocomotive(KK1233);
 
         var wkd_wagons = [
             new Wagon("wkd1", 1, 20),
@@ -74,7 +75,7 @@ class TrainManager
             new Wagon("wkd3", 3, 20)];
 
 		// iterate over wagons and add to db
-		processWagonList(wkd_wagons, 1);
+		//processWagonList(wkd_wagons, 1);
 		
             
         var skm_wagons = [
