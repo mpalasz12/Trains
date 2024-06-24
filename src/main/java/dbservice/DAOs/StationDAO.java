@@ -17,9 +17,15 @@ public class StationDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public void addStation(Station Station) {
+	public Integer acquireID() {
+		String sql = "SELECT TOP 1 station_id FROM Stations ORDER BY station_id DESC";
+		return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
+
+	public Integer addStation(Station Station) {
 		String sql = "INSERT INTO Stations (name, city_id) VALUES (?, ?)";
 		jdbcTemplate.update(sql, Station.getName(), Station.getCity_id());
+		return acquireID();
 	}
 
 	public Station getStation(Integer id) {

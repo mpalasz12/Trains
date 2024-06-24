@@ -142,8 +142,8 @@ public class DatabaseController {
 	 * ---------------------------------STATION ------------------------------------
 	 */
 
-	public void addStation(Station station) {
-		stationDAO.addStation(station);
+	public Integer addStation(Station station) {
+		return stationDAO.addStation(station);
 	}
 
 	public Station getStation(Integer id) {
@@ -194,6 +194,23 @@ public class DatabaseController {
 	/*
 	 * --------------------------------LINE ----------------------------------------
 	 */
+
+	public Integer createLine(String name, Integer stationId) {
+		Linestop linestop = new Linestop(stationId);
+		// acquire ID for linestop and upload to database
+		linestop.setLinestop_id(addTerminus(linestop));
+		// add line to database with terminus
+		Line line = new Line(name, linestop.getLinestop_id());
+		return addLine(line);
+	}
+
+	public void addStopToLine(Integer lineID, Integer distance, Integer stationID) {
+		Line line = getLineByID(lineID);
+		Linestop linestop = new Linestop(line.getFirst_stop_id(), distance, stationID);
+		linestop.setLinestop_id(addLinestop(linestop));
+		line.setFirst_stop_id(linestop.getLinestop_id());
+		updateLine(line);
+	}
 
 	public Integer addLine(Line line) {
 		return lineDAO.addLineGetID(line);
