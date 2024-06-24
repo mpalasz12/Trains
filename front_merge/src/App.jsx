@@ -17,19 +17,25 @@ function App() {
         setActiveButton(buttonName);
     };
 
+    const refreshTrainData = () => {
+        /* dodam w nastepnym commitcie :) */
+    }
+
     return (
-        <div className="app">
-            <Sidebar onButtonClick={handleButtonClick} />
-            <div className="app-content">
-                {activeButton === 'Mapa' && <TrainSimulation />}
-                {activeButton === 'Kup bilet' && <TicketForm />}
-                {activeButton === 'Sprawdź bilet' && <TicketCheck />}
-                {activeButton === 'Sprawdź połączenie' && <FindConnection />}
-                {activeButton === 'Wystartuj pociąg' && <StartTrain />}
-                {activeButton === 'Dodaj linię' && <AddLine />}
-                {activeButton === 'Statystyki' && <Statistics />}
+        <>
+            <div className="app">
+                <Sidebar onButtonClick={handleButtonClick} />
+                <div className="app-content">
+                    {activeButton === 'Kup bilet' && <TicketForm />}
+                    {activeButton === 'Sprawdź bilet' && <TicketCheck />}
+                    {activeButton === 'Sprawdź połączenie' && <FindConnection />}
+                    {activeButton === 'Wystartuj pociąg' && <StartTrain />}
+                    {activeButton === 'Dodaj linię' && <AddLine />}
+                    {activeButton === 'Statystyki' && <Statistics />}
+                </div>
             </div>
-        </div>
+            <TrainSimulation />
+        </>
     );
 }
 

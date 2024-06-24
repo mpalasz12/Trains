@@ -31,6 +31,7 @@ function TrainSimulation() {
     setSeat(seat_index);
   }
 
+
   return(
     <div className="trainSimulation">
         <div className="left_panel">
