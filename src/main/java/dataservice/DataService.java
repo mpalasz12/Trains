@@ -389,4 +389,10 @@ public class DataService {
 	public List<String> getAllMails() {
 		return database.getAllMails();
 	}
+
+	@GetMapping("/get_ticket_count_by_mail")
+	@CrossOrigin(origins = "http://localhost:5173")
+	public Integer getTicketCountByMail(@RequestParam(name = "mail") String mail) {
+		return database.getTicketCount(mail);
+	}
 }

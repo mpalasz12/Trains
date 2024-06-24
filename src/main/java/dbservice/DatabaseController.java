@@ -122,6 +122,11 @@ public class DatabaseController {
 		return travelerDAO.getAllMails();
 	}
 
+	public Integer getTicketCount(String mail){
+		Traveler traveler = travelerDAO.getTravelerByMail(mail);
+		return ticketDAO.getTicketCountByTravelerID(traveler.getTraveler_id());
+	}
+
 	/*
 	 * ---------------------------------- CITY ------------------------------------
 	 */
