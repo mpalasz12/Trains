@@ -62,9 +62,15 @@ function TicketForm() {
             last_name: lastName,
             mail: mail
         };
-    
+
         try {
-            await axios.post('http://localhost:8080/data/add_traveler', travelerData);
+            const response = await axios.post('http://localhost:8080/data/add_traveler', null, {
+                params: {
+                    first_name: firstName,
+                    last_name: lastName,
+                    mail: mail
+                }
+            });
             console.log("Traveler added successfully");
         } catch (error) {
             console.error("Error adding traveler:", error);
@@ -85,19 +91,29 @@ function TicketForm() {
                 wagon_num: wagon,
                 seat_num: seat
             };
-    
             try {
-                const ticketResponse = await axios.post("http://localhost:8080/data/add_ticket", ticketData);
+                console.log(ticketData);
+                const response = await axios.post('http://localhost:8080/data/add_ticket', null, {
+                    params: {
+                        traveler_id: travelerId,
+                        first_stop: startStation,
+                        last_stop: endStation,
+                        train_id: train,
+                        wagon_num: wagon,
+                        seat_num: seat
+                    }
+                });
                 console.log("Ticket added successfully");
-                const ticketId = ticketResponse.data.ticket_id;
-                setIsSubmitted(true);
+                const ticketId = response.data.ticket_id;
             } catch (error) {
                 console.error("Error adding ticket:", error);
+                return;
             }
+
         } catch (error) {
             console.error("Error fetching traveler ID:", error);
         }
-    
+
         setIsSubmitted(true);
     };
 
