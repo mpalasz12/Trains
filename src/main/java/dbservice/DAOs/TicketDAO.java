@@ -30,7 +30,7 @@ public class TicketDAO {
 	}
 
 	public void expireTicket(Integer id) {
-		String sql = "UPDATE Tickets SET expired = TRUE WHERE ticket_id = ?";
+		String sql = "UPDATE Tickets SET is_expired = TRUE WHERE ticket_id = ?";
 		jdbcTemplate.update(sql, id);
 	}
 
@@ -47,5 +47,10 @@ public class TicketDAO {
 	public List<Integer> getSeatsTaken(Integer trainID, Integer wagonNum) {
 		String sql = "SELECT seat_num FROM Tickets WHERE is_expired = FALSE AND train_id = ? AND wagon_num = ?";
 		return jdbcTemplate.queryForList(sql, Integer.class, trainID, wagonNum);
+	}
+
+	public List<Ticket> getTicketsByTrainID(Integer trainID) {
+		String sql = "SELECT * FROM Tickets WHERE is_expired = FALSE AND train_id = ?";
+		return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Ticket.class), trainID);
 	}
 }
