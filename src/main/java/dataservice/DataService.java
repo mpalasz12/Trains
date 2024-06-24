@@ -365,4 +365,10 @@ public class DataService {
 	public List<Integer> findConnection(@RequestParam(name = "start_name") String start_name, @RequestParam(name = "end_name") String end_name) {
 		return database.findLineID(start_name, end_name);
 	}
+
+	@GetMapping("/get_traveler_by_mail")
+// komentarz do usuniecia- jak juz bedzie z apka to odkomentowac	@CrossOrigin(origins = "http://localhost:5173")
+	public Traveler getTravelerByMail(@RequestParam(name = "mail") String mail) {
+		return database.getTravelerByMail(mail);
+	}
 }
