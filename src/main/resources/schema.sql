@@ -67,8 +67,8 @@ CREATE TABLE Tickets (
 
 	FOREIGN KEY (traveler_id) REFERENCES Travelers(traveler_id),
 	FOREIGN KEY (train_id) REFERENCES Trains(train_id),
-	FOREIGN KEY (first_stop) REFERENCES Stations(station_id),
-	FOREIGN KEY (last_stop) REFERENCES Stations(station_id)
+	FOREIGN KEY (first_stop) REFERENCES Linestops(linestop_id),
+	FOREIGN KEY (last_stop) REFERENCES Linestops(linestop_id)
 );
 
 
