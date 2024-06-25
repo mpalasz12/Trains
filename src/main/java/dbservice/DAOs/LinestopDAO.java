@@ -87,7 +87,7 @@ public class LinestopDAO {
 					" JOIN Linestops ls2 ON ls1.line_id = ls2.line_id JOIN Stations s1 ON ls1.station_id = s1.station_id" +
 					" JOIN Stations s2 ON ls2.station_id = s2.station_id" +
 					" WHERE s1.name = ? AND s2.name = ? AND ls1.linestop_id > ls2.linestop_id" +
-					"ORDER BY ls1.linestop_id - ls2.linestop_id ASC" +
+					"ORDER BY ls2.linestop_id ASC" +
 					" FETCH FIRST ROW ONLY";
 
 		List<Map<String, Object>> result = jdbcTemplate.queryForList(sql, startName, endName);
