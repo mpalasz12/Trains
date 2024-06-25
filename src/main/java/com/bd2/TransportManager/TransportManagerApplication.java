@@ -136,8 +136,8 @@ public class TransportManagerApplication {
 		Wagon wagon2 = new Wagon(2, 20, train1.getTrain_id());
 		Wagon wagon3 = new Wagon(3, 20, train1.getTrain_id());
 		Wagon wagon4 = new Wagon(4, 20, train1.getTrain_id());
-		Wagon wagon5 = new Wagon(1, 20, train1.getTrain_id());
-		Wagon wagon6 = new Wagon(2, 20, train1.getTrain_id());
+		Wagon wagon5 = new Wagon(5, 20, train1.getTrain_id());
+		Wagon wagon6 = new Wagon(6, 20, train1.getTrain_id());
 
 		wagon1.setWagon_id(database.addWagon(wagon1));
 		wagon2.setWagon_id(database.addWagon(wagon2));
