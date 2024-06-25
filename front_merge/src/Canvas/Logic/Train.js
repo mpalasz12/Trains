@@ -73,9 +73,11 @@ class Train {
         }
       });
 
-      const tickets = await axios.get("http://localhost:8080/data/maciek_ticket", {
+      const tickets = await axios.get("http://localhost:8080/data/sim_ticket", {
         params: { 
           train_id: this.train_id
+          // zamiast     'train_id:  this.train_id'
+          // powinno być 'ticket_id: this.ticket_id'
         }
       });
       this.resetWagonsSeats();

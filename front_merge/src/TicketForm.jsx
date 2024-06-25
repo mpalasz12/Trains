@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './TicketForm.css';
 import axios from 'axios';
+import './App.jsx';
 
 function TicketForm() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -10,12 +11,13 @@ function TicketForm() {
     const [isSeatTaken, setIsSeatTaken] = useState(false);
     const [tooHighWagon, setTooHighWagon] = useState(false);
     const [tooHighSeat, setTooHighSeat] = useState(false);
+    const [notAllInformationGiven, setNotAllInformationGiven] = useState(false);
     const [startStation, setStartStation] = useState('');
     const [endStation, setEndStation] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [mail, setMail] = useState('');
-    const [trainId, setTrainId] = useState('');
+    //const [trainId, setTrainId] = useState('');
     const [wagon, setWagon] = useState('');
     const [seat, setSeat] = useState('');
     const [ticketId, setTicketId] = useState('');
@@ -56,8 +58,15 @@ function TicketForm() {
         setIsSeatTaken(false);
         setTooHighWagon(false);
         setTooHighSeat(false);
+        setNotAllInformationGiven(false);
 
         console.log("zaczynam PRROOOOOGRRRRAAAAMMMMMM");
+
+        if (firstName == '' || lastName == '' || startStation == '' || endStation == '' || mail == '' || wagon == '' || seat == '') {
+            setNotAllInformationGiven(true);
+            console.error("You didn't fill all your information name box.");
+            return;
+        }
 
         try {
             const response = await axios.get("http://localhost:8080/data/all_stations");
@@ -143,7 +152,7 @@ function TicketForm() {
             console.error("Error getting train_id from line_id:", error);
             return;
         }
-        setTrainId(foundTrainId);
+        //setTrainId(foundTrainId);
 
         try {
             const response = await axios.get("http://localhost:8080/data/get_train_wagons", {
@@ -194,6 +203,7 @@ function TicketForm() {
                 }
             });
             console.log("Ticket added successfully");
+            // refreshTrainData();  ODKOMENTOWAĆ JAK BĘDZIE GOTOWE
             const ticketResponse = await axios.get('http://localhost:8080/data/tickets_by_mail', {
                 params: { mail: mail }
             });
@@ -270,6 +280,11 @@ function TicketForm() {
             {!lastStationInDataBase && (
                 <div className="error-message">
                     <span>Wybrana stacja końcowa nie jest w naszym systemie.</span>
+                </div>
+            )}
+            {notAllInformationGiven && (
+                <div className="error-message">
+                    <span>Wszystkie pola z danymi nie mogą być puste.</span>
                 </div>
             )}
         </form>
