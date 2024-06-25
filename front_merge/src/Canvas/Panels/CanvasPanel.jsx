@@ -4,7 +4,6 @@ import mapaPolski from '../../../public/mapa_polski.jpg';
 
 function CanvasPanel({stationsManager, connectionsManager, trainManager, current_train_index}) {
   const drawUtils = new DrawUtils();
-
   const drawMap = (ctx, img) => 
   {
     ctx.drawImage(img, 0, 0, 500, 500);
@@ -24,6 +23,7 @@ function CanvasPanel({stationsManager, connectionsManager, trainManager, current
   {
     trainManager.trains.map((train, index) => drawUtils.drawTrain(ctx, train, index === current_train_index))
   }
+
   const animationFrameId = useRef(null);
   const canvasRef = useRef(null);
   useEffect(() => {
@@ -31,13 +31,11 @@ function CanvasPanel({stationsManager, connectionsManager, trainManager, current
     const ctx = canvas.getContext('2d');
     const img = new Image();
     img.src = mapaPolski;
-
     let lastTimestamp = performance.now();
 
     const drawOnCanvas = (timestamp) => {
       const deltaTime = timestamp - lastTimestamp;
       lastTimestamp = timestamp;
-
       trainManager.update_trains_positions(deltaTime)
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawMap(ctx, img);
@@ -61,7 +59,9 @@ function CanvasPanel({stationsManager, connectionsManager, trainManager, current
   }, [stationsManager, connectionsManager, trainManager, current_train_index]);
 ;
 
-  return <canvas ref={canvasRef} width={500} height={500} />;
+  return <> 
+      <canvas ref={canvasRef} width={500} height={500}/>
+   </>;
 }
 
 export default CanvasPanel;

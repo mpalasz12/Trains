@@ -119,15 +119,15 @@ class TrainManager
         var IC = new Train("IC", KK1233, ic_wagons, this.tracksManager.tracks[3], 4);
 
         return [
-            WKD,
-            SKM,
-            LS,
-            IC];
+            WKD];
+            //SKM,
+            //LS,
+            //IC];
     }
     
-    update_trains_positions(deltatime)
+    update_trains_positions(deltatime, speed)
     {
-        this.trains.forEach(train => train.update_position(deltatime))
+        this.trains.forEach(train => train.update_position(deltatime, speed))
     }
 
 }
