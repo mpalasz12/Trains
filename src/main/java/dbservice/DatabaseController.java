@@ -79,6 +79,7 @@ public class DatabaseController {
 			expireTicketsWithLastLinestop(train.getTrain_id(), train.getCurr_linestop());
 			if (train.getCurr_linestop() == null) {
 				advanceTrain(id);
+				advanceTrain(id);
 			}
 		} else {
 			trainDAO.changeLinestop(id, linestopDAO.getFirstLinestopID(train.getLine_id()));
