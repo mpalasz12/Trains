@@ -51,7 +51,9 @@ public class DatabaseController {
 	 */
 
 	public Integer addTrain(Train train) {
-		return trainDAO.addTrainGetID(train);
+		Integer train_id = trainDAO.addTrainGetID(train);
+		advanceTrain(train_id);
+		return train_id;
 	}
 
 	public void deleteTrain(Integer id) {
