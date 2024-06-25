@@ -12,6 +12,7 @@ function TicketForm() {
     const [tooHighWagon, setTooHighWagon] = useState(false);
     const [tooHighSeat, setTooHighSeat] = useState(false);
     const [notAllInformationGiven, setNotAllInformationGiven] = useState(false);
+    const [invalidConnection, setInvalidConnection] = useState(false);
     const [startStation, setStartStation] = useState('');
     const [endStation, setEndStation] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -59,6 +60,7 @@ function TicketForm() {
         setTooHighWagon(false);
         setTooHighSeat(false);
         setNotAllInformationGiven(false);
+        setInvalidConnection(false);
 
         console.log("zaczynam PRROOOOOGRRRRAAAAMMMMMM");
 
@@ -66,6 +68,11 @@ function TicketForm() {
             setNotAllInformationGiven(true);
             console.error("You didn't fill all your information name box.");
             return;
+        }
+
+        if (startStation == endStation) {
+            setInvalidConnection(true);
+            return
         }
 
         try {
@@ -285,6 +292,11 @@ function TicketForm() {
             {notAllInformationGiven && (
                 <div className="error-message">
                     <span>Wszystkie pola z danymi nie mogą być puste.</span>
+                </div>
+            )}
+            {invalidConnection && (
+                <div className="error-message">
+                    <span>Stacja końcowa nie moze być taka sama jak stacja początkowa.</span>
                 </div>
             )}
         </form>

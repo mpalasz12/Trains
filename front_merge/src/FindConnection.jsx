@@ -6,7 +6,7 @@ function FindConnection() {
     const [startStation, setStartStation] = useState('');
     const [endStation, setEndStation] = useState('');
     const [connectionData, setConnectionData] = useState([]);
-    const [locomotiveData, setLocomotiveData] = useState('');
+    const [locomotiveData, setLocomotiveData] = useState(null);
     const [error, setError] = useState('');
 
     const handleStartStationChange = (event) => {
@@ -19,17 +19,17 @@ function FindConnection() {
 
     const fetchActiveTrains = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/data/get_all_trains', null);
+            const response = await axios.get('http://localhost:8080/data/get_all_trains');
             return response.data;
         } catch (error) {
             console.error("Error fetching train details:", error);
             setError('Error fetching train details. Please try again.');
+            return null;
         }
-    }
+    };
 
     const fetchLocomotiveDetails = async (locomotiveId) => {
         try {
-            console.log(locomotiveId);
             const response = await axios.get('http://localhost:8080/data/get_locomotive_by_id', {
                 params: { locomotive_id: locomotiveId }
             });
@@ -37,6 +37,7 @@ function FindConnection() {
         } catch (error) {
             console.error("Error fetching locomotive details:", error);
             setError('Error fetching locomotive details. Please try again.');
+            return null;
         }
     };
 
@@ -57,7 +58,13 @@ function FindConnection() {
         console.log(`Stacja początkowa: ${startStation}, Stacja końcowa: ${endStation}`);
         setError('');
         setConnectionData([]);
-        setLocomotiveData('');
+        setLocomotiveData(null);
+
+        if (startStation == endStation) {
+            console.error("Error searching connection:", error);
+            setError('Wpisz rózne stacje początkową i końcową.');
+            return;
+        }
 
         try {
             const response = await axios.get('http://localhost:8080/data/find_connection', {
@@ -67,33 +74,30 @@ function FindConnection() {
                 }
             });
             console.log("Connection searched successfully");
+
             if (response.data) {
-                setConnectionData(response.data);
+                const connection = response.data;
+                setConnectionData(connection);
 
-                var ConnectionData = response.data;
-                var TrainData = await fetchActiveTrains();
+                const trainData = await fetchActiveTrains();
+                if (trainData) {
+                    const train = trainData.find(train => train.line_id === connection[0]);
+                    if (train) {
+                        const locomotiveDetails = await fetchLocomotiveDetails(train.locomotive_id);
+                        setLocomotiveData(locomotiveDetails);
 
-                for (let i = 0; i < TrainData.length; i++) {
-                    if (TrainData[i].line_id == ConnectionData[0]) {
-                        var locomotive_id = TrainData[i].locomotive_id;
+                        const firstStopName = await fetchStationName(connection[1]);
+                        const lastStopName = await fetchStationName(connection[2]);
+
+                        setConnectionData([connection[0], firstStopName, lastStopName]);
+                    } else {
+                        setError('No train found for the connection.');
                     }
                 }
-
-                setLocomotiveData(await fetchLocomotiveDetails(locomotive_id));
-
-                const firstStopName = await fetchStationName(ConnectionData[1]);
-                const lastStopName = await fetchStationName(ConnectionData[2]);
-
-                connectionData.push(ConnectionData[0]);
-                connectionData.push(firstStopName);
-                connectionData.push(lastStopName);
-
-                setConnectionData(connectionData);
-
             } else {
                 setError('No connection found between the given stations.');
             }
-            
+
         } catch (error) {
             console.error("Error searching connection:", error);
             setError('Error searching for connection. Please try again.');
@@ -122,7 +126,7 @@ function FindConnection() {
             </label>
             <input type="submit" value="Znajdź połączenie" />
             {error && <div className="error-message">{error}</div>}
-            {connectionData && (
+            {connectionData.length > 0 && (
                 <div className="connection-details">
                     <h2>Connection Details</h2>
                     <p>Line ID: {connectionData[0]}</p>
