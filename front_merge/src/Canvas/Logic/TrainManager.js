@@ -48,9 +48,10 @@ import Wagon from "./Wagon";
 
 class TrainManager
 {
-    constructor(tracksManager)
+    constructor(tracksManager, onTicketChange)
     {
         this.tracksManager = tracksManager;
+        this.onTicketChange = onTicketChange;
         this.trains = this.init_trains();
     }
 
@@ -113,16 +114,16 @@ class TrainManager
 		//}
 
         // Trains
-        var WKD = new Train("WKD", IC9215, wkd_wagons, this.tracksManager.tracks[0], 1);
-        var SKM = new Train("SKM", LI3122, skm_wagons, this.tracksManager.tracks[1], 2);
-        var LS = new Train("ŁS", LI3122, ls_wagons, this.tracksManager.tracks[2], 3);
-        var IC = new Train("IC", KK1233, ic_wagons, this.tracksManager.tracks[3], 4);
+        var WKD = new Train("WKD", IC9215, wkd_wagons, this.tracksManager.tracks[0], 1, this.onTicketChange);
+        var SKM = new Train("SKM", LI3122, skm_wagons, this.tracksManager.tracks[1], 2, this.onTicketChange);
+        var LS = new Train("ŁS", LI3122, ls_wagons, this.tracksManager.tracks[2], 3, this.onTicketChange);
+        var IC = new Train("IC", KK1233, ic_wagons, this.tracksManager.tracks[3], 4, this.onTicketChange);
 
         return [
-            WKD];
-            //SKM,
-            //LS,
-            //IC];
+            WKD,
+            SKM,
+            LS,
+            IC];
     }
     
     update_trains_positions(deltatime, speed)

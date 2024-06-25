@@ -12,7 +12,7 @@ function TrainSimulation() {
   const [stationsManager] = useState(new StationsManager());
   const [connectionsManager] = useState(new ConnectionsManager(stationsManager));
   const [tracksManager] = useState(new TracksManager(stationsManager, () => refreshCanvas(prev => prev + 1)));
-  const [trainManager] = useState(new TrainManager(tracksManager));
+  const [trainManager] = useState(new TrainManager(tracksManager, () => refreshCanvas(prev => prev + 1)));
   const [current_train_index, setTrain] = useState(0);
   const [current_wagon_index, setWagon] = useState(-1);
   const [current_seat_index, setSeat] = useState(-1);

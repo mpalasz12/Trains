@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class Train {
-    constructor(name, locomotive, wagons, track, train_id)
+    constructor(name, locomotive, wagons, track, train_id, onTicketChange)
     {
       this.posX = track.getCurrentStation().posX;
       this.posY = track.getCurrentStation().posY;
@@ -11,6 +11,7 @@ class Train {
       this.wagons = wagons;
       this.distanceToDestination = this.calculateDistanceToDestination();
       this.train_id = train_id;
+      this.onTicketChange = onTicketChange;
     }
 
     get_occupied_seats()
@@ -35,7 +36,7 @@ class Train {
 
     update_position(deltaTime)
     {
-      const distanceToTravel = this.locomotive.speed * deltaTime/ 1000;
+      const distanceToTravel = this.locomotive.speed * deltaTime/ 25000;
       const distanceRatio = distanceToTravel / this.distanceToDestination;
   
       this.posX += (this.track.getNextStation().posX - this.posX) * distanceRatio;
@@ -78,7 +79,7 @@ class Train {
       });
 
       console.log("Getting tickets!");
-      await this.sleep(1000);
+      await this.sleep(100);
 
       const tickets = await axios.get("http://localhost:8080/data/all_sim_tickets_by_train", {
         params: { 
@@ -93,6 +94,7 @@ class Train {
         this.wagons[ticket.wagon_num-1].occupySeat(ticket.seat_num-1, ticket.traveler_name, ticket.traveler_surname, ticket.end_station);
       }
       console.log("Wagon got ",tickets.data.length," ticket");
+      this.onTicketChange();
     }
 }
 
