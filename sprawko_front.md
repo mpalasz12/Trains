@@ -60,7 +60,6 @@ try {
         }
     });
     console.log("Ticket added successfully");
-    // refreshTrainData();  ODKOMENTOWAĆ JAK BĘDZIE GOTOWE
     const ticketResponse = await axios.get('http://localhost:8080/data/tickets_by_mail', {
         params: { mail: mail }
     });
