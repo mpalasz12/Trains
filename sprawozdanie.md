@@ -27,7 +27,9 @@ Na tej podstawie wyszczególniliśmy następujące encje w modelu E-R:
 * Traveler
 * Ticket
 
-Po przekształceniu do modelu relacyjnego, model wygląda następująco:
+![](img/2024-06-26-08-55-36.png)
+
+Po przekształceniu do modelu logicznego, model wygląda następująco:
 
 ![](img/2024-06-26-01-03-13.png)
 
