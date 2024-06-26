@@ -93,7 +93,7 @@ public class TransportManagerApplication {
 		database.addStopToLine(KR_id, 340, station1.getStation_id());
 		database.addStopToLine(KR_id, 240, station2.getStation_id());
 
-		Integer WB_id = database.createLine("Wroclaw-Bialystok", station3.getStation_id());
+		Integer WB_id = database.createLine("Wroclaw-Bialystok", station7.getStation_id());
 		// wroclaw - poznan - lodz - warszawa - bialystok - warszawa - lodz - poznan - wroclaw
 		database.addStopToLine(WB_id, 180, station5.getStation_id());
 		database.addStopToLine(WB_id, 210, station6.getStation_id());
@@ -111,7 +111,7 @@ public class TransportManagerApplication {
 		database.addStopToLine(LB_id, 200, station4.getStation_id());
 		database.addStopToLine(LB_id, 140, station6.getStation_id());
 
-		Integer KrR_id = database.createLine("Krakow-Rzeszow", station9.getStation_id());
+		Integer KrR_id = database.createLine("Krakow-Rzeszow", station8.getStation_id());
 		// krakow - rzeszow - krakow
 		database.addStopToLine(KrR_id, 160, station9.getStation_id());
 		database.addStopToLine(KrR_id, 160, station8.getStation_id());
