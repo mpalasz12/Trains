@@ -2,6 +2,8 @@
 
 ## Wstęp
 
+![](img/2024-06-26-09-58-06.png)
+
 Wykonany projekt polega na utworzeniu aplikacji zajmującej się symulacją ruchu kolejowego wraz z możliwością wyszukania połączenia i zakupu biletu. Aplikacja podzielona jest na trzy wartwy - Aplikacyjną (frontend), Backend oraz bazę danych. Zgodnie z instrukcją, projekt skupia się głównie na implementacji bazy danych i jej połączeniu z aplikacją, zatem warstwa aplikacjyjna jest w dużym stopniu demonstracyjna (brak podziału na panele użytkownika/administratora itd.)
 
 ## Technologie
@@ -202,3 +204,19 @@ try {
 }
 ```
 
+## Symulacja
+
+Po zakupie biletu:
+![](img/2024-06-26-10-00-46.png)
+
+Po dojechaniu na miejsce:
+![](img/2024-06-26-10-00-54.png)
+
+Znajdywanie Polaczenia
+![](img/2024-06-26-10-01-48.png)
+
+Sprawdzanie biletów
+![](img/2024-06-26-10-02-58.png)
+
+Statystyki:
+![](img/2024-06-26-10-03-10.png)
