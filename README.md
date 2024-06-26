@@ -206,17 +206,22 @@ try {
 
 ## Symulacja
 
-Po zakupie biletu:
+Po zakupie biletu jest on ściągany endpointem do symulacji, znajdując odpowiedni pociąg, wagon i miejsce. Miejsce zwolni się po dojechaniu do stacji końcowej (linestop'u) na bilecie.
+
 ![](img/2024-06-26-10-00-46.png)
 
-Po dojechaniu na miejsce:
+Po dojechaniu na miejsce symulacja komunikuje się przez endpoint AdvanceTrain, następnie pobiera z bazy dalej aktywne bilety aktualizując spis miejsc w wagonach.
+
 ![](img/2024-06-26-10-00-54.png)
 
-Znajdywanie Polaczenia
+Znajdywanie polaczenia działa a zasadzie przeszukiwania bazy w celu znalezienia pociągu łączącego podane stacje.
+
 ![](img/2024-06-26-10-01-48.png)
 
-Sprawdzanie biletów
+Sprawdzanie biletów odbywa się przez wpisanie adersu email, co zwróci wszystkie bilety (aktywne oraz zarchiwizowane) zakupione na podany email.
+
 ![](img/2024-06-26-10-02-58.png)
 
-Statystyki:
+Statystyki pokazują podstawowe informacje zawarte w bazie oraz podsumowanie biletów zakupionych na każdy email.
+
 ![](img/2024-06-26-10-03-10.png)
