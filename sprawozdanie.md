@@ -29,7 +29,7 @@ Na tej podstawie wyszczególniliśmy następujące encje w modelu E-R:
 
 Po przekształceniu do modelu relacyjnego, model wygląda następująco:
 
-<!--TODO: ZDJECIE MODELU-->
+![](img/2024-06-26-01-03-13.png)
 
 ## Implementacja modelu w SQL
 
@@ -56,23 +56,24 @@ CREATE TABLE Travelers (
 	mail_address	VARCHAR(50)		NOT NULL
 );
 
+CREATE TABLE Lines (
+	line_id			INT				PRIMARY KEY AUTO_INCREMENT,
+	name			VARCHAR(50)		NOT NULL UNIQUE
+);
+
 CREATE TABLE Linestops (
 	linestop_id		INT				PRIMARY KEY AUTO_INCREMENT,
 	next_linestop	INT,
 	distance_next	INT,
 	station_id		INT				NOT NULL,
+	line_id			INT				NOT NULL,
+	is_first		BOOLEAN			DEFAULT FALSE,
 
+	FOREIGN KEY (line_id) REFERENCES Lines(line_id),
 	FOREIGN KEY (station_id) REFERENCES Stations(station_id),
-	FOREIGN KEY (linestop_id) REFERENCES Linestops(linestop_id)
+	FOREIGN KEY (next_linestop) REFERENCES Linestops(linestop_id)
 );
 
-CREATE TABLE Lines (
-	line_id			INT				PRIMARY KEY AUTO_INCREMENT,
-	name			VARCHAR(50)		NOT NULL UNIQUE,
-	first_stop_id	INT				NOT NULL,
-
-	FOREIGN KEY (first_stop_id) REFERENCES Linestops(linestop_id)
-);
 
 CREATE TABLE Locomotives (
 	locomotive_id	INT				PRIMARY KEY AUTO_INCREMENT,
@@ -103,8 +104,8 @@ CREATE TABLE Tickets (
 
 	FOREIGN KEY (traveler_id) REFERENCES Travelers(traveler_id),
 	FOREIGN KEY (train_id) REFERENCES Trains(train_id),
-	FOREIGN KEY (first_stop) REFERENCES Stations(station_id),
-	FOREIGN KEY (last_stop) REFERENCES Stations(station_id)
+	FOREIGN KEY (first_stop) REFERENCES Linestops(linestop_id),
+	FOREIGN KEY (last_stop) REFERENCES Linestops(linestop_id)
 );
 
 
