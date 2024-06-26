@@ -104,7 +104,7 @@ public class TransportManagerApplication {
 		database.addStopToLine(WB_id, 210, station5.getStation_id());
 		database.addStopToLine(WB_id, 180, station7.getStation_id());
 
-		Integer LB_id = database.createLine("Lodz-Bialystok", station5.getStation_id());
+		Integer LB_id = database.createLine("Lodz-Bialystok", station6.getStation_id());
 		// lodz - warszawa - bialystok - warszawa - lodz
 		database.addStopToLine(LB_id, 140, station4.getStation_id());
 		database.addStopToLine(LB_id, 200, station3.getStation_id());
